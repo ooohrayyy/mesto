@@ -9,3 +9,8 @@
 /* Подключаем блок header и его компоненты */
 
 @import url(../blocks/header/header.css);
+
+/* Подключаем блок footer и его компоненты */
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/footer__text.css);
