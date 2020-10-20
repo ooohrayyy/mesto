@@ -9,10 +9,13 @@
 /* Подключаем корневой блок root */
 
 @import url(../blocks/root/root.css);
+@import url(../blocks/root/__container/root__container.css);
 
 /* Подключаем блок container и его компоненты */
 
 @import url(../blocks/container/container.css);
+@import url(../blocks/container/__header/container__header.css);
+@import url(../blocks/container/__footer/container__footer.css);
 
 /* Подключаем блок header и его компоненты */
 
