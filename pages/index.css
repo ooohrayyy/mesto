@@ -5,3 +5,7 @@
 /* Подключаем корневой блок root */
 
 @import url(../blocks/root/root.css);
+
+/* Подключаем блок header и его компоненты */
+
+@import url(../blocks/header/header.css);
