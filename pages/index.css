@@ -2,6 +2,10 @@
 
 @import url(../resources/vendor/normalize.css);
 
+/* Подключаем шрифты */
+
+@import url(../resources/fonts/fonts.css);
+
 /* Подключаем корневой блок root */
 
 @import url(../blocks/root/root.css);
