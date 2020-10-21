@@ -31,6 +31,18 @@
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__add/profile__add.css);
 
+/* Подключаем блок elements и его компоненты */
+
+@import url(../blocks/elements/elements.css);
+
+/* Подключаем блок element и его компоненты */
+
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__label/element__label.css);
+@import url(../blocks/element/__name/element__name.css);
+@import url(../blocks/element/__like/element__like.css);
+
 /* Подключаем блок footer и его компоненты */
 
 @import url(../blocks/footer/footer.css);
