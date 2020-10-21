@@ -1,0 +1,10 @@
+.popup__save {
+  display: block;
+  width: 358px;
+  height: 50px;
+  border: none;
+  border-radius: 2px;
+  margin: 0 auto;
+  color: white;
+  background-color: black;
+}
