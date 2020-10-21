@@ -14,9 +14,7 @@
 /* Подключаем блок container и его компоненты */
 
 @import url(../blocks/container/container.css);
-@import url(../blocks/container/__header/container__header.css);
 @import url(../blocks/container/__main/container__main.css);
-@import url(../blocks/container/__footer/container__footer.css);
 
 /* Подключаем блок header и его компоненты */
 
