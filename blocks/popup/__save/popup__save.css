@@ -7,4 +7,10 @@
   margin: 0 auto;
   color: white;
   background-color: black;
+  cursor: pointer;
+  transition: .1s linear;
+}
+
+.popup__save:hover {
+  opacity: .8;
 }

@@ -5,4 +5,10 @@
   margin-top: 35px;
   border: 1px solid white;
   background-color: black;
+  cursor: pointer;
+  transition: .1s linear;
+}
+
+.profile__add:hover {
+  opacity: .6;
 }
