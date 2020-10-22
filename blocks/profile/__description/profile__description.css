@@ -1,4 +1,11 @@
 .profile__description {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: white;
+}
+
+@media screen and (max-width: 599px) {
+  .profile__description {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
