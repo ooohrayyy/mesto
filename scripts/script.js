@@ -1,35 +1,42 @@
-// TODO: Сделать так, чтобы при открытии формы в полях оставался сохранённый вариант текста
+// Объявляем переменные //
 
-// Включение и выключение попапа
+let popupContainer = document.querySelector('.popup'); // Весь блок с попапом
+let formElement = document.querySelector('.popup__container'); // Форма попапа
+let popupOpenButton = document.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
+let popupCloseButton = document.querySelector('.popup__close'); // Кнопка закрытия попапа
 
-let popupContainer = document.querySelector('.popup');
-let popupOpenButton = document.querySelector('.profile__edit');
-let popupCloseButton = document.querySelector('.popup__close');
+let nameInput = document.querySelector('.popup__input_name'); // Поле для ввода имени
+let jobInput = document.querySelector('.popup__input_description'); // Поле для ввода описания
+
+let nameString = document.querySelector('.profile__name'); // Имя на странице
+let jobString = document.querySelector('.profile__description'); // Описание на странице
+
+// Функция для открытия и закрытия попапа
 
 function controlPopup() {
-  popupContainer.classList.toggle('popup_opened');
+  if (!popupContainer.classList.contains('popup_opened')) { // Если попап был закрыт, возвращаем в поля формы последнее сохранённое значение
+    nameInput.value = nameString.textContent;
+    jobInput.value = jobString.textContent;
+  }
+
+  popupContainer.classList.toggle('popup_opened'); // Открываем или закрываем попап — по ситуации
 }
+
+// Добавляем слушатели событий на кнопки редактирования и закрытия
 
 popupOpenButton.addEventListener('click', controlPopup);
 popupCloseButton.addEventListener('click', controlPopup);
 
-// Форма редактирования профиля
-
-let formElement = document.querySelector('.popup__container');
+// Функция отправки формы
 
 function formSubmitHandler (evt) {
-  evt.preventDefault();
+  evt.preventDefault(); // Делаем так, чтобы форма не отправлялась куда-то вовне, перезагружая страницу
 
-  let nameInput = document.querySelector('.popup__input_name');
-  let jobInput = document.querySelector('.popup__input_description');
-
-  let nameString = document.querySelector('.profile__name');
-  let jobString = document.querySelector('.profile__description');
-
+  // Сохраняем на странице данные из полей формы
   nameString.textContent = nameInput.value;
   jobString.textContent = jobInput.value;
 
-  controlPopup();
+  controlPopup(); // Закрываем попап
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', formSubmitHandler); // Добавляем слушатель событий на отправку формы
