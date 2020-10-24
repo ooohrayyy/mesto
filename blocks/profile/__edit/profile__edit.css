@@ -27,6 +27,6 @@
 
 @media screen and (max-width: 499px) {
   .profile__edit {
-    margin-left: 1px
+    margin-left: 1px;
   }
 }
