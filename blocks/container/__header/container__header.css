@@ -1,0 +1,12 @@
+@media screen and (max-width: 999px) {
+  .container__header {
+    margin: 0 5%;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .container__header {
+    min-height: 56px;
+    margin: 0;
+  }
+}

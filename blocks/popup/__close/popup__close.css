@@ -7,6 +7,10 @@
   padding: 0;
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../resources/images/close.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
   transition: .1s linear;
 }

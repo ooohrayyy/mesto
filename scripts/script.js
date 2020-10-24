@@ -1,12 +1,12 @@
-// Объявляем переменные //
+// Объявляем переменные
 
 let popupContainer = document.querySelector('.popup'); // Весь блок с попапом
-let formElement = document.querySelector('.popup__container'); // Форма попапа
+let formElement = popupContainer.querySelector('.popup__container'); // Форма попапа
 let popupOpenButton = document.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
-let popupCloseButton = document.querySelector('.popup__close'); // Кнопка закрытия попапа
+let popupCloseButton = popupContainer.querySelector('.popup__close'); // Кнопка закрытия попапа
 
-let nameInput = document.querySelector('.popup__input_name'); // Поле для ввода имени
-let jobInput = document.querySelector('.popup__input_description'); // Поле для ввода описания
+let nameInput = popupContainer.querySelector('.popup__input_name'); // Поле для ввода имени
+let jobInput = popupContainer.querySelector('.popup__input_description'); // Поле для ввода описания
 
 let nameString = document.querySelector('.profile__name'); // Имя на странице
 let jobString = document.querySelector('.profile__description'); // Описание на странице

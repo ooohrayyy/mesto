@@ -5,4 +5,13 @@
   margin: 31px 23px 30px 23px;
   border: none;
   background-color: white;
+  background-image: url(../../../resources/images/like.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: .1s linear;
+}
+
+.element__like:hover {
+  background-image: url(../../../resources/images/like-black.svg);
+  opacity: .8;
 }

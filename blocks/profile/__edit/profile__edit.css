@@ -1,11 +1,13 @@
 .profile__edit {
-  display: inline;
-  vertical-align: super;
   width: 24px;
   height: 24px;
   padding: 0 0 2px 0;
+  margin: 5px 0 0 17px;
   border: 1px solid white;
   background-color: black;
+  background-image: url(../../../resources/images/edit.svg);
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
   transition: .1s linear;
 }
@@ -16,12 +18,15 @@
 
 @media screen and (max-width: 599px) {
   .profile__edit {
-    display: inline-flex;
-    vertical-align: text-top;
-    justify-content: center;
-    align-items: center;
     width: 18px;
     height: 18px;
     padding: 0;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .profile__edit {
+    margin-left: 1px
   }
 }

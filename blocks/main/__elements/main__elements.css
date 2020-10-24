@@ -1,0 +1,5 @@
+@media screen and (max-width: 999px) {
+  .main__elements {
+    margin: 0 5%;
+  }
+}

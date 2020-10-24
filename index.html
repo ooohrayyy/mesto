@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- Привет команде код-ревью! Надеюсь, получилось не хуже, чем раньше -->
+<!-- Второй привет команде код-ревью! Правок было мало, но надо всеми пришлось подумать! Спасибо! -->
 <html lang="ru">
   <head>
     <meta charset="UTF-8">
@@ -11,62 +12,30 @@
     <title>Mesto</title>
   </head>
   <body class="root">
-    <div class="popup">
-      <form class="popup__container">
-        <button class="popup__close" type="button">
-          <svg viewbox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M44.7661 41.5683L31.9759 28.778L44.7661 15.9878L41.5686 12.7902L28.7783 25.5805L15.9881 
-            12.7902L12.7905 15.9878L25.5808 28.778L12.7905 41.5683L15.9881 44.7658L28.7783 31.9756L41.5686 
-            44.7658L44.7661 41.5683Z" fill="white"/>
-          </svg>  
-        </button>
-        <h2 class="popup__heading">Редактировать профиль</h2>
-        <input class="popup__input popup__input_name" type="text" maxlength="30">
-        <input class="popup__input popup__input_description" type="text">
-        <button class="popup__save" type="submit">Сохранить</button>
-      </form>
-    </div>
     <div class="container root__container">   
       <header class="header container__header">
         <img class="header__logo" src="./resources/images/logo.svg" alt="Логотип Mesto">
       </header>
       <main class="main container__main">
-        <section class="profile">
+        <section class="profile main__profile">
           <div class="profile__main">
             <img class="profile__avatar" src="./resources/images/jaque.png" alt="Портрет пользователя">
             <div class="profile__text-info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit">
-                <svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z" fill="white"/>
-                </svg>                
-              </button>
+              <button class="profile__edit" type="button"></button>
               <p class="profile__description">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add">
-            <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z" fill="white"/>
-            </svg>              
-          </button>
+          <button class="profile__add" type="button"></button>
         </section>
-        <section class="elements">
+        <section class="elements main__elements">
           <!-- Все фотографии сделал сам! -->
           <!-- Первая карточка -->
           <article class="element">
             <img class="element__image" src="./resources/images/element-images/pic-novoros.jpg" alt="Набережная Новороссийска">
             <div class="element__label">
               <h2 class="element__name">Новороссийск</h2>
-              <button class="element__like">
-                <svg viewbox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 
-                  2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 
-                  8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 
-                  4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 
-                  0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 
-                  16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                </svg>
-              </button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
           <!-- Вторая карточка -->
@@ -74,16 +43,7 @@
             <img class="element__image" src="./resources/images/element-images/pic-belgorod.jpg" alt="Зелёные поля Белгородской области">
             <div class="element__label">
               <h2 class="element__name">Белгородчина</h2>
-              <button class="element__like">
-                <svg viewbox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 
-                  2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 
-                  8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 
-                  4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 
-                  0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 
-                  16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                </svg>
-              </button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
           <!-- Третья карточка -->
@@ -91,16 +51,7 @@
             <img class="element__image" src="./resources/images/element-images/pic-elista.jpg" alt="Золотая обитель Будды Шакьямуни">
             <div class="element__label">
               <h2 class="element__name">Калмыкия</h2>
-              <button class="element__like">
-                <svg viewbox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 
-                  2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 
-                  8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 
-                  4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 
-                  0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 
-                  16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                </svg>
-              </button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
           <!-- Четвёртая карточка -->
@@ -108,16 +59,7 @@
             <img class="element__image" src="./resources/images/element-images/pic-chechnya.jpg" alt="Горная дорога из Шатоя в Ведено">
             <div class="element__label">
               <h2 class="element__name">Чечня</h2>
-              <button class="element__like">
-                <svg viewbox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 
-                  2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 
-                  8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 
-                  4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 
-                  0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 
-                  16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                </svg>
-              </button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
           <!-- Пятая карточка -->
@@ -125,16 +67,7 @@
             <img class="element__image" src="./resources/images/element-images/pic-kalina.jpg" alt="Кёнигсбергский собор">
             <div class="element__label">
               <h2 class="element__name">Калининград</h2>
-              <button class="element__like">
-                <svg viewbox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 
-                  2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 
-                  8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 
-                  4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 
-                  0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 
-                  16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                </svg>
-              </button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
           <!-- Шестая карточка -->
@@ -142,16 +75,7 @@
             <img class="element__image" src="./resources/images/element-images/pic-karelia.jpg" alt="Скульптура на набережной Онежского озера">
             <div class="element__label">
               <h2 class="element__name">Карелия</h2>
-              <button class="element__like">
-                <svg viewbox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.154 9.33822C21.294 7.19833 21.294 3.72364 19.154 1.60492C17.014 -0.534975 13.5392 -0.534975 11.3992 1.60492L10.361 
-                  2.66428L9.32276 1.62611C7.18277 -0.534975 3.70792 -0.534975 1.58911 1.60492C0.550891 2.64309 0 4.02026 0 5.48217C0 6.94408 0.572079 
-                  8.32124 1.58911 9.35941L10.361 18.1309L19.154 9.33822ZM1.35604 5.48217C1.35604 4.38044 1.7798 3.36346 2.56376 2.60072C3.36891 1.79561 
-                  4.40712 1.39305 5.44534 1.39305C6.48356 1.39305 7.52178 1.79561 8.32692 2.60072L10.361 4.6135L12.395 2.57953C13.9841 0.990498 16.5903 
-                  0.990498 18.1582 2.57953C18.921 3.34227 19.3659 4.35925 19.3659 5.46098C19.3659 6.56271 18.9422 7.57969 18.1582 8.34243L10.361 
-                  16.1605L2.56376 8.36362C1.80099 7.57969 1.35604 6.56271 1.35604 5.48217Z" fill="black"/>
-                </svg>
-              </button>
+              <button class="element__like" type="button"></button>
             </div>
           </article>
         </section>
@@ -159,6 +83,15 @@
       <footer class="footer container__footer">
         <p class="footer__text">&COPY; 2020 Mesto Russia</p>
       </footer>
+    </div>
+    <div class="popup root__popup">
+      <form class="popup__container">
+        <button class="popup__close" type="reset"></button>
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <input class="popup__input popup__input_name" type="text" maxlength="30">
+        <input class="popup__input popup__input_description" type="text">
+        <button class="popup__save" type="submit">Сохранить</button>
+      </form>
     </div>
     <script src="./scripts/script.js"></script>
   </body>
