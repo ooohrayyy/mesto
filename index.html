@@ -27,54 +27,6 @@
           <button class="profile__add" type="button"></button>
         </section>
         <section class="elements main__elements">
-          <!-- Первая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-novoros.jpg" alt="Набережная Новороссийска">
-            <div class="element__label">
-              <h2 class="element__name">Новороссийск</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Вторая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-belgorod.jpg" alt="Зелёные поля Белгородской области">
-            <div class="element__label">
-              <h2 class="element__name">Белгородчина</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Третья карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-elista.jpg" alt="Золотая обитель Будды Шакьямуни">
-            <div class="element__label">
-              <h2 class="element__name">Калмыкия</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Четвёртая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-chechnya.jpg" alt="Горная дорога из Шатоя в Ведено">
-            <div class="element__label">
-              <h2 class="element__name">Чечня</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Пятая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-kalina.jpg" alt="Кёнигсбергский собор">
-            <div class="element__label">
-              <h2 class="element__name">Калининград</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Шестая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-karelia.jpg" alt="Скульптура на набережной Онежского озера">
-            <div class="element__label">
-              <h2 class="element__name">Карелия</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
         </section>
       </main>
       <footer class="footer container__footer">
@@ -90,6 +42,15 @@
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>
+    <template id="template-card">
+      <article class="element">
+        <img class="element__image">
+        <div class="element__label">
+          <h2 class="element__name"></h2>
+          <button class="element__like" type="button"></button>
+        </div>
+      </article>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

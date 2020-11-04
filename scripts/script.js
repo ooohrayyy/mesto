@@ -1,3 +1,63 @@
+// --- Логика появления карточек из коробки
+
+// Объявляем переменные
+
+const cardGrid = document.querySelector('.elements');
+const cardTemplate = document.querySelector('#template-card').content;
+
+// Создаём массив с карточками из коробки
+
+const initialCards = [
+  {
+    name: 'Карелия',
+    link: './resources/images/element-images/pic-karelia.jpg',
+    alt: 'Скульптура на набережной Онежского озера'
+  },
+  {
+    name: 'Калининград',
+    link: './resources/images/element-images/pic-kalina.jpg',
+    alt: 'Кёнигсбергский собор'
+  },
+  {
+    name: 'Чечня',
+    link: './resources/images/element-images/pic-chechnya.jpg',
+    alt: 'Горная дорога из Шатоя в Ведено'
+  },
+  {
+    name: 'Калмыкия',
+    link: './resources/images/element-images/pic-elista.jpg',
+    alt: 'Золотая обитель Будды Шакьямуни'
+  },
+  {
+    name: 'Белгородчина',
+    link: './resources/images/element-images/pic-belgorod.jpg',
+    alt: 'Зелёные поля Белгородской области'
+  },
+  {
+    name: 'Новороссийск',
+    link: './resources/images/element-images/pic-novoros.jpg',
+    alt: 'Набережная Новороссийска'
+  },
+];
+
+// Вставляем карточки из коробки на страницу
+
+function addInitialCards () {
+  initialCards.forEach(function (card) {
+    const cardElement = cardTemplate.cloneNode(true);
+
+    cardElement.querySelector('.element__name').textContent = card.name;
+    cardElement.querySelector('.element__image').setAttribute('src', card.link);
+    cardElement.querySelector('.element__image').setAttribute('alt', card.alt);
+
+    cardGrid.prepend(cardElement);
+  })
+}
+
+addInitialCards();
+
+// --- Логика для попапа с именем и описанием
+
 // Объявляем переменные
 
 let popupContainer = document.querySelector('.popup'); // Весь блок с попапом
