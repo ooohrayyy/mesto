@@ -112,6 +112,7 @@ function addCard(name, link) { // --- Создание новой карточк
   cardGrid.prepend(cardElement);
 
   listenLikeButtons();
+  listenDeleteButtons();
 }
 
 function setCardValues() { // --- Передача значений для новой карточки
@@ -126,6 +127,11 @@ function setCardValues() { // --- Передача значений для но�
 
 function setLike(el) { // --- Установка и снятие лайка
   el.classList.toggle('element__like_active');
+}
+
+function removeCard(source) { // --- Удаление существующей карточки
+  const currentCard = source.parentNode;
+  cardGrid.removeChild(currentCard);
 }
 
 // * Вешаем слушатели событий
@@ -156,6 +162,16 @@ function listenLikeButtons() { // --- Клик по лайкам
   })
 }
 
+function listenDeleteButtons() { // --- Клик по кнопкам «Удалить»
+  const deleteCardButtons = document.querySelectorAll('.element__delete');
+
+  deleteCardButtons.forEach(function (button) {
+    button.addEventListener('click', function() {
+      removeCard(button);
+    });
+  })
+}
+
 popupProfileForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Редактировать профиль»
 popupProfileForm.addEventListener('submit', setProfileValues);
 popupPicForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Добавить карточку»
@@ -166,3 +182,4 @@ popupPicForm.addEventListener('submit', setCardValues);
 listenCloseButtons();
 addInitialCards();
 listenLikeButtons();
+listenDeleteButtons();
