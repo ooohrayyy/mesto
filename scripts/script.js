@@ -105,11 +105,13 @@ function returnProfileValues() { // --- Возвращение имени и о�
 function addCard(name, link) { // --- Создание новой карточки
   const cardElement = cardTemplate.cloneNode(true);
 
-    cardElement.querySelector('.element__name').textContent = name;
-    cardElement.querySelector('.element__image').setAttribute('src', link);
-    cardElement.querySelector('.element__image').setAttribute('alt', name);
+  cardElement.querySelector('.element__name').textContent = name;
+  cardElement.querySelector('.element__image').setAttribute('src', link);
+  cardElement.querySelector('.element__image').setAttribute('alt', name);
 
-    cardGrid.prepend(cardElement);
+  cardGrid.prepend(cardElement);
+
+  listenLikeButtons();
 }
 
 function setCardValues() { // --- Передача значений для новой карточки
@@ -120,6 +122,10 @@ function setCardValues() { // --- Передача значений для но�
 
   placeInput.value = '';
   linkInput.value = '';
+}
+
+function setLike(el) { // --- Установка и снятие лайка
+  el.classList.toggle('element__like_active');
 }
 
 // * Вешаем слушатели событий
@@ -139,6 +145,17 @@ function listenCloseButtons() { // --- Клик по кнопкам закрыт
   });
 }
 
+function listenLikeButtons() { // --- Клик по лайкам
+  const likeButtons = document.querySelectorAll('.element__like');
+
+  likeButtons.forEach(function (button) {
+    button.addEventListener('click', function() {
+      console.log('test');
+      setLike(button);
+    });
+  })
+}
+
 popupProfileForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Редактировать профиль»
 popupProfileForm.addEventListener('submit', setProfileValues);
 popupPicForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Добавить карточку»
@@ -148,3 +165,4 @@ popupPicForm.addEventListener('submit', setCardValues);
 
 listenCloseButtons();
 addInitialCards();
+listenLikeButtons();
