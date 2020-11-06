@@ -163,7 +163,6 @@ function listenLikeButtons() { // --- Клик по лайкам
 
   likeButtons.forEach(function (button) {
     button.addEventListener('click', function() {
-      console.log('test');
       setLike(button);
     });
   })
