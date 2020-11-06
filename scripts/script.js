@@ -109,10 +109,17 @@ function addCard(name, link) { // --- Создание новой карточк
   cardElement.querySelector('.element__image').setAttribute('src', link);
   cardElement.querySelector('.element__image').setAttribute('alt', name);
 
-  cardGrid.prepend(cardElement);
+  const deleteCardButton = cardElement.querySelector('.element__delete');
+  deleteCardButton.addEventListener('click', function() {
+    removeCard(deleteCardButton);
+  });
 
-  listenLikeButtons();
-  listenDeleteButtons();
+  const likeButton = cardElement.querySelector('.element__like');
+  likeButton.addEventListener('click', function () {
+    setLike(likeButton);
+  })
+
+  cardGrid.prepend(cardElement);
 }
 
 function setCardValues() { // --- Передача значений для новой карточки
