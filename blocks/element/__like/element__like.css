@@ -9,6 +9,7 @@
   background-position: center;
   background-repeat: no-repeat;
   transition: .1s linear;
+  cursor: pointer;
 }
 
 .element__like:hover {
