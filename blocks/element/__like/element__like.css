@@ -12,6 +12,5 @@
 }
 
 .element__like:hover {
-  background-image: url(../../../resources/images/like-black.svg);
-  opacity: .8;
+  opacity: .6;
 }
