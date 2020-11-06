@@ -169,7 +169,7 @@ function listenDeleteButtons() { // --- Клик по кнопкам «Удал�
     button.addEventListener('click', function() {
       removeCard(button);
     });
-  })
+  });
 }
 
 popupProfileForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Редактировать профиль»
