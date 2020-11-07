@@ -2,7 +2,7 @@
   display: block;
   width: 358px;
   padding-bottom: 14px;
-  margin: 0 auto 30px;
+  margin: 0 auto 20px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   font-size: 14px;
@@ -19,11 +19,11 @@
 
 @media screen and (max-width: 499px) {
   .popup__input {
-    width: 238px;
+    width: 200px;
     padding-bottom: 13px;
   }
 
   .popup__input:last-child {
-    margin-bottom: 50px;
+    margin-bottom: 36px;
   }
 }
