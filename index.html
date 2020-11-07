@@ -51,9 +51,16 @@
         <button class="popup__save" type="submit">Создать</button>
       </form>
     </div>
+    <div id="popup-full-pic" class="popup root__popup">
+      <figure class="popup__figure">
+        <button class="popup__close popup__close_image" type="reset"></button>
+        <img class="popup__image">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
     <template id="template-card">
       <article class="element">
-        <img class="element__image">
+        <button class="element__open-full-pic" type="button"><img class="element__image"></button>
         <button class="element__delete" type="button"></button>
         <div class="element__label">
           <h2 class="element__name"></h2>

@@ -1,5 +1,7 @@
 // * Объявляем глобальные переменные
 
+const root = document.querySelector('.root'); // Корневой блок
+
 // --- Объявляем переменные в профиле
 
 const editProfileButton = document.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
@@ -62,6 +64,8 @@ const popupPicForm = popupPic.querySelector('.popup__container'); // Форма 
 const placeInput = popupPic.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
 const linkInput = popupPic.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
 
+const popupFullPic = popupContainers[2];
+
 const popupCloseButtons = document.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
 
 // * Объявляем функции
@@ -73,6 +77,10 @@ function addInitialCards () { // --- Добавление карточек «и�
     cardElement.querySelector('.element__name').textContent = card.name;
     cardElement.querySelector('.element__image').setAttribute('src', card.link);
     cardElement.querySelector('.element__image').setAttribute('alt', card.alt);
+
+    const openFullPicButton = cardElement.querySelector('.element__open-full-pic');
+
+    openFullPicButton.addEventListener('click', openFullPic);
 
     const deleteCardButton = cardElement.querySelector('.element__delete');
 
@@ -92,6 +100,17 @@ function addInitialCards () { // --- Добавление карточек «и�
 
 function openPopup(popup) { // --- Открытие попапа
   popup.classList.add('popup_opened');
+}
+
+function openFullPic(evt) { // --- Открытие попапа с полноразмерной картинкой
+  const popup = document.querySelector('#popup-full-pic');
+  popup.classList.add('popup_opened');
+
+  const image = popup.querySelector('.popup__image');
+  const targetImage = evt.target;
+
+  image.setAttribute('src', targetImage.src);
+  image.setAttribute('alt', targetImage.alt);
 }
 
 function closePopup() { // --- Закрытие попапа
@@ -120,6 +139,10 @@ function addCard(name, link) { // --- Создание новой карточк
   cardElement.querySelector('.element__name').textContent = name;
   cardElement.querySelector('.element__image').setAttribute('src', link);
   cardElement.querySelector('.element__image').setAttribute('alt', name);
+
+  const openFullPicButton = cardElement.querySelector('.element__open-full-pic');
+
+  openFullPicButton.addEventListener('click', openFullPic);
 
   const deleteCardButton = cardElement.querySelector('.element__delete');
   deleteCardButton.addEventListener('click', function() {
