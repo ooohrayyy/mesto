@@ -3,5 +3,6 @@
   border: none;
   border-radius: 10px 10px 0 0;
   outline: none;
+  vertical-align: bottom;
   cursor: pointer;
 }

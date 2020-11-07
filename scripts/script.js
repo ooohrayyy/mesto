@@ -111,6 +111,9 @@ function openFullPic(evt) { // --- Открытие попапа с полнор
 
   image.setAttribute('src', targetImage.src);
   image.setAttribute('alt', targetImage.alt);
+
+  const caption = popup.querySelector('.popup__caption');
+  caption.textContent = targetImage.alt;
 }
 
 function closePopup() { // --- Закрытие попапа

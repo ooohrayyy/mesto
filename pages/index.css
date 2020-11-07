@@ -31,6 +31,7 @@
 @import url(../blocks/popup/__save/popup__save.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
 
 /* Подключаем блок header и его компоненты */
 
