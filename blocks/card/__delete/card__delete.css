@@ -1,4 +1,4 @@
-.element__delete {
+.card__delete {
   position: absolute;
   top: 18px;
   right: 15px;
@@ -7,10 +7,10 @@
   padding: 0;
   border: none;
   background-color: rgba(0, 0, 0, 0);
-  background-image: url(../../../resources/images/delete.svg);
+  background-image: url(../../../resources/images/svgs/delete.svg);
   cursor: pointer;
 }
 
-.element__delete:hover {
+.card__delete:hover {
   opacity: .6;
 }

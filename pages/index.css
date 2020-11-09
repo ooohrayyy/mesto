@@ -41,7 +41,7 @@
 /* Подключаем блок main и его компоненты */
 
 @import url(../blocks/main/__profile/main__profile.css);
-@import url(../blocks/main/__elements/main__elements.css);
+@import url(../blocks/main/__cards/main__cards.css);
 
 /* Подключаем блок profile и его компоненты */
 
@@ -54,20 +54,20 @@
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__add/profile__add.css);
 
-/* Подключаем блок elements и его компоненты */
+/* Подключаем блок cards и его компоненты */
 
-@import url(../blocks/elements/elements.css);
+@import url(../blocks/cards/cards.css);
 
-/* Подключаем блок element и его компоненты */
+/* Подключаем блок card и его компоненты */
 
-@import url(../blocks/element/element.css);
-@import url(../blocks/element/__open-full-pic/element__open-full-pic.css);
-@import url(../blocks/element/__image/element__image.css);
-@import url(../blocks/element/__delete/element__delete.css);
-@import url(../blocks/element/__label/element__label.css);
-@import url(../blocks/element/__name/element__name.css);
-@import url(../blocks/element/__like/element__like.css);
-@import url(../blocks/element/__like/_active/element__like_active.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__open-full-pic/card__open-full-pic.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__delete/card__delete.css);
+@import url(../blocks/card/__label/card__label.css);
+@import url(../blocks/card/__name/card__name.css);
+@import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
 
 /* Подключаем блок footer и его компоненты */
 

@@ -13,39 +13,39 @@ const addCardButton = document.querySelector('.profile__add'); // Кнопка �
 
 // --- Объявляем переменные в карточках
 
-const cardGrid = document.querySelector('.elements'); // Грид-контейнер с карточками
+const cardGrid = document.querySelector('.cards'); // Грид-контейнер с карточками
 
 const cardTemplate = document.querySelector('#template-card').content; // Шаблон карточки
 
 const initialCards = [ // Массив с карточками из коробки
   {
     name: 'Карелия',
-    link: './resources/images/element-images/pic-karelia.jpg',
+    link: './resources/images/card-images/pic-karelia.jpg',
     alt: 'Скульптура на набережной Онежского озера'
   },
   {
     name: 'Калининград',
-    link: './resources/images/element-images/pic-kalina.jpg',
+    link: './resources/images/card-images/pic-kalina.jpg',
     alt: 'Кёнигсбергский собор'
   },
   {
     name: 'Чечня',
-    link: './resources/images/element-images/pic-chechnya.jpg',
+    link: './resources/images/card-images/pic-chechnya.jpg',
     alt: 'Горная дорога из Шатоя в Ведено'
   },
   {
     name: 'Калмыкия',
-    link: './resources/images/element-images/pic-elista.jpg',
+    link: './resources/images/card-images/pic-elista.jpg',
     alt: 'Золотая обитель Будды Шакьямуни'
   },
   {
     name: 'Белгородчина',
-    link: './resources/images/element-images/pic-belgorod.jpg',
+    link: './resources/images/card-images/pic-belgorod.jpg',
     alt: 'Зелёные поля Белгородской области'
   },
   {
     name: 'Новороссийск',
-    link: './resources/images/element-images/pic-novoros.jpg',
+    link: './resources/images/card-images/pic-novoros.jpg',
     alt: 'Набережная Новороссийска'
   },
 ];
@@ -72,29 +72,29 @@ const popupCloseButtons = document.querySelectorAll('.popup__close'); // Кно�
 
 function addInitialCards () { // Добавление карточек «из коробки»
   initialCards.forEach(function (card) {
-    const cardElement = cardTemplate.cloneNode(true);
+    const cardcard = cardTemplate.cloneNode(true);
 
-    cardElement.querySelector('.element__name').textContent = card.name;
-    cardElement.querySelector('.element__image').setAttribute('src', card.link);
-    cardElement.querySelector('.element__image').setAttribute('alt', card.alt);
+    cardcard.querySelector('.card__name').textContent = card.name;
+    cardcard.querySelector('.card__image').setAttribute('src', card.link);
+    cardcard.querySelector('.card__image').setAttribute('alt', card.alt);
 
-    const openFullPicButton = cardElement.querySelector('.element__open-full-pic');
+    const openFullPicButton = cardcard.querySelector('.card__open-full-pic');
 
     openFullPicButton.addEventListener('click', openFullPic);
 
-    const removeCardButton = cardElement.querySelector('.element__delete');
+    const removeCardButton = cardcard.querySelector('.card__delete');
 
     removeCardButton.addEventListener('click', function() {
       removeCard(removeCardButton);
     });
 
-    const likeButton = cardElement.querySelector('.element__like');
+    const likeButton = cardcard.querySelector('.card__like');
 
     likeButton.addEventListener('click', function() {
         setLike(likeButton);
     });
 
-    cardGrid.prepend(cardElement);
+    cardGrid.prepend(cardcard);
   });
 }
 
@@ -137,27 +137,27 @@ function returnProfileValues() { // --- Возвращение имени и о�
 }
 
 function addCard(name, link) { // --- Создание новой карточки
-  const cardElement = cardTemplate.cloneNode(true);
+  const cardcard = cardTemplate.cloneNode(true);
 
-  cardElement.querySelector('.element__name').textContent = name;
-  cardElement.querySelector('.element__image').setAttribute('src', link);
-  cardElement.querySelector('.element__image').setAttribute('alt', name);
+  cardcard.querySelector('.card__name').textContent = name;
+  cardcard.querySelector('.card__image').setAttribute('src', link);
+  cardcard.querySelector('.card__image').setAttribute('alt', name);
 
-  const openFullPicButton = cardElement.querySelector('.element__open-full-pic');
+  const openFullPicButton = cardcard.querySelector('.card__open-full-pic');
 
   openFullPicButton.addEventListener('click', openFullPic);
 
-  const removeCardButton = cardElement.querySelector('.element__delete');
+  const removeCardButton = cardcard.querySelector('.card__delete');
   removeCardButton.addEventListener('click', function() {
     removeCard(removeCardButton);
   });
 
-  const likeButton = cardElement.querySelector('.element__like');
+  const likeButton = cardcard.querySelector('.card__like');
   likeButton.addEventListener('click', function () {
     setLike(likeButton);
   })
 
-  cardGrid.prepend(cardElement);
+  cardGrid.prepend(cardcard);
 }
 
 function setCardValues() { // --- Передача значений для новой карточки
@@ -171,7 +171,7 @@ function setCardValues() { // --- Передача значений для но�
 }
 
 function setLike(el) { // --- Установка и снятие лайка
-  el.classList.toggle('element__like_active');
+  el.classList.toggle('card__like_active');
 }
 
 function removeCard(source) { // --- Удаление существующей карточки
