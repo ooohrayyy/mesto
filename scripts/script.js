@@ -67,7 +67,7 @@ const popupCardForm = popupCard.querySelector('.popup__container'); // Форм�
 const cardPlaceInput = popupCard.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
 const cardLinkInput = popupCard.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
 
-const popupFullPic = popupContainers[2];
+const popupFullPic = popupContainers[2]; // Блок с попапом полноразмерной картинки
 
 const popupCloseButtons = document.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
 
@@ -84,16 +84,15 @@ function openPopup (popup) { // Открытие попапа
 }
 
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
-  const popup = document.querySelector('#popup-full-pic');
-  popup.classList.add('popup_opened');
+  popupFullPic.classList.add('popup_opened');
 
-  const image = popup.querySelector('.popup__image');
+  const image = popupFullPic.querySelector('.popup__image');
   const targetImage = evt.target;
 
   image.setAttribute('src', targetImage.src);
   image.setAttribute('alt', targetImage.alt);
 
-  const caption = popup.querySelector('.popup__caption');
+  const caption = popupFullPic.querySelector('.popup__caption');
   caption.textContent = targetImage.alt;
 }
 
