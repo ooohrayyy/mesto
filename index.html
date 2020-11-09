@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- Привет команде код-ревью! Надеюсь, получилось не хуже, чем раньше -->
-<!-- Второй привет команде код-ревью! Правок было мало, но надо всеми пришлось подумать! Спасибо! -->
 <html lang="ru">
   <head>
     <meta charset="UTF-8">
@@ -14,7 +12,7 @@
   <body class="root">
     <div class="container root__container">   
       <header class="header container__header">
-        <img class="header__logo" src="./resources/images/logo.svg" alt="Логотип Mesto">
+        <img class="header__logo" src="./resources/images/svgs/logo.svg" alt="Логотип Mesto">
       </header>
       <main class="main container__main">
         <section class="profile main__profile">
@@ -28,56 +26,7 @@
           </div>
           <button class="profile__add" type="button"></button>
         </section>
-        <section class="elements main__elements">
-          <!-- Все фотографии сделал сам! -->
-          <!-- Первая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-novoros.jpg" alt="Набережная Новороссийска">
-            <div class="element__label">
-              <h2 class="element__name">Новороссийск</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Вторая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-belgorod.jpg" alt="Зелёные поля Белгородской области">
-            <div class="element__label">
-              <h2 class="element__name">Белгородчина</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Третья карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-elista.jpg" alt="Золотая обитель Будды Шакьямуни">
-            <div class="element__label">
-              <h2 class="element__name">Калмыкия</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Четвёртая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-chechnya.jpg" alt="Горная дорога из Шатоя в Ведено">
-            <div class="element__label">
-              <h2 class="element__name">Чечня</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Пятая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-kalina.jpg" alt="Кёнигсбергский собор">
-            <div class="element__label">
-              <h2 class="element__name">Калининград</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
-          <!-- Шестая карточка -->
-          <article class="element">
-            <img class="element__image" src="./resources/images/element-images/pic-karelia.jpg" alt="Скульптура на набережной Онежского озера">
-            <div class="element__label">
-              <h2 class="element__name">Карелия</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </article>
+        <section class="cards main__cards">
         </section>
       </main>
       <footer class="footer container__footer">
@@ -93,6 +42,32 @@
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>
+    <div class="popup root__popup">
+      <form class="popup__container">
+        <button class="popup__close" type="reset"></button>
+        <h2 class="popup__heading">Новое место</h2>
+        <input class="popup__input popup__input_card-name" type="text" placeholder="Название" maxlength="30">
+        <input class="popup__input popup__input_card-link" type="text" placeholder="Ссылка на картинку">
+        <button class="popup__save" type="submit">Создать</button>
+      </form>
+    </div>
+    <div id="popup-full-pic" class="popup root__popup">
+      <figure class="popup__figure">
+        <button class="popup__close popup__close_image" type="reset"></button>
+        <img class="popup__image">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
+    <template id="template-card">
+      <article class="card">
+        <button class="card__open-full-pic" type="button"><img class="card__image"></button>
+        <button class="card__delete" type="button"></button>
+        <div class="card__label">
+          <h2 class="card__name"></h2>
+          <button class="card__like" type="button"></button>
+        </div>
+      </article>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

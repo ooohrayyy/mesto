@@ -1,4 +1,4 @@
-.elements {
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   justify-content: space-evenly;

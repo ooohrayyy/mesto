@@ -1,17 +1,17 @@
-.element__like {
+.card__like {
   width: 21px;
   height: 19px;
   padding: 0;
   margin: 31px 23px 30px 23px;
   border: none;
   background-color: white;
-  background-image: url(../../../resources/images/like.svg);
+  background-image: url(../../../resources/images/svgs/like.svg);
   background-position: center;
   background-repeat: no-repeat;
   transition: .1s linear;
+  cursor: pointer;
 }
 
-.element__like:hover {
-  background-image: url(../../../resources/images/like-black.svg);
-  opacity: .8;
+.card__like:hover {
+  opacity: .6;
 }
