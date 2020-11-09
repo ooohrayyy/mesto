@@ -84,7 +84,7 @@ function openPopup (popup) { // Открытие попапа
 }
 
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
-  popupFullPic.classList.add('popup_opened');
+  openPopup(popupFullPic);
 
   const image = popupFullPic.querySelector('.popup__image');
   const targetImage = evt.target;
