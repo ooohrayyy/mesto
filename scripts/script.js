@@ -6,8 +6,8 @@ const root = document.querySelector('.root'); // Корневой блок
 
 const editProfileButton = document.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
 
-const nameString = document.querySelector('.profile__name'); // Имя на странице
-const jobString = document.querySelector('.profile__description'); // Описание на странице
+const profileNameString = document.querySelector('.profile__name'); // Имя на странице
+const profileDescriptionString = document.querySelector('.profile__description'); // Описание на странице
 
 const addCardButton = document.querySelector('.profile__add'); // Кнопка «Добавить карточку»
 
@@ -56,13 +56,13 @@ const popupContainers = document.querySelectorAll('.popup'); // Блоки с п
 
 const popupProfile = popupContainers[0]; // Блок с попапом «Редактировать профиль»
 const popupProfileForm = popupProfile.querySelector('.popup__container'); // Форма в попапе «Редактировать профиль»
-const nameInput = popupProfile.querySelector('.popup__input_name'); // Поле для ввода имени в попапе «Редактировать профиль»
-const jobInput = popupProfile.querySelector('.popup__input_description'); // Поле для ввода описания в попапе «Редактировать профиль»
+const profileNameInput = popupProfile.querySelector('.popup__input_name'); // Поле для ввода имени в попапе «Редактировать профиль»
+const profileDescriptionInput = popupProfile.querySelector('.popup__input_description'); // Поле для ввода описания в попапе «Редактировать профиль»
 
-const popupPic = popupContainers[1]; // Блок с попапом «Добавить карточку»
-const popupPicForm = popupPic.querySelector('.popup__container'); // Форма в попапе «Добавить карточку»
-const placeInput = popupPic.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
-const linkInput = popupPic.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
+const popupCard = popupContainers[1]; // Блок с попапом «Добавить карточку»
+const popupCardForm = popupCard.querySelector('.popup__container'); // Форма в попапе «Добавить карточку»
+const cardPlaceInput = popupCard.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
+const cardLinkInput = popupCard.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
 
 const popupFullPic = popupContainers[2];
 
@@ -70,7 +70,7 @@ const popupCloseButtons = document.querySelectorAll('.popup__close'); // Кно�
 
 // * Объявляем функции
 
-function addInitialCards () { // --- Добавление карточек «из коробки»
+function addInitialCards () { // Добавление карточек «из коробки»
   initialCards.forEach(function (card) {
     const cardElement = cardTemplate.cloneNode(true);
 
@@ -82,10 +82,10 @@ function addInitialCards () { // --- Добавление карточек «и�
 
     openFullPicButton.addEventListener('click', openFullPic);
 
-    const deleteCardButton = cardElement.querySelector('.element__delete');
+    const removeCardButton = cardElement.querySelector('.element__delete');
 
-    deleteCardButton.addEventListener('click', function() {
-      removeCard(deleteCardButton);
+    removeCardButton.addEventListener('click', function() {
+      removeCard(removeCardButton);
     });
 
     const likeButton = cardElement.querySelector('.element__like');
@@ -95,7 +95,7 @@ function addInitialCards () { // --- Добавление карточек «и�
     });
 
     cardGrid.prepend(cardElement);
-  })
+  });
 }
 
 function openPopup(popup) { // --- Открытие попапа
@@ -127,13 +127,13 @@ function formSubmitHandler (evt) { // --- Обработчик форм
 }
 
 function setProfileValues() { // --- Установка имени и описания профиля
-  nameString.textContent = nameInput.value;
-  jobString.textContent = jobInput.value;
+  profileNameString.textContent = profileNameInput.value;
+  profileDescriptionString.textContent = profileDescriptionInput.value;
 }
 
 function returnProfileValues() { // --- Возвращение имени и описания профиля в форму
-  nameInput.value = nameString.textContent;
-  jobInput.value = jobString.textContent;
+  profileNameInput.value = profileNameString.textContent;
+  profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
 function addCard(name, link) { // --- Создание новой карточки
@@ -147,9 +147,9 @@ function addCard(name, link) { // --- Создание новой карточк
 
   openFullPicButton.addEventListener('click', openFullPic);
 
-  const deleteCardButton = cardElement.querySelector('.element__delete');
-  deleteCardButton.addEventListener('click', function() {
-    removeCard(deleteCardButton);
+  const removeCardButton = cardElement.querySelector('.element__delete');
+  removeCardButton.addEventListener('click', function() {
+    removeCard(removeCardButton);
   });
 
   const likeButton = cardElement.querySelector('.element__like');
@@ -161,13 +161,13 @@ function addCard(name, link) { // --- Создание новой карточк
 }
 
 function setCardValues() { // --- Передача значений для новой карточки
-  const name = placeInput.value;
-  const link = linkInput.value;
+  const name = cardPlaceInput.value;
+  const link = cardLinkInput.value;
 
   addCard(name, link);
 
-  placeInput.value = '';
-  linkInput.value = '';
+  cardPlaceInput.value = '';
+  cardLinkInput.value = '';
 }
 
 function setLike(el) { // --- Установка и снятие лайка
@@ -187,7 +187,7 @@ editProfileButton.addEventListener('click', function () { // --- Клик по �
 });
 
 addCardButton.addEventListener('click', function () { // --- Клик по кнопке «Добавить карточку»
-  openPopup(popupPic);
+  openPopup(popupCard);
 });
 
 function listenCloseButtons() { // --- Клик по кнопкам закрытия попапов
@@ -198,8 +198,8 @@ function listenCloseButtons() { // --- Клик по кнопкам закрыт
 
 popupProfileForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Редактировать профиль»
 popupProfileForm.addEventListener('submit', setProfileValues);
-popupPicForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Добавить карточку»
-popupPicForm.addEventListener('submit', setCardValues);
+popupCardForm.addEventListener('submit', formSubmitHandler); // --- Отправка формы «Добавить карточку»
+popupCardForm.addEventListener('submit', setCardValues);
 
 // * Вызываем функции
 
