@@ -75,29 +75,7 @@ const popupCloseButtons = document.querySelectorAll('.popup__close'); // Кно�
 
 function addInitialCards () { // Добавление карточек «из коробки»
   initialCards.forEach(function (card) {
-    const newCard = cardTemplate.cloneNode(true);
-
-    newCard.querySelector('.card__name').textContent = card.name;
-    newCard.querySelector('.card__image').setAttribute('src', card.link);
-    newCard.querySelector('.card__image').setAttribute('alt', card.alt);
-
-    const openFullPicButton = newCard.querySelector('.card__open-full-pic');
-
-    openFullPicButton.addEventListener('click', openFullPic);
-
-    const removeCardButton = newCard.querySelector('.card__delete');
-
-    removeCardButton.addEventListener('click', function () {
-      removeCard(removeCardButton);
-    });
-
-    const likeButton = newCard.querySelector('.card__like');
-
-    likeButton.addEventListener('click', function () {
-        setLike(likeButton);
-    });
-
-    cardGrid.prepend(newCard);
+    addCard(card.name, card.link, card.alt);
   });
 }
 
@@ -139,12 +117,19 @@ function returnProfileValues () { // Возвращение имени и опи
   profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
-function addCard (name, link) { // Создание новой карточки
+// !
+
+function addCard (name, link, alt) { // Создание новой карточки
   const newCard = cardTemplate.cloneNode(true);
 
   newCard.querySelector('.card__name').textContent = name;
   newCard.querySelector('.card__image').setAttribute('src', link);
-  newCard.querySelector('.card__image').setAttribute('alt', name);
+  
+  if (alt) {
+    newCard.querySelector('.card__image').setAttribute('alt', alt);
+  } else {
+    newCard.querySelector('.card__image').setAttribute('alt', name);
+  }
 
   const openFullPicButton = newCard.querySelector('.card__open-full-pic');
 
