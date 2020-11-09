@@ -31,7 +31,7 @@ const initialCards = [ // Массив с карточками из коробк
   {
     name: 'Чечня',
     link: './resources/images/card-images/pic-chechnya.jpg',
-    alt: 'Горная дорога из Шатоя в Ведено'
+    alt: 'Горная дорога вдоль реки Аргун'
   },
   {
     name: 'Калмыкия',
