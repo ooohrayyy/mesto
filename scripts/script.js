@@ -117,8 +117,6 @@ function returnProfileValues () { // Возвращение имени и опи
   profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
-// !
-
 function addCard (name, link, alt) { // Создание новой карточки
   const newCard = cardTemplate.cloneNode(true);
 
@@ -170,8 +168,6 @@ function setLike (el) { // Установка и снятие лайка
 }
 
 // * Вешаем слушатели событий
-
-// !
 
 editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
