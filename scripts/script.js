@@ -101,12 +101,14 @@ function closePopup () { // Закрытие попапа
   popup.classList.remove('popup_opened');
 }
 
-function formSubmitHandler (evt) { // Обработчик форм
+function formSubmitHandler (evt) { // Обработчик отправки форм
   evt.preventDefault();
   closePopup();
 }
 
-function setProfileValues () { // Установка имени и описания профиля
+function setProfileValues (evt) { // Установка имени и описания профиля
+  formSubmitHandler(evt);
+  
   profileNameString.textContent = profileNameInput.value;
   profileDescriptionString.textContent = profileDescriptionInput.value;
 }
@@ -147,7 +149,9 @@ function addCard (name, link, alt) { // Создание новой карточ
   cardGrid.prepend(newCard);
 }
 
-function setCardValues () { // Передача значений для новой карточки
+function setCardValues (evt) { // Передача значений для новой карточки
+  formSubmitHandler(evt);
+
   const name = cardPlaceInput.value;
   const link = cardLinkInput.value;
 
@@ -168,6 +172,8 @@ function setLike (el) { // Установка и снятие лайка
 
 // * Вешаем слушатели событий
 
+// !
+
 editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
   openPopup(popupProfile);
@@ -181,9 +187,7 @@ popupCloseButtons.forEach(function (button) { // Клик по кнопкам з
   button.addEventListener('click', closePopup);
 });
 
-popupProfileForm.addEventListener('submit', formSubmitHandler); // Отправка формы «Редактировать профиль»
 popupProfileForm.addEventListener('submit', setProfileValues);
-popupCardForm.addEventListener('submit', formSubmitHandler); // Отправка формы «Добавить карточку»
 popupCardForm.addEventListener('submit', setCardValues);
 
 // * Вызываем функции
