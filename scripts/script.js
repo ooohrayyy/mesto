@@ -21,32 +21,38 @@ const initialCards = [ // Массив с карточками из коробк
   {
     name: 'Карелия',
     link: './resources/images/card-images/pic-karelia.jpg',
-    alt: 'Скульптура на набережной Онежского озера'
+    alt: 'Скульптура на набережной Онежского озера',
+    author: 'Борис Никиташов'
   },
   {
     name: 'Калининград',
     link: './resources/images/card-images/pic-kalina.jpg',
-    alt: 'Кёнигсбергский собор'
+    alt: 'Кёнигсбергский собор',
+    author: 'Борис Никиташов'
   },
   {
     name: 'Чечня',
     link: './resources/images/card-images/pic-chechnya.jpg',
-    alt: 'Горная дорога вдоль реки Аргун'
+    alt: 'Горная дорога вдоль реки Аргун',
+    author: 'Борис Никиташов'
   },
   {
     name: 'Калмыкия',
     link: './resources/images/card-images/pic-elista.jpg',
-    alt: 'Золотая обитель Будды Шакьямуни'
+    alt: 'Золотая обитель Будды Шакьямуни',
+    author: 'Борис Никиташов'
   },
   {
     name: 'Белгородчина',
     link: './resources/images/card-images/pic-belgorod.jpg',
-    alt: 'Зелёные поля Белгородской области'
+    alt: 'Зелёные поля Белгородской области',
+    author: 'Борис Никиташов'
   },
   {
     name: 'Новороссийск',
     link: './resources/images/card-images/pic-novoros.jpg',
-    alt: 'Набережная Новороссийска'
+    alt: 'Набережная Новороссийска',
+    author: 'Борис Никиташов'
   },
 ];
 
@@ -72,7 +78,7 @@ const popupCloseButtons = document.querySelectorAll('.popup__close'); // Кно�
 
 function addInitialCards () { // Добавление карточек «из коробки»
   initialCards.forEach(function (card) {
-    addCard(card.name, card.link, card.alt);
+    addCard(card.name, card.link, card.alt, card.author);
   });
 }
 
@@ -88,9 +94,16 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 
   image.setAttribute('src', targetImage.src);
   image.setAttribute('alt', targetImage.alt);
+  image.setAttribute('data-author', targetImage.dataset.author);
 
+  const author = image.dataset.author;
   const caption = popupFullPic.querySelector('.popup__caption');
-  caption.textContent = targetImage.alt;
+
+  if (author !== 'undefined') {
+    caption.textContent = targetImage.alt + ' / © ' + author;
+  } else {
+    caption.textContent = targetImage.alt;
+  }
 }
 
 function closePopup () { // Закрытие попапа
@@ -115,7 +128,7 @@ function returnProfileValues () { // Возвращение имени и опи
   profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
-function addCard (name, link, alt) { // Создание новой карточки
+function addCard (name, link, alt, author) { // Создание новой карточки
   const newCard = cardTemplate.cloneNode(true);
 
   newCard.querySelector('.card__name').textContent = name;
@@ -125,6 +138,10 @@ function addCard (name, link, alt) { // Создание новой карточ
     newCard.querySelector('.card__image').setAttribute('alt', alt);
   } else {
     newCard.querySelector('.card__image').setAttribute('alt', name);
+  }
+
+  if (author) {
+    newCard.querySelector('.card__image').setAttribute('data-author', author);
   }
 
   const openFullPicButton = newCard.querySelector('.card__open-full-pic');
