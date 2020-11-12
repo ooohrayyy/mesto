@@ -175,7 +175,7 @@ function setCardValues (evt) { // Передача значений для но�
 
 function removeCard (source) { // Удаление существующей карточки
   const currentCard = source.parentNode;
-  cardGrid.removeChild(currentCard);
+  currentCard.remove();
 }
 
 function setLike (el) { // Установка и снятие лайка
