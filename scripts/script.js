@@ -4,18 +4,18 @@ const root = document.querySelector('.root'); // Корневой блок
 
 // --- Объявляем переменные в профиле
 
-const editProfileButton = document.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
+const editProfileButton = root.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
 
-const profileNameString = document.querySelector('.profile__name'); // Имя на странице
-const profileDescriptionString = document.querySelector('.profile__description'); // Описание на странице
+const profileNameString = root.querySelector('.profile__name'); // Имя на странице
+const profileDescriptionString = root.querySelector('.profile__description'); // Описание на странице
 
-const addCardButton = document.querySelector('.profile__add'); // Кнопка «Добавить карточку»
+const addCardButton = root.querySelector('.profile__add'); // Кнопка «Добавить карточку»
 
 // --- Объявляем переменные в карточках
 
-const cardGrid = document.querySelector('.cards'); // Грид-контейнер с карточками
+const cardGrid = root.querySelector('.cards'); // Грид-контейнер с карточками
 
-const cardTemplate = document.querySelector('#template-card').content; // Шаблон карточки
+const cardTemplate = root.querySelector('#template-card').content; // Шаблон карточки
 
 const initialCards = [ // Массив с карточками из коробки
   {
@@ -58,7 +58,7 @@ const initialCards = [ // Массив с карточками из коробк
 
 // --- Объявляем переменные в попапах
 
-const popupContainers = document.querySelectorAll('.popup'); // Блоки с попапами
+const popupContainers = root.querySelectorAll('.popup'); // Блоки с попапами
 
 const popupProfile = popupContainers[0]; // Блок с попапом «Редактировать профиль»
 const popupProfileForm = popupProfile.querySelector('.popup__container'); // Форма в попапе «Редактировать профиль»
@@ -72,7 +72,7 @@ const cardLinkInput = popupCard.querySelector('.popup__input_card-link'); // П�
 
 const popupFullPic = popupContainers[2]; // Блок с попапом полноразмерной картинки
 
-const popupCloseButtons = document.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
+const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
 
 // * Объявляем функции
 
@@ -107,7 +107,7 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 }
 
 function closePopup () { // Закрытие попапа
-  const popup = document.querySelector('.popup_opened');
+  const popup = root.querySelector('.popup_opened');
   popup.classList.remove('popup_opened');
 }
 
