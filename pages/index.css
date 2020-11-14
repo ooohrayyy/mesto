@@ -25,12 +25,12 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close/popup__close.css);
-@import url(../blocks/popup/__close/_image/popup__close_image.css);
+@import url(../blocks/popup/__close/_fullpic/popup__close_fullpic.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save/popup__save.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
-@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__fullpic/popup__fullpic.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
 
 /* Подключаем блок header и его компоненты */
@@ -61,7 +61,7 @@
 /* Подключаем блок card и его компоненты */
 
 @import url(../blocks/card/card.css);
-@import url(../blocks/card/__open-full-pic/card__open-full-pic.css);
+@import url(../blocks/card/__open-fullpic/card__open-fullpic.css);
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__delete/card__delete.css);
 @import url(../blocks/card/__label/card__label.css);

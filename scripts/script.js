@@ -89,7 +89,7 @@ function openPopup (popup) { // Открытие попапа
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
   openPopup(popupFullPic);
 
-  const image = popupFullPic.querySelector('.popup__image');
+  const image = popupFullPic.querySelector('.popup__fullpic');
   const targetImage = evt.target;
 
   image.setAttribute('src', targetImage.src);
@@ -144,7 +144,7 @@ function addCard (name, link, alt, author) { // Создание новой ка
     newCard.querySelector('.card__image').setAttribute('data-author', author);
   }
 
-  const openFullPicButton = newCard.querySelector('.card__open-full-pic');
+  const openFullPicButton = newCard.querySelector('.card__open-fullpic');
 
   openFullPicButton.addEventListener('click', openFullPic);
 
