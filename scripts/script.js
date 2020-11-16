@@ -167,8 +167,7 @@ function setCardValues (evt) { // Передача значений для но�
 
   addCard(name, link);
 
-  cardPlaceInput.value = '';
-  cardLinkInput.value = '';
+  evt.target.reset();
 }
 
 function removeCard (source) { // Удаление существующей карточки
