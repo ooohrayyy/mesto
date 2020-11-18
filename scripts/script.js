@@ -82,6 +82,7 @@ function addInitialCards () { // Добавление карточек «из к
 
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
+  window.addEventListener('keydown', escClose);
 }
 
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
@@ -107,6 +108,13 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 function closePopup () { // Закрытие попапа
   const popup = root.querySelector('.popup_opened');
   popup.classList.remove('popup_opened');
+}
+
+function escClose (evt) { // Закрытие попапа кнопкой Esc
+  if (evt.key.toLowerCase() === 'escape') {
+    closePopup();
+    window.removeEventListener('keydown', escClose);
+  }
 }
 
 function formSubmitHandler (evt) { // Обработчик отправки форм
