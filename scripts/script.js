@@ -80,9 +80,13 @@ function addInitialCards () { // Добавление карточек «из к
   });
 }
 
+// --- Открытие и закрытие попапов
+
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
+
   enableValidation();
+
   window.addEventListener('keydown', escClose);
 }
 
@@ -129,14 +133,14 @@ function enableValidation () { // Активация валидации
     inputsArray.forEach(function (input) {
       const saveButton = form.querySelector('.popup__save');
 
-      checkInputsValidity(inputsArray, input, saveButton);
+      validateForm(inputsArray, input, saveButton);
 
-      input.addEventListener('input', () => checkInputsValidity(inputsArray, input, saveButton));
+      input.addEventListener('input', () => validateForm(inputsArray, input, saveButton));
     });
   });
 }
 
-function isValid (input) { // Проверка поля на валидность
+function isValid (input) { // Проверка конкретного поля на валидность
   if (input.validity.valid === true) {
     return true;
   } else {
@@ -144,7 +148,7 @@ function isValid (input) { // Проверка поля на валидност�
   }
 }
 
-function checkInputsValidity (inputsArray, input, saveButton) { // Проверка всех полей в форме на валидность
+function validateForm (inputsArray, input, saveButton) { // Валидация формы
   if (!inputsArray.every(isValid)) {
     showValidationError(input);
     disableSaveButton(saveButton);
@@ -176,7 +180,7 @@ function enableSaveButton (button) { // Включение кнопки сохр
   button.removeAttribute('disabled');
 }
 
-// --- Отправка форм и значений
+// --- Отправка форм
 
 function formSubmitHandler (evt) { // Обработчик отправки форм
   evt.preventDefault();
@@ -195,7 +199,18 @@ function returnProfileValues () { // Возвращение имени и опи
   profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
-function addCard (name, link, alt, author) { // Создание новой карточки
+function setCardValues (evt) { // Передача значений для новой карточки
+  formSubmitHandler(evt);
+
+  const name = cardPlaceInput.value;
+  const link = cardLinkInput.value;
+
+  addCard(name, link);
+
+  evt.target.reset();
+}
+
+function addCard (name, link, alt, author) { // Добавление новой карточки
   const newCard = cardTemplate.cloneNode(true);
 
   newCard.querySelector('.card__name').textContent = name;
@@ -228,16 +243,7 @@ function addCard (name, link, alt, author) { // Создание новой ка
   cardGrid.prepend(newCard);
 }
 
-function setCardValues (evt) { // Передача значений для новой карточки
-  formSubmitHandler(evt);
-
-  const name = cardPlaceInput.value;
-  const link = cardLinkInput.value;
-
-  addCard(name, link);
-
-  evt.target.reset();
-}
+// --- Удаление и лайки на карточках
 
 function removeCard (source) { // Удаление существующей карточки
   const currentCard = source.parentNode;
@@ -263,10 +269,9 @@ popupCloseButtons.forEach(function (button) { // Клик по кнопкам з
   button.addEventListener('click', closePopup);
 });
 
-popupProfileForm.addEventListener('submit', setProfileValues);
-popupCardForm.addEventListener('submit', setCardValues);
+popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
+popupCardForm.addEventListener('submit', setCardValues); // Отправка формы «Добавить карточку»
 
 // * Вызываем функции
 
 addInitialCards();
-enableValidation();
