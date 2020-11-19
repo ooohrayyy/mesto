@@ -1,4 +1,5 @@
 .card__like {
+  flex-shrink: 0;
   width: 21px;
   height: 19px;
   padding: 0;
