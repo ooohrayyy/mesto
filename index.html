@@ -34,20 +34,24 @@
       </footer>
     </div>
     <div class="popup root__popup" id="popup-profile">
-      <form class="popup__container">
+      <form class="popup__container" novalidate>
         <button class="popup__close" type="reset"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <input class="popup__input popup__input_name" type="text" maxlength="30">
-        <input class="popup__input popup__input_description" type="text">
+        <input class="popup__input popup__input_name" type="text" minlength="2" maxlength="40" required>
+        <span class="popup__error"></span>
+        <input class="popup__input popup__input_description" type="text" minlength="2" maxlength="200" required>
+        <span class="popup__error"></span>
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>
     <div class="popup root__popup" id="popup-card">
-      <form class="popup__container">
+      <form class="popup__container" novalidate>
         <button class="popup__close" type="reset"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <input class="popup__input popup__input_card-name" type="text" placeholder="Название" maxlength="30">
-        <input class="popup__input popup__input_card-link" type="text" placeholder="Ссылка на картинку">
+        <input class="popup__input popup__input_card-name" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="popup__error"></span>
+        <input class="popup__input popup__input_card-link" type="url" placeholder="Ссылка на картинку" required>
+        <span class="popup__error"></span>
         <button class="popup__save" type="submit">Создать</button>
       </form>
     </div>

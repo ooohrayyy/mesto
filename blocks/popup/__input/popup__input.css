@@ -9,8 +9,9 @@
   line-height: 17px;
 }
 
-.popup__input:last-child {
-  margin-bottom: 48px;
+.popup__input:invalid {
+  margin-bottom: 5px;
+  border-color: #ff0000;
 }
 
 .popup__input::placeholder {
@@ -21,9 +22,5 @@
   .popup__input {
     width: 200px;
     padding-bottom: 13px;
-  }
-
-  .popup__input:last-child {
-    margin-bottom: 36px;
   }
 }
