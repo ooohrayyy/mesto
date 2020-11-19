@@ -88,7 +88,7 @@ function openPopup (popup) { // Открытие попапа
   enableValidation();
 
   popup.addEventListener('click', overlayClosePopup);
-  window.addEventListener('keydown', escClose);
+  window.addEventListener('keydown', escClosePopup);
 }
 
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
@@ -125,10 +125,10 @@ function overlayClosePopup (evt) { // Закрытие попапа по наж�
   }
 }
 
-function escClose (evt) { // Закрытие попапа кнопкой Esc
+function escClosePopup (evt) { // Закрытие попапа кнопкой Esc
   if (evt.key.toLowerCase() === 'escape') {
     closePopup();
-    window.removeEventListener('keydown', escClose);
+    window.removeEventListener('keydown', escClosePopup);
   }
 }
 
