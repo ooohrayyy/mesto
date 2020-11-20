@@ -134,61 +134,61 @@ function escClosePopup (evt) { // Закрытие попапа кнопкой E
 
 // --- Валидация форм
 
-function enableValidation () { // Активация валидации
-  const formsArray = Array.from(root.querySelectorAll('.popup__container'));
+// function enableValidation () { // Активация валидации
+//   const formsArray = Array.from(root.querySelectorAll('.popup__container'));
 
-  formsArray.forEach(function (form) {
-    const inputsArray = Array.from(form.querySelectorAll('.popup__input'));
+//   formsArray.forEach(function (form) {
+//     const inputsArray = Array.from(form.querySelectorAll('.popup__input'));
 
-    inputsArray.forEach(function (input) {
-      const saveButton = form.querySelector('.popup__save');
+//     inputsArray.forEach(function (input) {
+//       const saveButton = form.querySelector('.popup__save');
 
-      validateForm(inputsArray, input, saveButton);
+//       validateForm(inputsArray, input, saveButton);
 
-      input.addEventListener('input', () => validateForm(inputsArray, input, saveButton));
-    });
-  });
-}
+//       input.addEventListener('input', () => validateForm(inputsArray, input, saveButton));
+//     });
+//   });
+// }
 
-function isValid (input) { // Проверка конкретного поля на валидность
-  if (input.validity.valid === true) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// function isValid (input) { // Проверка конкретного поля на валидность
+//   if (input.validity.valid === true) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
-function validateForm (inputsArray, input, saveButton) { // Валидация формы
-  if (!inputsArray.every(isValid)) {
-    showValidationError(input);
-    disableSaveButton(saveButton);
-  } else {
-    hideValidationError(input);
-    enableSaveButton(saveButton);
-  }
-}
+// function validateForm (inputsArray, input, saveButton) { // Валидация формы
+//   if (!inputsArray.every(isValid)) {
+//     showValidationError(input);
+//     disableSaveButton(saveButton);
+//   } else {
+//     hideValidationError(input);
+//     enableSaveButton(saveButton);
+//   }
+// }
 
-function showValidationError (input) { // Показ ошибки валидации
-  const errorMessage = input.nextElementSibling;
+// function showValidationError (input) { // Показ ошибки валидации
+//   const errorMessage = input.nextElementSibling;
 
-  errorMessage.textContent = input.validationMessage;
+//   errorMessage.textContent = input.validationMessage;
 
-  errorMessage.classList.add('popup__error_active');
-}
+//   errorMessage.classList.add('popup__error_active');
+// }
 
-function hideValidationError (input) { // Скрытие ошибки валидации
-  const errorMessage = input.nextElementSibling;
+// function hideValidationError (input) { // Скрытие ошибки валидации
+//   const errorMessage = input.nextElementSibling;
 
-  errorMessage.classList.remove('popup__error_active');
-}
+//   errorMessage.classList.remove('popup__error_active');
+// }
 
-function disableSaveButton (button) { // Выключение кнопки сохранения попапа
-  button.setAttribute('disabled', 'disabled');
-}
+// function disableSaveButton (button) { // Выключение кнопки сохранения попапа
+//   button.setAttribute('disabled', 'disabled');
+// }
 
-function enableSaveButton (button) { // Включение кнопки сохранения попапа
-  button.removeAttribute('disabled');
-}
+// function enableSaveButton (button) { // Включение кнопки сохранения попапа
+//   button.removeAttribute('disabled');
+// }
 
 // --- Отправка форм
 
