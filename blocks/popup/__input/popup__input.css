@@ -9,7 +9,12 @@
   line-height: 17px;
 }
 
-.popup__input:invalid {
+/* .popup__input:invalid {
+  margin-bottom: 5px;
+  border-color: #ff0000;
+} */
+
+.popup__input:invalid:not(:placeholder-shown) {
   margin-bottom: 5px;
   border-color: #ff0000;
 }

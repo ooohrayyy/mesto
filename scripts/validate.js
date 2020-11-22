@@ -16,9 +16,13 @@ function enableValidation (config) { // Активация валидации
     inputsArray.forEach(function (input) {
       const saveButton = form.querySelector(config.submitButtonSelector);
 
-      validateForm(inputsArray, input, saveButton);
+      input.addEventListener('input', function () {
+        validateForm(inputsArray, input, saveButton);
 
-      input.addEventListener('input', () => validateForm(inputsArray, input, saveButton));
+        if (input.value == false) {
+          hideValidationError(input, validationConfig);
+        }
+      });
     });
   });
 }
