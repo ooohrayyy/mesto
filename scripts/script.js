@@ -113,6 +113,10 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 
 function closePopup () { // Закрытие попапа
   const popup = root.querySelector('.popup_opened');
+  const popupErrors = popup.querySelectorAll('.popup__error');
+
+  popupErrors.forEach((error) => error.classList.remove('popup__error_active'));
+
   popup.classList.remove('popup_opened');
 }
 
