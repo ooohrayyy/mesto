@@ -1,13 +1,20 @@
-// * Валидация форм 
+// * Валидация форм
 
-function enableValidation () { // Активация валидации
-  const formsArray = Array.from(document.querySelectorAll('.popup__container'));
+const validationConfig = { // Объект с конфигурацией
+  formSelector: '.popup__container',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  activeErrorClass: 'popup__error_active'
+}
+
+function enableValidation (config) { // Активация валидации
+  const formsArray = Array.from(document.querySelectorAll(config.formSelector));
 
   formsArray.forEach(function (form) {
-    const inputsArray = Array.from(form.querySelectorAll('.popup__input'));
+    const inputsArray = Array.from(form.querySelectorAll(config.inputSelector));
 
     inputsArray.forEach(function (input) {
-      const saveButton = form.querySelector('.popup__save');
+      const saveButton = form.querySelector(config.submitButtonSelector);
 
       validateForm(inputsArray, input, saveButton);
 
@@ -26,26 +33,26 @@ function isValid (input) { // Проверка конкретного поля �
 
 function validateForm (inputsArray, input, saveButton) { // Валидация формы
   if (!inputsArray.every(isValid)) {
-    showValidationError(input);
+    showValidationError(input, validationConfig);
     disableSaveButton(saveButton);
   } else {
-    hideValidationError(input);
+    hideValidationError(input, validationConfig);
     enableSaveButton(saveButton);
   }
 }
 
-function showValidationError (input) { // Показ ошибки валидации
+function showValidationError (input, config) { // Показ ошибки валидации
   const errorMessage = input.nextElementSibling;
 
   errorMessage.textContent = input.validationMessage;
 
-  errorMessage.classList.add('popup__error_active');
+  errorMessage.classList.add(config.activeErrorClass);
 }
 
-function hideValidationError (input) { // Скрытие ошибки валидации
+function hideValidationError (input, config) { // Скрытие ошибки валидации
   const errorMessage = input.nextElementSibling;
 
-  errorMessage.classList.remove('popup__error_active');
+  errorMessage.classList.remove(config.activeErrorClass);
 }
 
 function disableSaveButton (button) { // Выключение кнопки сохранения попапа
