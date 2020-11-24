@@ -172,18 +172,19 @@ function setCardValues (evt) { // Передача значений для но�
 
 function addCard (name, link, alt, author) { // Добавление новой карточки
   const newCard = cardTemplate.cloneNode(true);
+  const newCardImage = newCard.querySelector('.card__image');
 
   newCard.querySelector('.card__name').textContent = name;
-  newCard.querySelector('.card__image').setAttribute('src', link);
+  newCardImage.setAttribute('src', link);
   
   if (alt) {
-    newCard.querySelector('.card__image').setAttribute('alt', alt);
+    newCardImage.setAttribute('alt', alt);
   } else {
-    newCard.querySelector('.card__image').setAttribute('alt', name);
+    newCardImage.setAttribute('alt', name);
   }
 
   if (author) {
-    newCard.querySelector('.card__image').setAttribute('data-author', author);
+    newCardImage.setAttribute('data-author', author);
   }
 
   const openFullPicButton = newCard.querySelector('.card__open-fullpic');
