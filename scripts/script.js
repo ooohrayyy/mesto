@@ -90,7 +90,7 @@ function openPopup (popup) { // Открытие попапа
 
   enableValidation(validationConfig);
 
-  popup.addEventListener('click', overlayClosePopup);
+  popup.addEventListener('mousedown', overlayClosePopup);
   window.addEventListener('keydown', escClosePopup);
 }
 
@@ -127,7 +127,7 @@ function overlayClosePopup (evt) { // Закрытие попапа по наж�
   const popup = root.querySelector('.popup_opened');
 
   if (evt.target === popup) {
-    popup.removeEventListener('click', overlayClosePopup);
+    popup.removeEventListener('mousedown', overlayClosePopup);
     closePopup();
   }
 }
@@ -187,15 +187,15 @@ function addCard (name, link, alt, author) { // Добавление новой 
 
   const openFullPicButton = newCard.querySelector('.card__open-fullpic');
 
-  openFullPicButton.addEventListener('click', openFullPic);
+  openFullPicButton.addEventListener('mousedown', openFullPic);
 
   const removeCardButton = newCard.querySelector('.card__delete');
-  removeCardButton.addEventListener('click', function () {
+  removeCardButton.addEventListener('mousedown', function () {
     removeCard(removeCardButton);
   });
 
   const likeButton = newCard.querySelector('.card__like');
-  likeButton.addEventListener('click', function () {
+  likeButton.addEventListener('mousedown', function () {
     setLike(likeButton);
   });
 
@@ -215,17 +215,17 @@ function setLike (el) { // Установка и снятие лайка
 
 // * Вешаем слушатели событий
 
-editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
+editProfileButton.addEventListener('mousedown', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
   openPopup(popupProfile);
 });
 
-addCardButton.addEventListener('click', function () { // Клик по кнопке «Добавить карточку»
+addCardButton.addEventListener('mousedown', function () { // Клик по кнопке «Добавить карточку»
   openPopup(popupCard);
 });
 
 popupCloseButtons.forEach(function (button) { // Клик по кнопкам закрытия попапов
-  button.addEventListener('click', closePopup);
+  button.addEventListener('mousedown', closePopup);
 });
 
 popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
