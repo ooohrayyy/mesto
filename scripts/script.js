@@ -97,8 +97,6 @@ function openPopup (popup) { // Открытие попапа
 }
 
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
-  openPopup(popupFullPic);
-
   const image = popupFullPic.querySelector('.popup__fullpic');
   const targetImage = evt.target;
 
@@ -114,6 +112,8 @@ function openFullPic (evt) { // Открытие попапа с полнора�
   } else {
     caption.textContent = targetImage.alt;
   }
+
+  openPopup(popupFullPic);
 }
 
 function closePopup (popup) { // Закрытие попапа
