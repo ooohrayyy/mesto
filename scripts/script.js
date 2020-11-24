@@ -212,7 +212,7 @@ function addCard (card) { // Добавление новой карточки
 // --- Удаление и лайки на карточках
 
 function removeCard (source) { // Удаление существующей карточки
-  const currentCard = source.parentNode;
+  const currentCard = source.closest('.card');
   currentCard.remove();
 }
 
