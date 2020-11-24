@@ -143,18 +143,14 @@ function escClosePopup (evt) { // Закрытие попапа кнопкой E
 
 // --- Отправка форм
 
-function formSubmitHandler (evt) { // Обработчик отправки форм
+function setProfileValues (evt) { // Установка имени и описания профиля
   evt.preventDefault();
+
+  profileNameString.textContent = profileNameInput.value;
+  profileDescriptionString.textContent = profileDescriptionInput.value;
 
   const popup = root.querySelector('.popup_opened');
   closePopup(popup);
-}
-
-function setProfileValues (evt) { // Установка имени и описания профиля
-  formSubmitHandler(evt);
-  
-  profileNameString.textContent = profileNameInput.value;
-  profileDescriptionString.textContent = profileDescriptionInput.value;
 }
 
 function returnProfileValues () { // Возвращение имени и описания профиля в форму
@@ -163,14 +159,16 @@ function returnProfileValues () { // Возвращение имени и опи
 }
 
 function setCardValues (evt) { // Передача значений для новой карточки
-  formSubmitHandler(evt);
+  evt.preventDefault();
 
   const name = cardPlaceInput.value;
   const link = cardLinkInput.value;
-
   addCard(name, link);
 
   evt.target.reset();
+
+  const popup = root.querySelector('.popup_opened');
+  closePopup(popup);
 }
 
 function addCard (name, link, alt, author) { // Добавление новой карточки
