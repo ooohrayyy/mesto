@@ -88,7 +88,9 @@ function addInitialCards () { // Добавление карточек «из к
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
 
-  checkForm(popup.querySelector('.popup__container'), validationConfig);
+  if (popup != popupFullPic) {
+    checkForm(popup.querySelector('.popup__container'), validationConfig);
+  } 
 
   popup.addEventListener('mousedown', overlayClosePopup);
   window.addEventListener('keydown', escClosePopup);
@@ -114,10 +116,8 @@ function openFullPic (evt) { // Открытие попапа с полнора�
   }
 }
 
-function closePopup () { // Закрытие попапа
-  const popup = root.querySelector('.popup_opened');
+function closePopup (popup) { // Закрытие попапа
   const popupErrors = popup.querySelectorAll('.popup__error');
-
   popupErrors.forEach((error) => error.classList.remove('popup__error_active'));
 
   popup.removeEventListener('mousedown', overlayClosePopup);
@@ -130,13 +130,14 @@ function overlayClosePopup (evt) { // Закрытие попапа по наж�
   const popup = root.querySelector('.popup_opened');
 
   if (evt.target === popup) {
-    closePopup();
+    closePopup(popup);
   }
 }
 
 function escClosePopup (evt) { // Закрытие попапа кнопкой Esc
   if (evt.key.toLowerCase() === 'escape') {
-    closePopup();
+    const popup = root.querySelector('.popup_opened');
+    closePopup(popup);
   }
 }
 
@@ -144,7 +145,9 @@ function escClosePopup (evt) { // Закрытие попапа кнопкой E
 
 function formSubmitHandler (evt) { // Обработчик отправки форм
   evt.preventDefault();
-  closePopup();
+
+  const popup = root.querySelector('.popup_opened');
+  closePopup(popup);
 }
 
 function setProfileValues (evt) { // Установка имени и описания профиля
@@ -227,7 +230,10 @@ addCardButton.addEventListener('mousedown', function () { // Клик по кн�
 });
 
 popupCloseButtons.forEach(function (button) { // Клик по кнопкам закрытия попапов
-  button.addEventListener('mousedown', closePopup);
+  button.addEventListener('mousedown', function () {
+    const popup = root.querySelector('.popup_opened');
+    closePopup(popup);
+  });
 });
 
 popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
