@@ -61,17 +61,17 @@ const cardTemplate = root.querySelector('#template-card').content; // Шабло
 
 // --- Объявляем переменные в попапах
 
-const popupProfile = root.querySelector('#popup-profile'); // Блок с попапом «Редактировать профиль»
+const popupProfile = root.querySelector('.popup-profile'); // Блок с попапом «Редактировать профиль»
 const popupProfileForm = popupProfile.querySelector('.popup__container'); // Форма в попапе «Редактировать профиль»
 const profileNameInput = popupProfile.querySelector('.popup__input_name'); // Поле для ввода имени в попапе «Редактировать профиль»
 const profileDescriptionInput = popupProfile.querySelector('.popup__input_description'); // Поле для ввода описания в попапе «Редактировать профиль»
 
-const popupCard = root.querySelector('#popup-card'); // Блок с попапом «Добавить карточку»
+const popupCard = root.querySelector('.popup-card'); // Блок с попапом «Добавить карточку»
 const popupCardForm = popupCard.querySelector('.popup__container'); // Форма в попапе «Добавить карточку»
 const cardPlaceInput = popupCard.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
 const cardLinkInput = popupCard.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
 
-const popupFullPic = root.querySelector('#popup-fullpic'); // Блок с попапом полноразмерной картинки
+const popupFullPic = root.querySelector('.popup-fullpic'); // Блок с попапом полноразмерной картинки
 
 const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
 
