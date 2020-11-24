@@ -20,7 +20,7 @@ function enableValidation (config) { // Активация валидации
       const saveButton = form.querySelector(config.submitButtonSelector);
 
       input.addEventListener('input', function () {
-        validateForm(inputsArray, input, saveButton);
+        validateForm(config, inputsArray, input, saveButton);
 
         if (input.value == false) {
           hideValidationError(input, validationConfig);
@@ -38,12 +38,12 @@ function isValid (input) { // Проверка конкретного поля �
   }
 }
 
-function validateForm (inputsArray, input, saveButton) { // Валидация формы
+function validateForm (config, inputsArray, input, saveButton) { // Валидация формы
   if (!inputsArray.every(isValid)) {
-    showValidationError(input, validationConfig);
+    showValidationError(input, config);
     disableSaveButton(saveButton);
   } else {
-    hideValidationError(input, validationConfig);
+    hideValidationError(input, config);
     enableSaveButton(saveButton);
   }
 }
