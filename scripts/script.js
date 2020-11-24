@@ -121,6 +121,7 @@ function closePopup () { // Закрытие попапа
   popupErrors.forEach((error) => error.classList.remove('popup__error_active'));
 
   popup.removeEventListener('mousedown', overlayClosePopup);
+  window.removeEventListener('keydown', escClosePopup);
 
   popup.classList.remove('popup_opened');
 }
@@ -136,7 +137,6 @@ function overlayClosePopup (evt) { // Закрытие попапа по наж�
 function escClosePopup (evt) { // Закрытие попапа кнопкой Esc
   if (evt.key.toLowerCase() === 'escape') {
     closePopup();
-    window.removeEventListener('keydown', escClosePopup);
   }
 }
 
