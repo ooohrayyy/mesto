@@ -120,6 +120,8 @@ function closePopup () { // Закрытие попапа
 
   popupErrors.forEach((error) => error.classList.remove('popup__error_active'));
 
+  popup.removeEventListener('mousedown', overlayClosePopup);
+
   popup.classList.remove('popup_opened');
 }
 
@@ -127,7 +129,6 @@ function overlayClosePopup (evt) { // Закрытие попапа по наж�
   const popup = root.querySelector('.popup_opened');
 
   if (evt.target === popup) {
-    popup.removeEventListener('mousedown', overlayClosePopup);
     closePopup();
   }
 }
