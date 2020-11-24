@@ -165,8 +165,6 @@ function setCardValues (evt) { // Передача значений для но�
   const link = cardLinkInput.value;
   addCard(name, link);
 
-  evt.target.reset();
-
   const popup = root.querySelector('.popup_opened');
   closePopup(popup);
 }
@@ -225,6 +223,7 @@ editProfileButton.addEventListener('mousedown', function () { // Клик по �
 
 addCardButton.addEventListener('mousedown', function () { // Клик по кнопке «Добавить карточку»
   openPopup(popupCard);
+  popupCard.querySelector(validationConfig.formSelector).reset();
 });
 
 popupCloseButtons.forEach(function (button) { // Клик по кнопкам закрытия попапов
