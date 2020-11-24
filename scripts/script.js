@@ -228,8 +228,11 @@ editProfileButton.addEventListener('mousedown', function () { // Клик по �
 });
 
 createCardButton.addEventListener('mousedown', function () { // Клик по кнопке «Добавить карточку»
+  const form = popupCard.querySelector(validationConfig.formSelector);
+  form.reset();
+  checkForm(form, validationConfig);
+
   openPopup(popupCard);
-  popupCard.querySelector(validationConfig.formSelector).reset();
 });
 
 popupCloseButtons.forEach(function (button) { // Клик по кнопкам закрытия попапов
