@@ -50,7 +50,7 @@ const editProfileButton = root.querySelector('.profile__edit'); // Кнопка 
 const profileNameString = root.querySelector('.profile__name'); // Имя на странице
 const profileDescriptionString = root.querySelector('.profile__description'); // Описание на странице
 
-const addCardButton = root.querySelector('.profile__add'); // Кнопка «Добавить карточку»
+const createCardButton = root.querySelector('.profile__add'); // Кнопка «Добавить карточку»
 
 // --- Объявляем переменные в карточках
 
@@ -79,7 +79,7 @@ const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопк�
 
 function addInitialCards () { // Добавление карточек «из коробки»
   initialCards.forEach(function (card) {
-    addCard(card.name, card.link, card.alt, card.author);
+    addCard(createCard(card.name, card.link, card.alt, card.author));
   });
 }
 
@@ -163,13 +163,13 @@ function setCardValues (evt) { // Передача значений для но�
 
   const name = cardPlaceInput.value;
   const link = cardLinkInput.value;
-  addCard(name, link);
+  addCard(createCard(name, link));
 
   const popup = root.querySelector('.popup_opened');
   closePopup(popup);
 }
 
-function addCard (name, link, alt, author) { // Добавление новой карточки
+function createCard (name, link, alt, author) { // Создание новой карточки
   const newCard = cardTemplate.cloneNode(true);
   const newCardImage = newCard.querySelector('.card__image');
 
@@ -200,7 +200,13 @@ function addCard (name, link, alt, author) { // Добавление новой 
     setLike(likeButton);
   });
 
-  cardGrid.prepend(newCard);
+  // cardGrid.prepend(newCard);
+
+  return newCard;
+}
+
+function addCard (card) { // Добавление новой карточки
+  cardGrid.prepend(card);
 }
 
 // --- Удаление и лайки на карточках
@@ -221,7 +227,7 @@ editProfileButton.addEventListener('mousedown', function () { // Клик по �
   openPopup(popupProfile);
 });
 
-addCardButton.addEventListener('mousedown', function () { // Клик по кнопке «Добавить карточку»
+createCardButton.addEventListener('mousedown', function () { // Клик по кнопке «Добавить карточку»
   openPopup(popupCard);
   popupCard.querySelector(validationConfig.formSelector).reset();
 });
