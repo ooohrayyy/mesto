@@ -88,7 +88,7 @@ function addInitialCards () { // Добавление карточек «из к
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
 
-  enableValidation(validationConfig);
+  checkForm(popup.querySelector('.popup__container'), validationConfig);
 
   popup.addEventListener('mousedown', overlayClosePopup);
   window.addEventListener('keydown', escClosePopup);

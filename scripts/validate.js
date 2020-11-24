@@ -38,13 +38,24 @@ function isValid (input) { // Проверка конкретного поля �
   }
 }
 
-function validateForm (config, inputsArray, input, saveButton) { // Валидация формы
+function validateForm (config, inputsArray, input, saveButton) { // Первичная валидация формы
   if (!inputsArray.every(isValid)) {
     showValidationError(input, config);
     disableSaveButton(saveButton);
   } else {
     hideValidationError(input, config);
     enableSaveButton(saveButton);
+  }
+}
+
+function checkForm (form, config) { // Проверка формы на валидность при открытии попапа
+  const formIsValid = form.checkValidity();
+  const formSubmitButton = form.querySelector(config.submitButtonSelector);
+
+  if (formIsValid) {
+    enableSaveButton(formSubmitButton);
+  } else {
+    disableSaveButton(formSubmitButton);
   }
 }
 
@@ -69,3 +80,7 @@ function disableSaveButton (button) { // Выключение кнопки со�
 function enableSaveButton (button) { // Включение кнопки сохранения попапа
   button.removeAttribute('disabled');
 }
+
+// * Вызываем функции
+
+enableValidation(validationConfig);
