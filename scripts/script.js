@@ -1,21 +1,4 @@
-// * Объявляем глобальные переменные
-
-const root = document.querySelector('.root'); // Корневой блок
-
-// --- Объявляем переменные в профиле
-
-const editProfileButton = root.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
-
-const profileNameString = root.querySelector('.profile__name'); // Имя на странице
-const profileDescriptionString = root.querySelector('.profile__description'); // Описание на странице
-
-const addCardButton = root.querySelector('.profile__add'); // Кнопка «Добавить карточку»
-
-// --- Объявляем переменные в карточках
-
-const cardGrid = root.querySelector('.cards'); // Грид-контейнер с карточками
-
-const cardTemplate = root.querySelector('#template-card').content; // Шаблон карточки
+// * Вносим исходные данные
 
 const initialCards = [ // Массив с карточками из коробки
   {
@@ -55,6 +38,26 @@ const initialCards = [ // Массив с карточками из коробк
     author: 'Борис Никиташов'
   },
 ];
+
+// * Объявляем глобальные переменные
+
+const root = document.querySelector('.root'); // Корневой блок
+
+// --- Объявляем переменные в профиле
+
+const editProfileButton = root.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
+
+const profileNameString = root.querySelector('.profile__name'); // Имя на странице
+const profileDescriptionString = root.querySelector('.profile__description'); // Описание на странице
+
+const addCardButton = root.querySelector('.profile__add'); // Кнопка «Добавить карточку»
+
+// --- Объявляем переменные в карточках
+
+const cardGrid = root.querySelector('.cards'); // Грид-контейнер с карточками
+
+const cardTemplate = root.querySelector('#template-card').content; // Шаблон карточки
+
 
 // --- Объявляем переменные в попапах
 
