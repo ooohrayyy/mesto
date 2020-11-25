@@ -88,10 +88,6 @@ function addInitialCards () { // Добавление карточек «из к
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
 
-  if (popup != popupFullPic) {
-    checkForm(popup.querySelector('.popup__container'), validationConfig);
-  } 
-
   popup.addEventListener('mousedown', overlayClosePopup);
   window.addEventListener('keydown', escClosePopup);
 }
@@ -224,6 +220,10 @@ function setLike (el) { // Установка и снятие лайка
 
 editProfileButton.addEventListener('mousedown', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
+
+  const form = popupProfile.querySelector('.popup__container');
+  checkForm(form, validationConfig);
+
   openPopup(popupProfile);
 });
 
