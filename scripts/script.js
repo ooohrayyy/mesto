@@ -123,6 +123,8 @@ function closePopup (popup) { // Закрытие попапа
   popup.removeEventListener('click', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
 
+  form.reset();
+
   popup.classList.remove('popup_opened');
 }
 
