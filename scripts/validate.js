@@ -49,7 +49,10 @@ function validateForm (config, inputsArray, input, saveButton) { // Первич
 
 function checkForm (form, config) { // Проверка формы на валидность при открытии попапа
   const formIsValid = form.checkValidity();
+  const inputErrors = form.querySelectorAll('.popup__error');
   const formSubmitButton = form.querySelector(config.submitButtonSelector);
+
+  inputErrors.forEach((error) => error.classList.remove('popup__error_active'));
 
   if (formIsValid) {
     enableSaveButton(formSubmitButton);

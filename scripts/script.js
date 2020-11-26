@@ -113,8 +113,8 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 }
 
 function closePopup (popup) { // Закрытие попапа
-  const popupErrors = popup.querySelectorAll('.popup__error');
-  popupErrors.forEach((error) => error.classList.remove('popup__error_active'));
+  const form = popup.querySelector('.popup__container');
+  checkForm(form, validationConfig);
 
   popup.removeEventListener('mousedown', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
