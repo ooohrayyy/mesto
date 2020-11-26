@@ -88,7 +88,7 @@ function addInitialCards () { // Добавление карточек «из к
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
 
-  popup.addEventListener('mousedown', overlayClosePopup);
+  popup.addEventListener('click', overlayClosePopup);
   window.addEventListener('keydown', escClosePopup);
 }
 
@@ -116,7 +116,7 @@ function closePopup (popup) { // Закрытие попапа
   const form = popup.querySelector('.popup__container');
   checkForm(form, validationConfig);
 
-  popup.removeEventListener('mousedown', overlayClosePopup);
+  popup.removeEventListener('click', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
 
   popup.classList.remove('popup_opened');
@@ -187,12 +187,12 @@ function createCard (name, link, alt, author) { // Создание новой �
   openFullPicButton.addEventListener('mousedown', openFullPic);
 
   const removeCardButton = newCard.querySelector('.card__delete');
-  removeCardButton.addEventListener('mousedown', function () {
+  removeCardButton.addEventListener('click', function () {
     removeCard(removeCardButton);
   });
 
   const likeButton = newCard.querySelector('.card__like');
-  likeButton.addEventListener('mousedown', function () {
+  likeButton.addEventListener('click', function () {
     setLike(likeButton);
   });
 
@@ -218,7 +218,7 @@ function setLike (el) { // Установка и снятие лайка
 
 // * Вешаем слушатели событий
 
-editProfileButton.addEventListener('mousedown', function () { // Клик по кнопке «Редактировать профиль»
+editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
 
   const form = popupProfile.querySelector('.popup__container');
@@ -227,7 +227,7 @@ editProfileButton.addEventListener('mousedown', function () { // Клик по �
   openPopup(popupProfile);
 });
 
-createCardButton.addEventListener('mousedown', function () { // Клик по кнопке «Добавить карточку»
+createCardButton.addEventListener('click', function () { // Клик по кнопке «Добавить карточку»
   const form = popupCard.querySelector('.popup__container');
   form.reset();
   checkForm(form, validationConfig);
@@ -236,7 +236,7 @@ createCardButton.addEventListener('mousedown', function () { // Клик по к
 });
 
 popupCloseButtons.forEach(function (button) { // Клик по кнопкам закрытия попапов
-  button.addEventListener('mousedown', function () {
+  button.addEventListener('click', function () {
     const popup = root.querySelector('.popup_opened');
     closePopup(popup);
   });
