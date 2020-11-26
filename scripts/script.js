@@ -216,16 +216,15 @@ function setLike (el) { // Установка и снятие лайка
 editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
 
-  const form = popupProfile.querySelector('.popup__container');
-  checkForm(form, validationConfig);
+  checkForm(popupProfileForm, validationConfig);
 
   openPopup(popupProfile);
 });
 
 createCardButton.addEventListener('click', function () { // Клик по кнопке «Добавить карточку»
-  const form = popupCard.querySelector('.popup__container');
-  form.reset();
-  checkForm(form, validationConfig);
+  popupCardForm.reset();
+  
+  checkForm(popupCardForm, validationConfig);
 
   openPopup(popupCard);
 });
