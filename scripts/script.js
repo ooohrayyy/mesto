@@ -118,12 +118,11 @@ function closePopup (popup) { // Закрытие попапа
 
   if (popup.contains(anyInput)) {
     checkForm(form, validationConfig);
+    form.reset();
   }
 
   popup.removeEventListener('click', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
-
-  form.reset();
 
   popup.classList.remove('popup_opened');
 }
