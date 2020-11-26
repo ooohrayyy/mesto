@@ -201,8 +201,6 @@ function createCard (name, link, alt, author) { // Создание новой �
     setLike(likeButton);
   });
 
-  // cardGrid.prepend(newCard);
-
   return newCard;
 }
 
