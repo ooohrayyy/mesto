@@ -114,7 +114,11 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 
 function closePopup (popup) { // Закрытие попапа
   const form = popup.querySelector('.popup__container');
-  checkForm(form, validationConfig);
+  const anyInput = popup.querySelector('input');
+
+  if (popup.contains(anyInput)) {
+    checkForm(form, validationConfig);
+  }
 
   popup.removeEventListener('click', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
