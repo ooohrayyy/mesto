@@ -83,6 +83,19 @@ function enableSaveButton (button) { // Включение кнопки сохр
   button.removeAttribute('disabled');
 }
 
+function popupHasInputs (popup) { // Проверка попапа на наличие инпутов
+  const anyInput = popup.querySelector('input');
+  return Boolean(anyInput);
+}
+
+function clearPopupForm (popup) { // Очищение формы попапа
+  const popupForm = popup.querySelector('.popup__container');
+  popupForm.reset();
+
+  const popupInputs = popupForm.querySelectorAll('.popup__input');
+  popupInputs.forEach((input) => hideValidationError(input, validationConfig));
+}
+
 // * Вызываем функции
 
 enableValidation(validationConfig);
