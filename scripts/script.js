@@ -1,3 +1,7 @@
+// * Импортируем модули
+
+import { Card } from './Card.js';
+
 // * Вносим исходные данные
 
 const initialCards = [ // Массив с карточками из коробки
@@ -77,9 +81,12 @@ const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопк�
 
 // * Объявляем функции
 
+// ! ! ! ! !
+
 function addInitialCards () { // Добавление карточек «из коробки»
-  initialCards.forEach(function (card) {
-    addCard(createCard(card.name, card.link, card.alt, card.author));
+  initialCards.forEach(function (data) {
+    const card = new Card(data, '#template-card');
+    addCard(card.generateCard());
   });
 }
 
@@ -92,25 +99,27 @@ function openPopup (popup) { // Открытие попапа
   window.addEventListener('keydown', escClosePopup);
 }
 
-function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
-  const image = popupFullPic.querySelector('.popup__fullpic');
-  const targetImage = evt.target;
+// ! ! ! ! !
 
-  image.setAttribute('src', targetImage.src);
-  image.setAttribute('alt', targetImage.alt);
-  image.setAttribute('data-author', targetImage.dataset.author);
+// function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
+//   const image = popupFullPic.querySelector('.popup__fullpic');
+//   const targetImage = evt.target;
 
-  const author = image.dataset.author;
-  const caption = popupFullPic.querySelector('.popup__caption');
+//   image.setAttribute('src', targetImage.src);
+//   image.setAttribute('alt', targetImage.alt);
+//   image.setAttribute('data-author', targetImage.dataset.author);
 
-  if (author !== 'undefined') {
-    caption.textContent = targetImage.alt + ' / © ' + author;
-  } else {
-    caption.textContent = targetImage.alt;
-  }
+//   const author = image.dataset.author;
+//   const caption = popupFullPic.querySelector('.popup__caption');
 
-  openPopup(popupFullPic);
-}
+//   if (author !== 'undefined') {
+//     caption.textContent = targetImage.alt + ' / © ' + author;
+//   } else {
+//     caption.textContent = targetImage.alt;
+//   }
+
+//   openPopup(popupFullPic);
+// }
 
 function closePopup (popup) { // Закрытие попапа
   if (popupHasInputs(popup)) {
@@ -166,39 +175,41 @@ function setCardValues (evt) { // Передача значений для но�
   closePopup(popup);
 }
 
-function createCard (name, link, alt, author) { // Создание новой карточки
-  const newCard = cardTemplate.cloneNode(true);
-  const newCardImage = newCard.querySelector('.card__image');
+// ! ! ! ! !
 
-  newCard.querySelector('.card__name').textContent = name;
-  newCardImage.setAttribute('src', link);
+// function createCard (name, link, alt, author) { // Создание новой карточки
+//   const newCard = cardTemplate.cloneNode(true);
+//   const newCardImage = newCard.querySelector('.card__image');
+
+//   newCard.querySelector('.card__name').textContent = name;
+//   newCardImage.setAttribute('src', link);
   
-  if (alt) {
-    newCardImage.setAttribute('alt', alt);
-  } else {
-    newCardImage.setAttribute('alt', name);
-  }
+//   if (alt) {
+//     newCardImage.setAttribute('alt', alt);
+//   } else {
+//     newCardImage.setAttribute('alt', name);
+//   }
 
-  if (author) {
-    newCardImage.setAttribute('data-author', author);
-  }
+//   if (author) {
+//     newCardImage.setAttribute('data-author', author);
+//   }
 
-  const openFullPicButton = newCard.querySelector('.card__open-fullpic');
+//   const openFullPicButton = newCard.querySelector('.card__open-fullpic');
 
-  openFullPicButton.addEventListener('mousedown', openFullPic);
+//   openFullPicButton.addEventListener('mousedown', openFullPic);
 
-  const removeCardButton = newCard.querySelector('.card__delete');
-  removeCardButton.addEventListener('click', function () {
-    removeCard(removeCardButton);
-  });
+//   const removeCardButton = newCard.querySelector('.card__delete');
+//   removeCardButton.addEventListener('click', function () {
+//     removeCard(removeCardButton);
+//   });
 
-  const likeButton = newCard.querySelector('.card__like');
-  likeButton.addEventListener('click', function () {
-    setLike(likeButton);
-  });
+//   const likeButton = newCard.querySelector('.card__like');
+//   likeButton.addEventListener('click', function () {
+//     setLike(likeButton);
+//   });
 
-  return newCard;
-}
+//   return newCard;
+// }
 
 function addCard (card) { // Добавление новой карточки
   cardGrid.prepend(card);
@@ -206,14 +217,16 @@ function addCard (card) { // Добавление новой карточки
 
 // --- Удаление и лайки на карточках
 
-function removeCard (source) { // Удаление существующей карточки
-  const currentCard = source.closest('.card');
-  currentCard.remove();
-}
+// ! ! ! ! !
 
-function setLike (el) { // Установка и снятие лайка
-  el.classList.toggle('card__like_active');
-}
+// function removeCard (source) { // Удаление существующей карточки
+//   const currentCard = source.closest('.card');
+//   currentCard.remove();
+// }
+
+// function setLike (el) { // Установка и снятие лайка
+//   el.classList.toggle('card__like_active');
+// }
 
 // * Вешаем слушатели событий
 
