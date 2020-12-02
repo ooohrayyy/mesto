@@ -1,3 +1,7 @@
+// * Импортируем модули
+
+import { openFullPic } from './script.js';
+
 // * Объявляем класс
 
 class Card {
@@ -39,6 +43,9 @@ class Card {
     likeButton.addEventListener('click', function () {
       cardObject._setLike(likeButton);
     });
+
+    const openFullPicButton = cardObject._element.querySelector('.card__open-fullpic');
+    openFullPicButton.addEventListener('mousedown', openFullPic);
   }
 
   generateCard () {
@@ -65,6 +72,6 @@ class Card {
   }
 }
 
-// * Экспортируем модуль
+// * Экспорт
 
 export { Card };

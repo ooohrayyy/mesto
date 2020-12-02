@@ -81,8 +81,6 @@ const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопк�
 
 // * Объявляем функции
 
-// ! ! ! ! !
-
 function addInitialCards () { // Добавление карточек «из коробки»
   initialCards.forEach(function (data) {
     const card = new Card(data, '#template-card');
@@ -99,27 +97,25 @@ function openPopup (popup) { // Открытие попапа
   window.addEventListener('keydown', escClosePopup);
 }
 
-// ! ! ! ! !
+function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
+  const image = popupFullPic.querySelector('.popup__fullpic');
+  const targetImage = evt.target;
 
-// function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
-//   const image = popupFullPic.querySelector('.popup__fullpic');
-//   const targetImage = evt.target;
+  image.setAttribute('src', targetImage.src);
+  image.setAttribute('alt', targetImage.alt);
+  image.setAttribute('data-author', targetImage.dataset.author);
 
-//   image.setAttribute('src', targetImage.src);
-//   image.setAttribute('alt', targetImage.alt);
-//   image.setAttribute('data-author', targetImage.dataset.author);
+  const author = image.dataset.author;
+  const caption = popupFullPic.querySelector('.popup__caption');
 
-//   const author = image.dataset.author;
-//   const caption = popupFullPic.querySelector('.popup__caption');
+  if (author !== 'undefined') {
+    caption.textContent = targetImage.alt + ' / © ' + author;
+  } else {
+    caption.textContent = targetImage.alt;
+  }
 
-//   if (author !== 'undefined') {
-//     caption.textContent = targetImage.alt + ' / © ' + author;
-//   } else {
-//     caption.textContent = targetImage.alt;
-//   }
-
-//   openPopup(popupFullPic);
-// }
+  openPopup(popupFullPic);
+}
 
 function closePopup (popup) { // Закрытие попапа
   if (popupHasInputs(popup)) {
@@ -178,58 +174,9 @@ function setCardValues (evt) { // Передача значений для но�
   closePopup(popup);
 }
 
-// ! ! ! ! !
-
-// function createCard (name, link, alt, author) { // Создание новой карточки
-//   const newCard = cardTemplate.cloneNode(true);
-//   const newCardImage = newCard.querySelector('.card__image');
-
-//   newCard.querySelector('.card__name').textContent = name;
-//   newCardImage.setAttribute('src', link);
-  
-//   if (alt) {
-//     newCardImage.setAttribute('alt', alt);
-//   } else {
-//     newCardImage.setAttribute('alt', name);
-//   }
-
-//   if (author) {
-//     newCardImage.setAttribute('data-author', author);
-//   }
-
-//   const openFullPicButton = newCard.querySelector('.card__open-fullpic');
-
-//   openFullPicButton.addEventListener('mousedown', openFullPic);
-
-//   const removeCardButton = newCard.querySelector('.card__delete');
-//   removeCardButton.addEventListener('click', function () {
-//     removeCard(removeCardButton);
-//   });
-
-//   const likeButton = newCard.querySelector('.card__like');
-//   likeButton.addEventListener('click', function () {
-//     setLike(likeButton);
-//   });
-
-//   return newCard;
-// }
-
 function addCard (card) { // Добавление новой карточки
   cardGrid.prepend(card);
 }
-
-// --- Удаление и лайки на карточках
-
-// ! ! ! ! !
-
-// function removeCard (source) { // Удаление существующей карточки
-//   const currentCard = source.closest('.card');
-//   currentCard.remove();
-// }
-
-// function setLike (el) { // Установка и снятие лайка
-//   el.classList.toggle('card__like_active');
-// }
 
 // * Вешаем слушатели событий
 
@@ -262,3 +209,7 @@ popupCardForm.addEventListener('submit', setCardValues); // Отправка ф�
 // * Вызываем функции
 
 addInitialCards();
+
+// * Экспорт
+
+export { openFullPic };
