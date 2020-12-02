@@ -167,9 +167,12 @@ function returnProfileValues () { // Возвращение имени и опи
 function setCardValues (evt) { // Передача значений для новой карточки
   evt.preventDefault();
 
-  const name = cardPlaceInput.value;
-  const link = cardLinkInput.value;
-  addCard(createCard(name, link));
+  const data = {};
+  data.name = cardPlaceInput.value;
+  data.link = cardLinkInput.value;
+
+  const card = new Card(data, '#template-card');
+  addCard(card.generateCard());
 
   const popup = root.querySelector('.popup_opened');
   closePopup(popup);
