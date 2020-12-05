@@ -1,8 +1,17 @@
 // * Импортируем модули
 
+import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
 
 // * Вносим исходные данные
+
+const validationConfig = { // Конфигурация валидации
+  formSelector: '.popup__container',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  inputErrorSelector: '.popup__error',
+  activeErrorClass: 'popup__error_active'
+}
 
 const initialCards = [ // Массив с карточками из коробки
   {
@@ -60,9 +69,6 @@ const createCardButton = root.querySelector('.profile__add'); // Кнопка «
 
 const cardGrid = root.querySelector('.cards'); // Грид-контейнер с карточками
 
-const cardTemplate = root.querySelector('#template-card').content; // Шаблон карточки
-
-
 // --- Объявляем переменные в попапах
 
 const popupProfile = root.querySelector('.popup-profile'); // Блок с попапом «Редактировать профиль»
@@ -117,10 +123,16 @@ function openFullPic (evt) { // Открытие попапа с полнора�
   openPopup(popupFullPic);
 }
 
-function closePopup (popup) { // Закрытие попапа
-  if (popupHasInputs(popup)) {
-    clearPopupForm(popup);
+function clearPopupForm (popup) {
+  if (popup === popupProfile) {
+    profileValidator.clearForm();
+  } else if (popup === popupCard) {
+    cardValidator.clearForm();
   }
+}
+
+function closePopup (popup) { // Закрытие попапа
+  clearPopupForm(popup);
 
   popup.removeEventListener('click', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
@@ -182,17 +194,13 @@ function addCard (card) { // Добавление новой карточки
 
 editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
-
-  checkForm(popupProfileForm, validationConfig);
-
+  profileValidator.checkForm();
   openPopup(popupProfile);
 });
 
 createCardButton.addEventListener('click', function () { // Клик по кнопке «Добавить карточку»
   popupCardForm.reset();
-  
-  checkForm(popupCardForm, validationConfig);
-
+  cardValidator.checkForm();
   openPopup(popupCard);
 });
 
@@ -204,7 +212,12 @@ popupCloseButtons.forEach(function (button) { // Клик по кнопкам з
 });
 
 popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
+const profileValidator = new FormValidator(validationConfig, popupProfileForm);
+profileValidator.enableValidation();
+
 popupCardForm.addEventListener('submit', setCardValues); // Отправка формы «Добавить карточку»
+const cardValidator = new FormValidator(validationConfig, popupCardForm);
+cardValidator.enableValidation();
 
 // * Вызываем функции
 
