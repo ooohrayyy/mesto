@@ -149,7 +149,7 @@ function overlayClosePopup (evt) { // Закрытие попапа по наж�
 }
 
 function escClosePopup (evt) { // Закрытие попапа кнопкой Esc
-  if (evt.key.toLowerCase() === 'escape') {
+  if (evt.key === 'Escape') {
     const popup = root.querySelector('.popup_opened');
     closePopup(popup);
   }
