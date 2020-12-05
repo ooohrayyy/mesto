@@ -1,3 +1,5 @@
+// ! Привет команде код-ревью! Пришлось помучаться — но я постарался сделать всё чисто :)
+
 // * Импортируем модули
 
 import { FormValidator } from './FormValidator.js';
@@ -137,7 +139,7 @@ function clearPopupForm (popup) { // Очистка формы попапа от
 }
 
 function closePopup (popup) { // Закрытие попапа
-  clearPopupForm(popup);
+  clearPopupForm(popup); // ! Потому что иначе при закрытии попапа в форме остаются ошибки, а это некрасиво
 
   popup.removeEventListener('click', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
@@ -194,7 +196,7 @@ function addCard (card) { // Добавление новой карточки
 
 editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
-  profileValidator.checkForm();
+  profileValidator.checkForm(); // ! Потому что иначе если закрыть форму с ошибкой, при повторном открытии кнопка неактивна
   openPopup(popupProfile);
 });
 
