@@ -13,7 +13,7 @@ const validationConfig = { // Конфигурация валидации
   activeErrorClass: 'popup__error_active'
 }
 
-const initialCards = [ // Массив с карточками из коробки
+const initialCards = [ // Карточки «из коробки»
   {
     name: 'Карелия',
     link: './resources/images/card-images/pic-karelia.jpg',
@@ -71,17 +71,17 @@ const cardGrid = root.querySelector('.cards'); // Грид-контейнер с
 
 // --- Объявляем переменные в попапах
 
-const popupProfile = root.querySelector('.popup-profile'); // Блок с попапом «Редактировать профиль»
+const popupProfile = root.querySelector('.popup-profile'); // Попап «Редактировать профиль»
 const popupProfileForm = popupProfile.querySelector('.popup__container'); // Форма в попапе «Редактировать профиль»
 const profileNameInput = popupProfile.querySelector('.popup__input_name'); // Поле для ввода имени в попапе «Редактировать профиль»
 const profileDescriptionInput = popupProfile.querySelector('.popup__input_description'); // Поле для ввода описания в попапе «Редактировать профиль»
 
-const popupCard = root.querySelector('.popup-card'); // Блок с попапом «Добавить карточку»
+const popupCard = root.querySelector('.popup-card'); // Попап «Добавить карточку»
 const popupCardForm = popupCard.querySelector('.popup__container'); // Форма в попапе «Добавить карточку»
 const cardPlaceInput = popupCard.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
 const cardLinkInput = popupCard.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
 
-const popupFullPic = root.querySelector('.popup-fullpic'); // Блок с попапом полноразмерной картинки
+const popupFullPic = root.querySelector('.popup-fullpic'); // Попап с полноразмерной картинкой
 
 const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
 
@@ -95,6 +95,11 @@ function addInitialCards () { // Добавление карточек «из к
 }
 
 // --- Открытие и закрытие попапов
+
+function returnProfileValues () { // Возвращение имени и описания профиля в форму
+  profileNameInput.value = profileNameString.textContent;
+  profileDescriptionInput.value = profileDescriptionString.textContent;
+}
 
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
@@ -123,7 +128,7 @@ function openFullPic (evt) { // Открытие попапа с полнора�
   openPopup(popupFullPic);
 }
 
-function clearPopupForm (popup) {
+function clearPopupForm (popup) { // Очистка формы попапа от ошибок при закрытии
   if (popup === popupProfile) {
     profileValidator.clearForm();
   } else if (popup === popupCard) {
@@ -140,7 +145,7 @@ function closePopup (popup) { // Закрытие попапа
   popup.classList.remove('popup_opened');
 }
 
-function overlayClosePopup (evt) { // Закрытие попапа по нажатию на оверлей
+function overlayClosePopup (evt) { // Закрытие попапа по клику на оверлей
   const popup = root.querySelector('.popup_opened');
 
   if (evt.target === popup) {
@@ -165,11 +170,6 @@ function setProfileValues (evt) { // Установка имени и описа
 
   const popup = root.querySelector('.popup_opened');
   closePopup(popup);
-}
-
-function returnProfileValues () { // Возвращение имени и описания профиля в форму
-  profileNameInput.value = profileNameString.textContent;
-  profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
 function setCardValues (evt) { // Передача значений для новой карточки
@@ -212,14 +212,16 @@ popupCloseButtons.forEach(function (button) { // Клик по кнопкам з
 });
 
 popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
-const profileValidator = new FormValidator(validationConfig, popupProfileForm);
-profileValidator.enableValidation();
 
 popupCardForm.addEventListener('submit', setCardValues); // Отправка формы «Добавить карточку»
-const cardValidator = new FormValidator(validationConfig, popupCardForm);
-cardValidator.enableValidation();
 
 // * Вызываем функции
+
+const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидация формы «Редактировать профиль»
+profileValidator.enableValidation();
+
+const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидация формы «Добавить карточку»
+cardValidator.enableValidation();
 
 addInitialCards();
 

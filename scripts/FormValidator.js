@@ -6,7 +6,7 @@ class FormValidator {
     this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
   }
 
-  _isValid (input) {
+  _isValid (input) { // Проверка инпута на валидность
     if (input.validity.valid === true) {
       return true;
     } else {
@@ -14,7 +14,7 @@ class FormValidator {
     }
   }
 
-  _validateForm (input) {
+  _validateForm (input) { // Валидация формы
     const inputsArray = Array.from(this._inputs);
 
     if (!inputsArray.every(this._isValid)) {
@@ -63,7 +63,7 @@ class FormValidator {
     this._setEventListeners();
   }
 
-  checkForm () {
+  checkForm () { // Проверка формы при открытии
     const formIsValid = this._form.checkValidity();
 
     this._inputs.forEach((input) => this._hideValidationError(input, this._config));
@@ -75,12 +75,10 @@ class FormValidator {
     }
   }
 
-  clearForm () {
+  clearForm () { // Очистка формы при закрытии
     this._form.reset();
     this._inputs.forEach((input) => this._hideValidationError(input, this._config));
   }
 }
-
-// * Экспорт
 
 export { FormValidator };

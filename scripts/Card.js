@@ -1,8 +1,4 @@
-// * Импортируем модули
-
 import { openFullPic } from './script.js';
-
-// * Объявляем класс
 
 class Card {
   constructor (data, template) {
@@ -13,7 +9,7 @@ class Card {
     this._template = template;
   }
 
-  _getTemplate () {
+  _getTemplate () { // Получение элемента карточки из шаблона
     const cardElement = document
     .querySelector(this._template)
     .content
@@ -22,12 +18,12 @@ class Card {
     return cardElement;
   }
 
-  _removeCard (button) {
+  _removeCard (button) { // Удаление карточки
     const card = button.closest('.card');
     card.remove();
   }
 
-  _setLike (card) {
+  _setLike (card) { // Установка и снятие лайка
     card.classList.toggle('card__like_active');
   }
 
@@ -48,7 +44,7 @@ class Card {
     openFullPicButton.addEventListener('mousedown', openFullPic);
   }
 
-  generateCard () {
+  generateCard () { // Создание новой карточки
     this._element = this._getTemplate();
 
     const cardElementImage = this._element.querySelector('.card__image');
@@ -71,7 +67,5 @@ class Card {
     return this._element;
   }
 }
-
-// * Экспорт
 
 export { Card };
