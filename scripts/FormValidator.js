@@ -44,8 +44,8 @@ class FormValidator {
   _enableSaveButton () {
     this._submitButton.removeAttribute('disabled');
   }
-  
-  enableValidation () {
+
+  _setEventListeners () {
     const validator = this;
 
     validator._inputs.forEach(function (input) {
@@ -57,6 +57,10 @@ class FormValidator {
         }
       });
     });
+  }
+  
+  enableValidation () {
+    this._setEventListeners();
   }
 
   checkForm () {
