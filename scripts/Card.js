@@ -13,14 +13,14 @@ class Card {
     const cardElement = document
     .querySelector(this._template)
     .content
+    .querySelector('.card')
     .cloneNode(true);
 
     return cardElement;
   }
 
-  _removeCard (button) { // Удаление карточки
-    const card = button.closest('.card');
-    card.remove();
+  _removeCard () { // Удаление карточки
+    this._element.remove();
   }
 
   _setLike (card) { // Установка и снятие лайка
@@ -32,7 +32,7 @@ class Card {
 
     const removeCardButton = cardObject._element.querySelector('.card__delete');
     removeCardButton.addEventListener('click', function () {
-      cardObject._removeCard(removeCardButton);
+      cardObject._removeCard();
     });
 
     const likeButton = cardObject._element.querySelector('.card__like');
