@@ -1,5 +1,3 @@
-// ! Привет команде код-ревью! Пришлось помучаться — но я постарался сделать всё чисто :)
-
 // * Импортируем модули
 
 import { FormValidator } from './FormValidator.js';
@@ -184,7 +182,7 @@ function addCard (data) { // Добавление новой карточки
 
 profileEditButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
-  profileValidator.checkForm(); // ! Потому что иначе если закрыть форму с ошибкой, при повторном открытии кнопка неактивна
+  profileValidator.checkForm();
   openPopup(popupProfile);
 });
 
