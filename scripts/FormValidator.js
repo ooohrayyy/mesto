@@ -6,16 +6,8 @@ class FormValidator {
     this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
   }
 
-  _checkInputValidity (input) { // Проверка инпута на валидность
-    if (input.validity.valid === true) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   _validateInput (input) { // Валидация поля
-    if (this._checkInputValidity(input)) {
+    if (input.validity.valid) {
       this._hideValidationError(input);
     } else {
       this._showValidationError(input);
@@ -25,7 +17,7 @@ class FormValidator {
   _validateForm () { // Валидация формы
     const inputsArray = Array.from(this._inputs);
 
-    if (inputsArray.every(this._checkInputValidity)) {
+    if (inputsArray.every(input => input.validity.valid)) {
       this._enableSaveButton();
     } else {
       this._disableSaveButton();
