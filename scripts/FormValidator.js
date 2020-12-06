@@ -62,7 +62,7 @@ class FormValidator {
   checkForm () { // Проверка формы при открытии
     const formIsValid = this._form.checkValidity();
 
-    this._inputs.forEach((input) => this._hideValidationError(input, this._config));
+    this._inputs.forEach((input) => this._hideValidationError(input));
 
     if (formIsValid) {
       this._enableSaveButton();
