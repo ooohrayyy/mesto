@@ -90,10 +90,7 @@ const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопк�
 // * Объявляем функции
 
 function addInitialCards () { // Добавление карточек «из коробки»
-  initialCards.forEach(function (data) {
-    const card = new Card(data, '#template-card');
-    addCard(card.generateCard());
-  });
+  initialCards.forEach(data => addCard(data));
 }
 
 // --- Открытие и закрытие попапов
@@ -171,15 +168,15 @@ function setCardValues (evt) { // Передача значений для но�
   data.name = cardPlaceInput.value;
   data.link = cardLinkInput.value;
 
-  const card = new Card(data, '#template-card');
-  addCard(card.generateCard());
+  addCard(data);
 
   const popup = root.querySelector('.popup_opened');
   closePopup(popup);
 }
 
-function addCard (card) { // Добавление новой карточки
-  cardGrid.prepend(card);
+function addCard (data) { // Добавление новой карточки
+  const card = new Card(data, '#template-card');
+  cardGrid.prepend(card.generateCard());
 }
 
 // * Вешаем слушатели событий
