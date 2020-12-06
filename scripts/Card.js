@@ -7,6 +7,9 @@ class Card {
     this._alt = data.alt;
     this._author = data.author;
     this._template = template;
+
+    this._removeCard = this._removeCard.bind(this);
+    this._setLike = this._setLike.bind(this);
   }
 
   _getTemplate () { // Получение элемента карточки из шаблона
@@ -23,24 +26,19 @@ class Card {
     this._element.remove();
   }
 
-  _setLike (card) { // Установка и снятие лайка
-    card.classList.toggle('card__like_active');
+  _setLike () { // Установка и снятие лайка
+    const like = this._element.querySelector('.card__like');
+    like.classList.toggle('card__like_active');
   }
 
   _setEventListeners () {
-    const cardObject = this;
+    const removeCardButton = this._element.querySelector('.card__delete');
+    removeCardButton.addEventListener('click', this._removeCard);
 
-    const removeCardButton = cardObject._element.querySelector('.card__delete');
-    removeCardButton.addEventListener('click', function () {
-      cardObject._removeCard();
-    });
+    const likeButton = this._element.querySelector('.card__like');
+    likeButton.addEventListener('click', this._setLike);
 
-    const likeButton = cardObject._element.querySelector('.card__like');
-    likeButton.addEventListener('click', function () {
-      cardObject._setLike(likeButton);
-    });
-
-    const openFullPicButton = cardObject._element.querySelector('.card__open-fullpic');
+    const openFullPicButton = this._element.querySelector('.card__open-fullpic');
     openFullPicButton.addEventListener('mousedown', openFullPic);
   }
 
