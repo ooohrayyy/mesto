@@ -15,18 +15,18 @@ class FormValidator {
   }
 
   _validateForm (input) { // Валидация формы
-    if (!this._checkInputValidity(input)) {
-      this._showValidationError(input);
-    } else {
+    if (this._checkInputValidity(input)) {
       this._hideValidationError(input);
+    } else {
+      this._showValidationError(input);
     }
 
     const inputsArray = Array.from(this._inputs);
 
-    if (!inputsArray.every(this._checkInputValidity)) {
-      this._disableSaveButton();
-    } else {
+    if (inputsArray.every(this._checkInputValidity)) {
       this._enableSaveButton();
+    } else {
+      this._disableSaveButton();
     }
   }
 
