@@ -4,6 +4,9 @@ class FormValidator {
     this._form = form;
     this._inputs = this._form.querySelectorAll(this._config.inputSelector);
     this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
+
+    this._validateInput = this._validateInput.bind(this);
+    this._validateForm = this._validateForm.bind(this);
   }
 
   _validateInput (input) { // Валидация поля
@@ -45,15 +48,11 @@ class FormValidator {
     this._submitButton.removeAttribute('disabled');
   }
 
-  _setEventListeners () { // !
-    const validator = this;
-
-    validator._inputs.forEach(function (input) {
-      input.addEventListener('input', function () {
-        validator._validateInput(input);
-        validator._validateForm();
-      });
-    });
+  _setEventListeners () {
+    this._inputs.forEach(input => input.addEventListener('input', () => {
+      this._validateInput(input);
+      this._validateForm();
+    }));
   }
   
   enableValidation () {
