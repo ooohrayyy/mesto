@@ -15,24 +15,30 @@ class FormValidator {
   }
 
   _validateForm (input) { // Валидация формы
+    if (!this._checkInputValidity(input)) {
+      this._showValidationError(input);
+    } else {
+      this._hideValidationError(input);
+    }
+
     const inputsArray = Array.from(this._inputs);
 
     if (!inputsArray.every(this._checkInputValidity)) {
-      this._showValidationError(input);
       this._disableSaveButton();
     } else {
-      this._hideValidationError(input);
       this._enableSaveButton();
     }
   }
 
   _showValidationError (input) {
+    input.classList.add(this._config.invalidInputClass);
     const errorMessage = input.nextElementSibling;
     errorMessage.textContent = input.validationMessage;
     errorMessage.classList.add(this._config.activeErrorClass);
   }
 
   _hideValidationError (input) {
+    input.classList.remove(this._config.invalidInputClass);
     const errorMessage = input.nextElementSibling;
     errorMessage.classList.remove(this._config.activeErrorClass);
   }
@@ -45,16 +51,12 @@ class FormValidator {
     this._submitButton.removeAttribute('disabled');
   }
 
-  _setEventListeners () {
+  _setEventListeners () { // !
     const validator = this;
 
     validator._inputs.forEach(function (input) {
       input.addEventListener('input', function () {
         validator._validateForm(input);
-
-        if (input.value == false) {
-          validator._hideValidationError(input);
-        }
       });
     });
   }

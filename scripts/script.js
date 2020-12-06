@@ -12,7 +12,8 @@ const validationConfig = { // Конфигурация валидации
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
   inputErrorSelector: '.popup__error',
-  activeErrorClass: 'popup__error_active'
+  activeErrorClass: 'popup__error_active',
+  invalidInputClass: 'popup__input_invalid'
 }
 
 const initialCards = [ // Карточки «из коробки»
