@@ -14,13 +14,15 @@ class FormValidator {
     }
   }
 
-  _validateForm (input) { // Валидация формы
+  _validateInput (input) { // Валидация поля
     if (this._checkInputValidity(input)) {
       this._hideValidationError(input);
     } else {
       this._showValidationError(input);
     }
+  }
 
+  _validateForm () { // Валидация формы
     const inputsArray = Array.from(this._inputs);
 
     if (inputsArray.every(this._checkInputValidity)) {
@@ -56,7 +58,8 @@ class FormValidator {
 
     validator._inputs.forEach(function (input) {
       input.addEventListener('input', function () {
-        validator._validateForm(input);
+        validator._validateInput(input);
+        validator._validateForm();
       });
     });
   }
