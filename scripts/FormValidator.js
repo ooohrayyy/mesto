@@ -74,11 +74,6 @@ class FormValidator {
       this._disableSaveButton();
     }
   }
-
-  clearForm () { // Очистка формы при закрытии
-    this._form.reset();
-    this._inputs.forEach((input) => this._hideValidationError(input, this._config));
-  }
 }
 
 export { FormValidator };

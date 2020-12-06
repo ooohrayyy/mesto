@@ -130,17 +130,7 @@ function openFullPic (evt) { // Открытие попапа с полнора�
   openPopup(popupFullPic);
 }
 
-function clearPopupForm (popup) { // Очистка формы попапа от ошибок при закрытии
-  if (popup === popupProfile) {
-    profileValidator.clearForm();
-  } else if (popup === popupCard) {
-    cardValidator.clearForm();
-  }
-}
-
 function closePopup (popup) { // Закрытие попапа
-  clearPopupForm(popup); // ! Потому что иначе при закрытии попапа в форме остаются ошибки, а это некрасиво
-
   popup.removeEventListener('click', overlayClosePopup);
   window.removeEventListener('keydown', escClosePopup);
 
