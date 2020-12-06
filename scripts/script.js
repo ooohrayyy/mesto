@@ -60,12 +60,12 @@ const root = document.querySelector('.root'); // Корневой блок
 
 // --- Объявляем переменные в профиле
 
-const editProfileButton = root.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
+const profileEditButton = root.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
 
 const profileNameString = root.querySelector('.profile__name'); // Имя на странице
 const profileDescriptionString = root.querySelector('.profile__description'); // Описание на странице
 
-const createCardButton = root.querySelector('.profile__add'); // Кнопка «Добавить карточку»
+const cardCreateButton = root.querySelector('.profile__add'); // Кнопка «Добавить карточку»
 
 // --- Объявляем переменные в карточках
 
@@ -106,8 +106,8 @@ function returnProfileValues () { // Возвращение имени и опи
 function openPopup (popup) { // Открытие попапа
   popup.classList.add('popup_opened');
 
-  popup.addEventListener('click', overlayClosePopup);
-  window.addEventListener('keydown', escClosePopup);
+  popup.addEventListener('click', closePopupByOverlay);
+  window.addEventListener('keydown', closePopupByEsc);
 }
 
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
@@ -131,13 +131,13 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 }
 
 function closePopup (popup) { // Закрытие попапа
-  popup.removeEventListener('click', overlayClosePopup);
-  window.removeEventListener('keydown', escClosePopup);
+  popup.removeEventListener('click', closePopupByOverlay);
+  window.removeEventListener('keydown', closePopupByEsc);
 
   popup.classList.remove('popup_opened');
 }
 
-function overlayClosePopup (evt) { // Закрытие попапа по клику на оверлей
+function closePopupByOverlay (evt) { // Закрытие попапа по клику на оверлей
   const popup = root.querySelector('.popup_opened');
 
   if (evt.target === popup) {
@@ -145,7 +145,7 @@ function overlayClosePopup (evt) { // Закрытие попапа по кли�
   }
 }
 
-function escClosePopup (evt) { // Закрытие попапа кнопкой Esc
+function closePopupByEsc (evt) { // Закрытие попапа кнопкой Esc
   if (evt.key === 'Escape') {
     const popup = root.querySelector('.popup_opened');
     closePopup(popup);
@@ -184,13 +184,13 @@ function addCard (card) { // Добавление новой карточки
 
 // * Вешаем слушатели событий
 
-editProfileButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
+profileEditButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
   profileValidator.checkForm(); // ! Потому что иначе если закрыть форму с ошибкой, при повторном открытии кнопка неактивна
   openPopup(popupProfile);
 });
 
-createCardButton.addEventListener('click', function () { // Клик по кнопке «Добавить карточку»
+cardCreateButton.addEventListener('click', function () { // Клик по кнопке «Добавить карточку»
   popupCardForm.reset();
   cardValidator.checkForm();
   openPopup(popupCard);

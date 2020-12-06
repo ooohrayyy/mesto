@@ -6,7 +6,7 @@ class FormValidator {
     this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
   }
 
-  _isValid (input) { // Проверка инпута на валидность
+  _checkInputValidity (input) { // Проверка инпута на валидность
     if (input.validity.valid === true) {
       return true;
     } else {
@@ -17,7 +17,7 @@ class FormValidator {
   _validateForm (input) { // Валидация формы
     const inputsArray = Array.from(this._inputs);
 
-    if (!inputsArray.every(this._isValid)) {
+    if (!inputsArray.every(this._checkInputValidity)) {
       this._showValidationError(input);
       this._disableSaveButton();
     } else {
