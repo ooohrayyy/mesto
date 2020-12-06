@@ -24,6 +24,7 @@ class Card {
 
   _removeCard () { // Удаление карточки
     this._element.remove();
+    this._element = null;
   }
 
   _setLike () { // Установка и снятие лайка
