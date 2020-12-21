@@ -92,6 +92,11 @@ const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопк�
 
 // * Объявляем функции
 
+function cardRenderer (data, section) { // Отрисовка карточек
+  const cardElement = new Card(data, '#template.card').generateCard();
+  section.addItem(cardElement);
+}
+
 function addInitialCards () { // Добавление карточек «из коробки»
   initialCards.forEach(data => addCard(data));
 }
