@@ -1,11 +1,12 @@
 // * Импортируем модули
 
 import FormValidator from './FormValidator.js';
-import Popup from './Popup.js';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import UserInfo from './UserInfo.js';
+// import Popup from './Popup.js';
+// import PopupWithForm from './PopupWithForm.js';
+// import PopupWithImage from './PopupWithImage.js';
+// import UserInfo from './UserInfo.js';
 import Card from './Card.js';
+import Section from './Section.js';
 
 // * Вносим исходные данные
 
@@ -72,7 +73,8 @@ const cardCreateButton = root.querySelector('.profile__add'); // Кнопка «
 
 // --- Объявляем переменные в карточках
 
-const cardGrid = root.querySelector('.cards'); // Грид-контейнер с карточками
+const cardGridSelector = '.cards'; // Селектор грид-контейнера с карточками
+const cardGrid = root.querySelector(cardGridSelector); // Грид-контейнер с карточками
 
 // --- Объявляем переменные в попапах
 
@@ -93,12 +95,8 @@ const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопк�
 // * Объявляем функции
 
 function cardRenderer (data, section) { // Отрисовка карточек
-  const cardElement = new Card(data, '#template.card').generateCard();
+  const cardElement = new Card(data, '#template-card').generateCard();
   section.addItem(cardElement);
-}
-
-function addInitialCards () { // Добавление карточек «из коробки»
-  initialCards.forEach(data => addCard(data));
 }
 
 // --- Открытие и закрытие попапов
@@ -212,6 +210,10 @@ popupProfileForm.addEventListener('submit', setProfileValues); // Отправк
 
 popupCardForm.addEventListener('submit', setCardValues); // Отправка формы «Добавить карточку»
 
+// * Создаём экземпляры классов
+
+const initialCardsSection = new Section({ items: initialCards, renderer: cardRenderer }, cardGridSelector); // Секция с карточками из корбки
+
 // * Вызываем функции
 
 const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидация формы «Редактировать профиль»
@@ -220,7 +222,7 @@ profileValidator.enableValidation();
 const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидация формы «Добавить карточку»
 cardValidator.enableValidation();
 
-addInitialCards();
+initialCardsSection.renderItems(); // Добавление карточек из коробки
 
 // * Экспорт
 
