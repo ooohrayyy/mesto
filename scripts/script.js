@@ -181,8 +181,8 @@ function setCardValues (evt) { // Передача значений для но�
 }
 
 function addCard (data) { // Добавление новой карточки
-  const card = new Card(data, '#template-card');
-  cardGrid.prepend(card.generateCard());
+  const newCardSection = new Section({ items: data, renderer: cardRenderer }, cardGridSelector);
+  newCardSection.renderItems();
 }
 
 // * Вешаем слушатели событий

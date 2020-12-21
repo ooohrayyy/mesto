@@ -6,9 +6,13 @@ export default class Section {
   }
 
   renderItems () {
-    this._items.forEach(item => {
-      this._renderer(item, this);
-    });
+    if (Array.isArray(this._items)) {
+      this._items.forEach(item => {
+        this._renderer(item, this);
+      });
+    } else {
+      this._renderer(this._items, this);
+    }
   }
 
   addItem (element) {
