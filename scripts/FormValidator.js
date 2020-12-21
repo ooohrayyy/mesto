@@ -1,6 +1,3 @@
-// ! Огромное спасибо за развёрнутое и крайне познавательное ревью!
-// ! Постарался всё учесть
-
 class FormValidator {
   constructor (config, form) {
     this._config = config;
