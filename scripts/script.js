@@ -114,11 +114,7 @@ function renderCards (data, section) { // Отрисовка карточек
 function handleProfileSubmit (evt, values) {
   evt.preventDefault();
 
-  const name = values[0].inputValue;
-  const description = values[1].inputValue;
-
-  profileNameString.textContent = name;
-  profileDescriptionString.textContent = description;
+  userInfo.setUserInfo(values);
 
   popupProfile.close();
 }
