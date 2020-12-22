@@ -1,3 +1,7 @@
+// * Импортируем стили
+
+import '../pages/index.css';
+
 // * Импортируем модули
 
 import { validationConfig, initialCards } from './data.js';
