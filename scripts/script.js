@@ -61,8 +61,8 @@ function handleCardSubmit (evt, values) { // Отправка формы «До�
   evt.preventDefault();
 
   const data = {};
-  data.name = values[0].inputValue;
-  data.link = values[1].inputValue;
+  data.name = values.name;
+  data.link = values.description;
 
   const newCardSection = new Section({ items: data, renderer: renderCards }, cardGridSelector);
   newCardSection.renderItems();
