@@ -17,7 +17,6 @@ import {
 
 import FormValidator from './FormValidator.js';
 import UserInfo from './UserInfo.js';
-import Popup from './Popup.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
 import Card from './Card.js';
@@ -32,20 +31,11 @@ const userInfo = new UserInfo({
   userDescriptionSelector: '.profile__description'
 });
 
-const profileNameString = root.querySelector('.profile__name'); // Имя на странице
-const profileDescriptionString = root.querySelector('.profile__description'); // Описание на странице
-
-// --- Объявляем переменные в карточках
-
-const cardGrid = root.querySelector(cardGridSelector); // Грид-контейнер с карточками
-
 // --- Объявляем переменные в попапах
 
 const popupProfile = new PopupWithForm(popupProfileSelector, handleProfileSubmit);
-const popupProfileElement = root.querySelector('.popup-profile'); // Попап «Редактировать профиль»
 
 const popupCard = new PopupWithForm(popupCardSelector, handleCardSubmit);
-const popupCardElement = root.querySelector('.popup-card'); // Попап «Добавить карточку»
 
 const popupFullPic = new PopupWithImage(popupFullPicSelector);
 
