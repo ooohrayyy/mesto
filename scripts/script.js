@@ -2,7 +2,6 @@
 
 import { validationConfig, initialCards } from './data.js';
 import {
-  root,
   profileEditButton,
   cardCreateButton,
   cardGridSelector,
@@ -22,22 +21,22 @@ import PopupWithImage from './PopupWithImage.js';
 import Card from './Card.js';
 import Section from './Section.js';
 
-// * Объявляем глобальные переменные
+// * Создаём экземпляры классов
 
-// --- Объявляем переменные в профиле
-
-const userInfo = new UserInfo({
+const userInfo = new UserInfo({ // Информация о пользователе
   userNameSelector: '.profile__name',
   userDescriptionSelector: '.profile__description'
 });
 
-// --- Объявляем переменные в попапах
+const initialCardsSection = new Section({ items: initialCards, renderer: renderCards }, cardGridSelector); // Секция с карточками из коробки
 
-const popupProfile = new PopupWithForm(popupProfileSelector, handleProfileSubmit);
+const popupProfile = new PopupWithForm(popupProfileSelector, handleProfileSubmit); // Попап «Редактировать профиль»
+const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидатор формы «Редактировать профиль»
 
-const popupCard = new PopupWithForm(popupCardSelector, handleCardSubmit);
+const popupCard = new PopupWithForm(popupCardSelector, handleCardSubmit); // Попап «Добавить карточку»
+const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидатор формы «Добавить карточку»
 
-const popupFullPic = new PopupWithImage(popupFullPicSelector);
+const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с полноразмерной картинкой
 
 // * Объявляем функции
 
@@ -50,7 +49,7 @@ function renderCards (data, section) { // Отрисовка карточек
   section.addItem(cardElement);
 }
 
-function handleProfileSubmit (evt, values) {
+function handleProfileSubmit (evt, values) { // Отправка формы «Редактировать профиль»
   evt.preventDefault();
 
   userInfo.setUserInfo(values);
@@ -58,7 +57,7 @@ function handleProfileSubmit (evt, values) {
   popupProfile.close();
 }
 
-function handleCardSubmit (evt, values) {
+function handleCardSubmit (evt, values) { // Отправка формы «Добавить карточку»
   evt.preventDefault();
 
   const data = {};
@@ -88,20 +87,14 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
   popupCard.open();
 });
 
+// --- Вешаем слушатели в попапах
+
 popupProfile.setEventListeners();
 popupCard.setEventListeners();
 popupFullPic.setEventListeners();
 
-// * Создаём экземпляры классов
+// * Вызываем методы
 
-const initialCardsSection = new Section({ items: initialCards, renderer: renderCards }, cardGridSelector); // Секция с карточками из корбки
-
-// * Вызываем функции
-
-const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидация формы «Редактировать профиль»
-profileValidator.enableValidation();
-
-const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидация формы «Добавить карточку»
-cardValidator.enableValidation();
-
+profileValidator.enableValidation(); // Запуск валидации формы «Редактировать профиль»
+cardValidator.enableValidation(); // Запуск валидации формы «Добавить карточку»
 initialCardsSection.renderItems(); // Добавление карточек из коробки

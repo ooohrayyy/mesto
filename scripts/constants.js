@@ -22,7 +22,6 @@ const popupCardForm = popupCardElement.querySelector('.popup__container'); // Ф
 const popupFullPicSelector = '.popup-fullpic';
 
 export {
-  root,
   profileEditButton,
   cardCreateButton,
   cardGridSelector,
