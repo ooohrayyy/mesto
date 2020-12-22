@@ -28,47 +28,58 @@ const userInfo = new UserInfo({ // Информация о пользовате�
   userDescriptionSelector: '.profile__description'
 });
 
-const initialCardsSection = new Section({ items: initialCards, renderer: renderCards }, cardGridSelector); // Секция с карточками из коробки
+const initialCardsSection = new Section({ // Секция с карточками из коробки
+  items: initialCards,
+  renderer: (data, section) => {
+    function openFullPic (evt) {
+      popupFullPic.open(evt);
+    }
+  
+    const cardElement = new Card(data, '#template-card', openFullPic).generateCard();
+    section.addItem(cardElement);
+  }
+}, cardGridSelector);
 
-const popupProfile = new PopupWithForm(popupProfileSelector, handleProfileSubmit); // Попап «Редактировать профиль»
+const popupProfile = new PopupWithForm( // Попап «Редактировать профиль»
+  popupProfileSelector,
+  (evt, values) => {
+    evt.preventDefault();
+
+    userInfo.setUserInfo(values);
+
+    popupProfile.close();
+  }
+);
 const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидатор формы «Редактировать профиль»
 
-const popupCard = new PopupWithForm(popupCardSelector, handleCardSubmit); // Попап «Добавить карточку»
+const popupCard = new PopupWithForm( // Попап «Добавить карточку»
+  popupCardSelector,
+  (evt, values) => {
+    evt.preventDefault();
+
+    const data = {};
+    data.name = values.name;
+    data.link = values.description;
+
+    const newCardSection = new Section({
+      items: data,
+      renderer: (data, section) => {
+        function openFullPic (evt) {
+          popupFullPic.open(evt);
+        }
+      
+        const cardElement = new Card(data, '#template-card', openFullPic).generateCard();
+        section.addItem(cardElement);
+      }
+    }, cardGridSelector);
+    newCardSection.renderItems();
+
+    popupCard.close();
+  }
+);
 const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидатор формы «Добавить карточку»
 
 const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с полноразмерной картинкой
-
-// * Объявляем функции
-
-function renderCards (data, section) { // Отрисовка карточек
-  function openFullPic (evt) {
-    popupFullPic.open(evt);
-  }
-
-  const cardElement = new Card(data, '#template-card', openFullPic).generateCard();
-  section.addItem(cardElement);
-}
-
-function handleProfileSubmit (evt, values) { // Отправка формы «Редактировать профиль»
-  evt.preventDefault();
-
-  userInfo.setUserInfo(values);
-
-  popupProfile.close();
-}
-
-function handleCardSubmit (evt, values) { // Отправка формы «Добавить карточку»
-  evt.preventDefault();
-
-  const data = {};
-  data.name = values.name;
-  data.link = values.description;
-
-  const newCardSection = new Section({ items: data, renderer: renderCards }, cardGridSelector);
-  newCardSection.renderItems();
-
-  popupCard.close();
-}
 
 // * Вешаем слушатели событий
 
