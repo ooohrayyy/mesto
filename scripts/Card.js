@@ -1,11 +1,11 @@
 export default class Card {
-  constructor (data, template, fullPicOpener) {
+  constructor (data, template, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
     this._author = data.author;
     this._template = template;
-    this._fullPicOpener = fullPicOpener;
+    this._handleCardClick = handleCardClick;
 
     this._removeCard = this._removeCard.bind(this);
     this._setLike = this._setLike.bind(this);
@@ -39,7 +39,7 @@ export default class Card {
     likeButton.addEventListener('click', this._setLike);
 
     const openFullPicButton = this._element.querySelector('.card__open-fullpic');
-    openFullPicButton.addEventListener('mousedown', this._fullPicOpener);
+    openFullPicButton.addEventListener('mousedown', this._handleCardClick);
   }
 
   generateCard () { // Создание новой карточки
