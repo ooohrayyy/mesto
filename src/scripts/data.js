@@ -9,12 +9,12 @@ const validationConfig = { // Конфигурация валидации
   invalidInputClass: 'popup__input_invalid'
 }
 
-const kareliaImage = new URL('./resources/images/card-images/pic-karelia.jpg', import.meta.url);
-const kaliningradImage = new URL('./resources/images/card-images/pic-kalina.jpg', import.meta.url);
-const chechnyaImage = new URL('./resources/images/card-images/pic-chechnya.jpg', import.meta.url);
-const kalmykiaImage = new URL('./resources/images/card-images/pic-elista.jpg', import.meta.url);
-const belgorodImage = new URL('./resources/images/card-images/pic-belgorod.jpg', import.meta.url);
-const novorosImage = new URL('./resources/images/card-images/pic-novoros.jpg', import.meta.url);
+const kareliaImage = new URL('../resources/images/card-images/pic-karelia.jpg', import.meta.url);
+const kaliningradImage = new URL('../resources/images/card-images/pic-kalina.jpg', import.meta.url);
+const chechnyaImage = new URL('../resources/images/card-images/pic-chechnya.jpg', import.meta.url);
+const kalmykiaImage = new URL('../resources/images/card-images/pic-elista.jpg', import.meta.url);
+const belgorodImage = new URL('../resources/images/card-images/pic-belgorod.jpg', import.meta.url);
+const novorosImage = new URL('../resources/images/card-images/pic-novoros.jpg', import.meta.url);
 
 const initialCards = [ // Карточки «из коробки»
   {
