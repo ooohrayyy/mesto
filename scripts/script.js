@@ -83,8 +83,6 @@ const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с 
 
 // * Вешаем слушатели событий
 
-// --- Вешаем слушатели на странице
-
 profileEditButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   const currentUserInfo = userInfo.getUserInfo();
   profileNameInput.value = currentUserInfo.name;
@@ -99,12 +97,6 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
   cardValidator.checkForm();
   popupCard.open();
 });
-
-// --- Вешаем слушатели в попапах
-
-popupProfile.setEventListeners();
-popupCard.setEventListeners();
-popupFullPic.setEventListeners();
 
 // * Вызываем методы
 
