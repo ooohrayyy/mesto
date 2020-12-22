@@ -110,13 +110,6 @@ function returnProfileValues () { // Возвращение имени и опи
   profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
-// function openPopup (popup) { // Открытие попапа
-//   popup.classList.add('popup_opened');
-
-//   popup.addEventListener('click', closePopupByOverlay);
-//   window.addEventListener('keydown', closePopupByEsc);
-// }
-
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
   const image = popupFullPicElement.querySelector('.popup__fullpic');
   const targetImage = evt.target;
@@ -136,28 +129,6 @@ function openFullPic (evt) { // Открытие попапа с полнора�
 
   openPopup(popupFullPicElement);
 }
-
-// function closePopup (popup) { // Закрытие попапа
-//   popup.removeEventListener('click', closePopupByOverlay);
-//   window.removeEventListener('keydown', closePopupByEsc);
-
-//   popup.classList.remove('popup_opened');
-// }
-
-// function closePopupByOverlay (evt) { // Закрытие попапа по клику на оверлей
-//   const popup = root.querySelector('.popup_opened');
-
-//   if (evt.target === popup) {
-//     closePopup(popup);
-//   }
-// }
-
-// function closePopupByEsc (evt) { // Закрытие попапа кнопкой Esc
-//   if (evt.key === 'Escape') {
-//     const popup = root.querySelector('.popup_opened');
-//     closePopup(popup);
-//   }
-// }
 
 // --- Отправка форм
 
@@ -200,13 +171,6 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
   cardValidator.checkForm();
   popupCard.open();
 });
-
-// popupCloseButtons.forEach(function (button) { // Клик по кнопкам закрытия попапов
-//   button.addEventListener('click', function () {
-//     const popup = root.querySelector('.popup_opened');
-//     closePopup(popup);
-//   });
-// });
 
 popupProfile.setEventListeners();
 popupCard.setEventListeners();
