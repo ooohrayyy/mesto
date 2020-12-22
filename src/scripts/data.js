@@ -9,40 +9,47 @@ const validationConfig = { // Конфигурация валидации
   invalidInputClass: 'popup__input_invalid'
 }
 
+const kareliaImage = new URL('./resources/images/card-images/pic-karelia.jpg', import.meta.url);
+const kaliningradImage = new URL('./resources/images/card-images/pic-kalina.jpg', import.meta.url);
+const chechnyaImage = new URL('./resources/images/card-images/pic-chechnya.jpg', import.meta.url);
+const kalmykiaImage = new URL('./resources/images/card-images/pic-elista.jpg', import.meta.url);
+const belgorodImage = new URL('./resources/images/card-images/pic-belgorod.jpg', import.meta.url);
+const novorosImage = new URL('./resources/images/card-images/pic-novoros.jpg', import.meta.url);
+
 const initialCards = [ // Карточки «из коробки»
   {
     name: 'Карелия',
-    link: './resources/images/card-images/pic-karelia.jpg',
+    link: kareliaImage,
     alt: 'Скульптура на набережной Онежского озера',
     author: 'Борис Никиташов'
   },
   {
     name: 'Калининград',
-    link: './resources/images/card-images/pic-kalina.jpg',
+    link: kaliningradImage,
     alt: 'Кёнигсбергский собор',
     author: 'Борис Никиташов'
   },
   {
     name: 'Чечня',
-    link: './resources/images/card-images/pic-chechnya.jpg',
+    link: chechnyaImage,
     alt: 'Горная дорога вдоль реки Аргун',
     author: 'Борис Никиташов'
   },
   {
     name: 'Калмыкия',
-    link: './resources/images/card-images/pic-elista.jpg',
+    link: kalmykiaImage,
     alt: 'Золотая обитель Будды Шакьямуни',
     author: 'Борис Никиташов'
   },
   {
     name: 'Белгородчина',
-    link: './resources/images/card-images/pic-belgorod.jpg',
+    link: belgorodImage,
     alt: 'Зелёные поля Белгородской области',
     author: 'Борис Никиташов'
   },
   {
     name: 'Новороссийск',
-    link: './resources/images/card-images/pic-novoros.jpg',
+    link: novorosImage,
     alt: 'Набережная Новороссийска',
     author: 'Борис Никиташов'
   },
