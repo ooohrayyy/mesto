@@ -1,10 +1,10 @@
 // * Импортируем модули
 
 import FormValidator from './FormValidator.js';
+import UserInfo from './UserInfo.js';
 import Popup from './Popup.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
-// import UserInfo from './UserInfo.js';
 import Card from './Card.js';
 import Section from './Section.js';
 
@@ -63,6 +63,11 @@ const initialCards = [ // Карточки «из коробки»
 const root = document.querySelector('.root'); // Корневой блок
 
 // --- Объявляем переменные в профиле
+
+const userInfo = new UserInfo({
+  userNameSelector: '.profile__name',
+  userDescriptionSelector: '.profile__description'
+});
 
 const profileEditButton = root.querySelector('.profile__edit'); // Кнопка «Редактировать профиль»
 
@@ -131,17 +136,13 @@ function handleCardSubmit (evt, values) {
   popupCard.close();
 }
 
-// --- Открытие и закрытие попапов
-
-function returnProfileValues () { // Возвращение имени и описания профиля в форму
-  profileNameInput.value = profileNameString.textContent;
-  profileDescriptionInput.value = profileDescriptionString.textContent;
-}
-
 // * Вешаем слушатели событий
 
 profileEditButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
-  returnProfileValues();
+  const currentUserInfo = userInfo.getUserInfo();
+  profileNameInput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.description;
+
   profileValidator.checkForm();
   popupProfile.open();
 });
