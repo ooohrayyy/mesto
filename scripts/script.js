@@ -176,7 +176,6 @@ popupProfile.setEventListeners();
 popupCard.setEventListeners();
 
 popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
-
 popupCardForm.addEventListener('submit', setCardValues); // Отправка формы «Добавить карточку»
 
 // * Создаём экземпляры классов
