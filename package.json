@@ -1,0 +1,26 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Это страница с формой для редактирования профиля и красивыми карточками, которыми тоже можно управлять.",
+  "main": "script.js",
+  "scripts": {
+    "build": "rimraf dist && webpack",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ooohrayyy/mesto.git"
+  },
+  "author": "Boris Nikitashov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ooohrayyy/mesto/issues"
+  },
+  "homepage": "https://github.com/ooohrayyy/mesto#readme",
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
