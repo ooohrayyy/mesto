@@ -93,10 +93,7 @@ const cardPlaceInput = popupCardElement.querySelector('.popup__input_card-name')
 const cardLinkInput = popupCardElement.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
 
 const popupFullPicSelector = '.popup-fullpic';
-const popupFullPicElement = root.querySelector(popupFullPicSelector); // Попап с полноразмерной картинкой
 const popupFullPic = new PopupWithImage(popupFullPicSelector);
-
-const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
 
 // * Объявляем функции
 
