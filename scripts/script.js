@@ -110,12 +110,12 @@ function returnProfileValues () { // Возвращение имени и опи
   profileDescriptionInput.value = profileDescriptionString.textContent;
 }
 
-function openPopup (popup) { // Открытие попапа
-  popup.classList.add('popup_opened');
+// function openPopup (popup) { // Открытие попапа
+//   popup.classList.add('popup_opened');
 
-  // popup.addEventListener('click', closePopupByOverlay);
-  // window.addEventListener('keydown', closePopupByEsc);
-}
+//   popup.addEventListener('click', closePopupByOverlay);
+//   window.addEventListener('keydown', closePopupByEsc);
+// }
 
 function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
   const image = popupFullPicElement.querySelector('.popup__fullpic');
@@ -192,13 +192,13 @@ function addCard (data) { // Добавление новой карточки
 profileEditButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   returnProfileValues();
   profileValidator.checkForm();
-  openPopup(popupProfileElement);
+  popupProfile.open();
 });
 
 cardCreateButton.addEventListener('click', function () { // Клик по кнопке «Добавить карточку»
   popupCardForm.reset();
   cardValidator.checkForm();
-  openPopup(popupCardElement);
+  popupCard.open();
 });
 
 // popupCloseButtons.forEach(function (button) { // Клик по кнопкам закрытия попапов
