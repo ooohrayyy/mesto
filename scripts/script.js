@@ -2,7 +2,7 @@
 
 import FormValidator from './FormValidator.js';
 import Popup from './Popup.js';
-// import PopupWithForm from './PopupWithForm.js';
+import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
 // import UserInfo from './UserInfo.js';
 import Card from './Card.js';
@@ -79,14 +79,14 @@ const cardGrid = root.querySelector(cardGridSelector); // Грид-контей�
 // --- Объявляем переменные в попапах
 
 const popupProfileSelector = '.popup-profile';
-const popupProfile = new Popup(popupProfileSelector);
+const popupProfile = new PopupWithForm(popupProfileSelector, handleProfileSubmit);
 const popupProfileElement = root.querySelector('.popup-profile'); // Попап «Редактировать профиль»
 const popupProfileForm = popupProfileElement.querySelector('.popup__container'); // Форма в попапе «Редактировать профиль»
 const profileNameInput = popupProfileElement.querySelector('.popup__input_name'); // Поле для ввода имени в попапе «Редактировать профиль»
 const profileDescriptionInput = popupProfileElement.querySelector('.popup__input_description'); // Поле для ввода описания в попапе «Редактировать профиль»
 
 const popupCardSelector = '.popup-card';
-const popupCard = new Popup(popupCardSelector);
+const popupCard = new PopupWithForm(popupCardSelector, handleCardSubmit);
 const popupCardElement = root.querySelector('.popup-card'); // Попап «Добавить карточку»
 const popupCardForm = popupCardElement.querySelector('.popup__container'); // Форма в попапе «Добавить карточку»
 const cardPlaceInput = popupCardElement.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
@@ -106,39 +106,36 @@ function renderCards (data, section) { // Отрисовка карточек
   section.addItem(cardElement);
 }
 
+function handleProfileSubmit (evt, values) {
+  evt.preventDefault();
+
+  const name = values[0].inputValue;
+  const description = values[1].inputValue;
+
+  profileNameString.textContent = name;
+  profileDescriptionString.textContent = description;
+
+  popupProfile.close();
+}
+
+function handleCardSubmit (evt, values) {
+  evt.preventDefault();
+
+  const data = {};
+  data.name = values[0].inputValue;
+  data.link = values[1].inputValue;
+
+  const newCardSection = new Section({ items: data, renderer: renderCards }, cardGridSelector);
+  newCardSection.renderItems();
+
+  popupCard.close();
+}
+
 // --- Открытие и закрытие попапов
 
 function returnProfileValues () { // Возвращение имени и описания профиля в форму
   profileNameInput.value = profileNameString.textContent;
   profileDescriptionInput.value = profileDescriptionString.textContent;
-}
-
-// --- Отправка форм
-
-function setProfileValues (evt) { // Установка имени и описания профиля
-  evt.preventDefault();
-
-  profileNameString.textContent = profileNameInput.value;
-  profileDescriptionString.textContent = profileDescriptionInput.value;
-
-  popupProfile.close();
-}
-
-function setCardValues (evt) { // Передача значений для новой карточки
-  evt.preventDefault();
-
-  const data = {};
-  data.name = cardPlaceInput.value;
-  data.link = cardLinkInput.value;
-
-  addCard(data);
-
-  popupCard.close();
-}
-
-function addCard (data) { // Добавление новой карточки
-  const newCardSection = new Section({ items: data, renderer: renderCards }, cardGridSelector);
-  newCardSection.renderItems();
 }
 
 // * Вешаем слушатели событий
@@ -158,9 +155,6 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 popupProfile.setEventListeners();
 popupCard.setEventListeners();
 popupFullPic.setEventListeners();
-
-popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
-popupCardForm.addEventListener('submit', setCardValues); // Отправка формы «Добавить карточку»
 
 // * Создаём экземпляры классов
 
