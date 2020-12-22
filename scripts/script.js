@@ -3,7 +3,7 @@
 import FormValidator from './FormValidator.js';
 import Popup from './Popup.js';
 // import PopupWithForm from './PopupWithForm.js';
-// import PopupWithImage from './PopupWithImage.js';
+import PopupWithImage from './PopupWithImage.js';
 // import UserInfo from './UserInfo.js';
 import Card from './Card.js';
 import Section from './Section.js';
@@ -92,14 +92,20 @@ const popupCardForm = popupCardElement.querySelector('.popup__container'); // Ф
 const cardPlaceInput = popupCardElement.querySelector('.popup__input_card-name'); // Поле для ввода названия места в попапе «Добавить карточку»
 const cardLinkInput = popupCardElement.querySelector('.popup__input_card-link'); // Поле для ввода адреса фото в попапе «Добавить карточку»
 
-const popupFullPicElement = root.querySelector('.popup-fullpic'); // Попап с полноразмерной картинкой
+const popupFullPicSelector = '.popup-fullpic';
+const popupFullPicElement = root.querySelector(popupFullPicSelector); // Попап с полноразмерной картинкой
+const popupFullPic = new PopupWithImage(popupFullPicSelector);
 
 const popupCloseButtons = root.querySelectorAll('.popup__close'); // Кнопки закрытия попапов
 
 // * Объявляем функции
 
 function cardRenderer (data, section) { // Отрисовка карточек
-  const cardElement = new Card(data, '#template-card').generateCard();
+  function openFullPic (evt) {
+    popupFullPic.open(evt);
+  }
+
+  const cardElement = new Card(data, '#template-card', openFullPic).generateCard();
   section.addItem(cardElement);
 }
 
@@ -108,26 +114,6 @@ function cardRenderer (data, section) { // Отрисовка карточек
 function returnProfileValues () { // Возвращение имени и описания профиля в форму
   profileNameInput.value = profileNameString.textContent;
   profileDescriptionInput.value = profileDescriptionString.textContent;
-}
-
-function openFullPic (evt) { // Открытие попапа с полноразмерной картинкой
-  const image = popupFullPicElement.querySelector('.popup__fullpic');
-  const targetImage = evt.target;
-
-  image.setAttribute('src', targetImage.src);
-  image.setAttribute('alt', targetImage.alt);
-  image.setAttribute('data-author', targetImage.dataset.author);
-
-  const author = image.dataset.author;
-  const caption = popupFullPic.querySelector('.popup__caption');
-
-  if (author !== 'undefined') {
-    caption.textContent = targetImage.alt + ' / © ' + author;
-  } else {
-    caption.textContent = targetImage.alt;
-  }
-
-  openPopup(popupFullPicElement);
 }
 
 // --- Отправка форм
@@ -174,6 +160,7 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 
 popupProfile.setEventListeners();
 popupCard.setEventListeners();
+popupFullPic.setEventListeners();
 
 popupProfileForm.addEventListener('submit', setProfileValues); // Отправка формы «Редактировать профиль»
 popupCardForm.addEventListener('submit', setCardValues); // Отправка формы «Добавить карточку»
@@ -191,7 +178,3 @@ const cardValidator = new FormValidator(validationConfig, popupCardForm); // В�
 cardValidator.enableValidation();
 
 initialCardsSection.renderItems(); // Добавление карточек из коробки
-
-// * Экспорт
-
-export { openFullPic };
