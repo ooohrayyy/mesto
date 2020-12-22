@@ -97,7 +97,7 @@ const popupFullPic = new PopupWithImage(popupFullPicSelector);
 
 // * Объявляем функции
 
-function cardRenderer (data, section) { // Отрисовка карточек
+function renderCards (data, section) { // Отрисовка карточек
   function openFullPic (evt) {
     popupFullPic.open(evt);
   }
@@ -137,7 +137,7 @@ function setCardValues (evt) { // Передача значений для но�
 }
 
 function addCard (data) { // Добавление новой карточки
-  const newCardSection = new Section({ items: data, renderer: cardRenderer }, cardGridSelector);
+  const newCardSection = new Section({ items: data, renderer: renderCards }, cardGridSelector);
   newCardSection.renderItems();
 }
 
@@ -164,7 +164,7 @@ popupCardForm.addEventListener('submit', setCardValues); // Отправка ф�
 
 // * Создаём экземпляры классов
 
-const initialCardsSection = new Section({ items: initialCards, renderer: cardRenderer }, cardGridSelector); // Секция с карточками из корбки
+const initialCardsSection = new Section({ items: initialCards, renderer: renderCards }, cardGridSelector); // Секция с карточками из корбки
 
 // * Вызываем функции
 
