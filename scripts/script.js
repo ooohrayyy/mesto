@@ -83,6 +83,8 @@ const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с 
 
 // * Вешаем слушатели событий
 
+// --- Вешаем слушатели на странице
+
 profileEditButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   const currentUserInfo = userInfo.getUserInfo();
   profileNameInput.value = currentUserInfo.name;
