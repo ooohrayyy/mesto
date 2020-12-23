@@ -2,7 +2,7 @@
   "name": "mesto",
   "version": "1.0.0",
   "description": "Это страница с формой для редактирования профиля и красивыми карточками, которыми тоже можно управлять.",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve"

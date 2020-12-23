@@ -1,10 +1,10 @@
 // * Импортируем стили
 
-import '../pages/index.css';
+import './index.css';
 
 // * Импортируем модули
 
-import { validationConfig, initialCards } from './data.js';
+import { validationConfig, initialCards } from '../components/data.js';
 import {
   profileEditButton,
   cardCreateButton,
@@ -16,14 +16,14 @@ import {
   popupCardSelector,
   popupCardForm,
   popupFullPicSelector
-} from './constants.js';
+} from '../components/constants.js';
 
-import FormValidator from './FormValidator.js';
-import UserInfo from './UserInfo.js';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import Card from './Card.js';
-import Section from './Section.js';
+import FormValidator from '../components/FormValidator.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
 
 // * Создаём экземпляры классов
 
