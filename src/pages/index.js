@@ -64,8 +64,8 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     evt.preventDefault();
 
     const data = {};
-    data.name = values.name;
-    data.link = values.description;
+    data.name = values.place;
+    data.link = values.link;
 
     const newCardSection = new Section({
       items: data,
