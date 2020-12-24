@@ -1,5 +1,3 @@
-import { root } from './constants.js';
-
 export default class Card {
   constructor (data, template, handleCardClick) {
     this._name = data.name;
@@ -14,7 +12,7 @@ export default class Card {
   }
 
   _getTemplate () { // Получение элемента карточки из шаблона
-    const cardElement = root
+    const cardElement = document
     .querySelector(this._template)
     .content
     .querySelector('.card')

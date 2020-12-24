@@ -1,12 +1,10 @@
-import { root } from './constants.js';
-
 export default class UserInfo {
   constructor ({ userNameSelector, userDescriptionSelector }) {
     this._userNameSelector = userNameSelector;
     this._userDescriptionSelector = userDescriptionSelector;
 
-    this._userNameElement = root.querySelector(userNameSelector);
-    this._userDescriptionElement = root.querySelector(userDescriptionSelector);
+    this._userNameElement = document.querySelector(userNameSelector);
+    this._userDescriptionElement = document.querySelector(userDescriptionSelector);
   }
 
   getUserInfo () {
