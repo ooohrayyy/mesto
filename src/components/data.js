@@ -18,27 +18,9 @@ const novorosImage = new URL('../resources/images/card-images/pic-novoros.jpg', 
 
 const initialCards = [ // Карточки «из коробки»
   {
-    name: 'Карелия',
-    link: kareliaImage,
-    alt: 'Скульптура на набережной Онежского озера',
-    author: 'Борис Никиташов'
-  },
-  {
-    name: 'Калининград',
-    link: kaliningradImage,
-    alt: 'Кёнигсбергский собор',
-    author: 'Борис Никиташов'
-  },
-  {
-    name: 'Чечня',
-    link: chechnyaImage,
-    alt: 'Горная дорога вдоль реки Аргун',
-    author: 'Борис Никиташов'
-  },
-  {
-    name: 'Калмыкия',
-    link: kalmykiaImage,
-    alt: 'Золотая обитель Будды Шакьямуни',
+    name: 'Новороссийск',
+    link: novorosImage,
+    alt: 'Набережная Новороссийска',
     author: 'Борис Никиташов'
   },
   {
@@ -48,11 +30,29 @@ const initialCards = [ // Карточки «из коробки»
     author: 'Борис Никиташов'
   },
   {
-    name: 'Новороссийск',
-    link: novorosImage,
-    alt: 'Набережная Новороссийска',
+    name: 'Калмыкия',
+    link: kalmykiaImage,
+    alt: 'Золотая обитель Будды Шакьямуни',
     author: 'Борис Никиташов'
   },
+  {
+    name: 'Чечня',
+    link: chechnyaImage,
+    alt: 'Горная дорога вдоль реки Аргун',
+    author: 'Борис Никиташов'
+  },
+  {
+    name: 'Калининград',
+    link: kaliningradImage,
+    alt: 'Кёнигсбергский собор',
+    author: 'Борис Никиташов'
+  },
+  {
+    name: 'Карелия',
+    link: kareliaImage,
+    alt: 'Скульптура на набережной Онежского озера',
+    author: 'Борис Никиташов'
+  }
 ];
 
 export { validationConfig, initialCards };

@@ -38,7 +38,7 @@ const initialCardsSection = new Section({ // Секция с карточкам�
   items: initialCards,
   renderer: (data, section) => {
     const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
-    section.addItem(cardElement);
+    section.appendItem(cardElement);
   }
 }, cardGridSelector);
 
