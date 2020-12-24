@@ -37,11 +37,7 @@ const userInfo = new UserInfo({ // Информация о пользовате�
 const initialCardsSection = new Section({ // Секция с карточками из коробки
   items: initialCards,
   renderer: (data, section) => {
-    function openFullPic (evt) {
-      popupFullPic.open(evt);
-    }
-  
-    const cardElement = new Card(data, '#template-card', openFullPic).generateCard();
+    const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
     section.addItem(cardElement);
   }
 }, cardGridSelector);
@@ -70,11 +66,7 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     const newCardSection = new Section({
       items: data,
       renderer: (data, section) => {
-        function openFullPic (evt) {
-          popupFullPic.open(evt);
-        }
-      
-        const cardElement = new Card(data, '#template-card', openFullPic).generateCard();
+        const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
         section.addItem(cardElement);
       }
     }, cardGridSelector);

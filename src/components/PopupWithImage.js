@@ -3,6 +3,8 @@ import Popup from './Popup.js';
 export default class PopupWithImage extends Popup {
   constructor (popupSelector) {
     super(popupSelector);
+
+    this.open = this.open.bind(this);
   }
 
   open (evt) {
