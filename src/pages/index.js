@@ -34,7 +34,7 @@ const userInfo = new UserInfo({ // Информация о пользовате�
   userDescriptionSelector: '.profile__description'
 });
 
-const cardsSection = new Section({ // Секция с карточками из коробки
+const cardsSection = new Section({ // Секция с карточками
   items: initialCards,
   renderer: (data) => {
     const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
@@ -94,4 +94,4 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 
 profileValidator.enableValidation(); // Запуск валидации формы «Редактировать профиль»
 cardValidator.enableValidation(); // Запуск валидации формы «Добавить карточку»
-cardsSection.renderItems(); // Добавление карточек из коробки
+cardsSection.renderItems(); // Добавление карточек
