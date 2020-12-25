@@ -34,11 +34,11 @@ const userInfo = new UserInfo({ // Информация о пользовате�
   userDescriptionSelector: '.profile__description'
 });
 
-const initialCardsSection = new Section({ // Секция с карточками из коробки
+const cardsSection = new Section({ // Секция с карточками из коробки
   items: initialCards,
   renderer: (data) => {
     const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
-    initialCardsSection.appendItem(cardElement);
+    cardsSection.appendItem(cardElement);
   }
 }, cardGridSelector);
 
@@ -63,14 +63,8 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     data.name = values.place;
     data.link = values.link;
 
-    const newCardSection = new Section({
-      items: data,
-      renderer: (data) => {
-        const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
-        newCardSection.addItem(cardElement);
-      }
-    }, cardGridSelector);
-    newCardSection.renderItems();
+    const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
+    cardsSection.addItem(cardElement);
 
     popupCard.close();
   }
@@ -100,4 +94,4 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 
 profileValidator.enableValidation(); // Запуск валидации формы «Редактировать профиль»
 cardValidator.enableValidation(); // Запуск валидации формы «Добавить карточку»
-initialCardsSection.renderItems(); // Добавление карточек из коробки
+cardsSection.renderItems(); // Добавление карточек из коробки
