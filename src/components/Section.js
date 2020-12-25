@@ -8,10 +8,10 @@ export default class Section {
   renderItems () {
     if (Array.isArray(this._items)) {
       this._items.forEach(item => {
-        this._renderer(item, this);
+        this._renderer(item);
       });
     } else {
-      this._renderer(this._items, this);
+      this._renderer(this._items);
     }
   }
 
