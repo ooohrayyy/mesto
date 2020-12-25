@@ -1,5 +1,6 @@
 export default class Card {
   constructor (data, template, handleCardClick) {
+    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
@@ -39,7 +40,7 @@ export default class Card {
     likeButton.addEventListener('click', this._setLike);
 
     const openFullPicButton = this._element.querySelector('.card__open-fullpic');
-    openFullPicButton.addEventListener('mousedown', this._handleCardClick);
+    openFullPicButton.addEventListener('mousedown', () => {this._handleCardClick(this._data)});
   }
 
   generateCard () { // Создание новой карточки
