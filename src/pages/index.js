@@ -24,6 +24,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
+import Api from '../components/Api.js';
 
 // * Создаём экземпляры классов
 
