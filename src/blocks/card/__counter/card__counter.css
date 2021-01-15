@@ -1,0 +1,9 @@
+.card__counter {
+  position: absolute;
+  bottom: -16px;
+  left: 6px;
+  margin: 0;
+  font-size: 13px;
+  user-select: none;
+  pointer-events: none;
+}
