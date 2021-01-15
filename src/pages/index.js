@@ -4,7 +4,7 @@ import './index.css';
 
 // * Импортируем модули
 
-import { validationConfig, initialCards } from '../components/data.js';
+import { validationConfig } from '../components/data.js';
 import {
   profileEditButton,
   cardCreateButton,
@@ -41,13 +41,7 @@ const userInfo = new UserInfo({ // Информация о пользовате�
   userAvatarSelector: '.profile__avatar'
 });
 
-const cardsSection = new Section({ // Секция с карточками
-  items: initialCards,
-  renderer: (data) => {
-    const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
-    cardsSection.appendItem(cardElement);
-  }
-}, cardGridSelector);
+const cardsSection = new Section(cardGridSelector); // Секция с карточками
 
 const popupProfile = new PopupWithForm( // Попап «Редактировать профиль»
   popupProfileSelector,
@@ -101,7 +95,6 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 
 profileValidator.enableValidation(); // Запуск валидации формы «Редактировать профиль»
 cardValidator.enableValidation(); // Запуск валидации формы «Добавить карточку»
-cardsSection.renderItems(); // Добавление карточек
 
 // * Выполняем промисы
 
@@ -112,4 +105,17 @@ api.getUserInfo() // Загружаем имя и описание пользо�
     externalUserInfo.description = res.about;
     externalUserInfo.avatar = res.avatar;
     userInfo.setUserInfo(externalUserInfo);
+  });
+
+api.getInitialCards() // Загружаем готовые карточки с сервера
+  .then(res => {
+    res.forEach(cardObject => {
+      const data = {};
+      data.name = cardObject.name;
+      data.link = cardObject.link;
+      data.author = cardObject.owner.name;
+
+      const card = new Card(data, '#template-card', popupFullPic.open).generateCard();
+      cardsSection.appendItem(card);
+    });
   });
