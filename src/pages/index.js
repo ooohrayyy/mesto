@@ -28,6 +28,13 @@ import Api from '../components/Api.js';
 
 // * Создаём экземпляры классов
 
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19',
+  headers: {
+    authorization: '21765504-482c-4ec0-96f1-ca3e4078b259'
+  }
+});
+
 const userInfo = new UserInfo({ // Информация о пользователе
   userNameSelector: '.profile__name',
   userDescriptionSelector: '.profile__description'
