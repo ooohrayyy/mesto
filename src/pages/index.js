@@ -101,3 +101,13 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 profileValidator.enableValidation(); // Запуск валидации формы «Редактировать профиль»
 cardValidator.enableValidation(); // Запуск валидации формы «Добавить карточку»
 cardsSection.renderItems(); // Добавление карточек
+
+// * Выполняем промисы
+
+api.getUserInfo() // Загружаем имя и описание пользователя с сервера
+  .then(res => {
+    const externalUserInfo = {};
+    externalUserInfo.name = res.name;
+    externalUserInfo.description = res.about;
+    userInfo.setUserInfo(externalUserInfo);
+  });
