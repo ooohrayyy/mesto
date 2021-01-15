@@ -98,7 +98,7 @@ cardValidator.enableValidation(); // Запуск валидации формы 
 
 // * Выполняем промисы
 
-api.getUserInfo() // Загружаем имя и описание пользователя с сервера
+api.fetchUserInfo() // Загружаем имя и описание пользователя с сервера
   .then(res => {
     const externalUserInfo = {};
     externalUserInfo.name = res.name;
@@ -107,7 +107,7 @@ api.getUserInfo() // Загружаем имя и описание пользо�
     userInfo.setUserInfo(externalUserInfo);
   });
 
-api.getInitialCards() // Загружаем готовые карточки с сервера
+api.fetchInitialCards() // Загружаем готовые карточки с сервера
   .then(res => {
     res.forEach(cardObject => {
       const data = {};

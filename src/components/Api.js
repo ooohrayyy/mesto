@@ -4,7 +4,7 @@ export default class Api {
     this._headers = options.headers;
   }
 
-  getUserInfo () {
+  fetchUserInfo () {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: this._headers
@@ -12,7 +12,7 @@ export default class Api {
       .then(res => res.json());
   }
 
-  getInitialCards () {
+  fetchInitialCards () {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       headers: this._headers
