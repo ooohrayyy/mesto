@@ -47,6 +47,7 @@ const popupProfile = new PopupWithForm( // Попап «Редактироват
     evt.preventDefault();
 
     userInfo.setUserInfo(values);
+    api.patchUserInfo(values);
 
     popupProfile.close();
   }
