@@ -37,7 +37,8 @@ const api = new Api({
 
 const userInfo = new UserInfo({ // Информация о пользователе
   userNameSelector: '.profile__name',
-  userDescriptionSelector: '.profile__description'
+  userDescriptionSelector: '.profile__description',
+  userAvatarSelector: '.profile__avatar'
 });
 
 const cardsSection = new Section({ // Секция с карточками
@@ -109,5 +110,6 @@ api.getUserInfo() // Загружаем имя и описание пользо�
     const externalUserInfo = {};
     externalUserInfo.name = res.name;
     externalUserInfo.description = res.about;
+    externalUserInfo.avatar = res.avatar;
     userInfo.setUserInfo(externalUserInfo);
   });
