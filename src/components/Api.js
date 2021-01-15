@@ -1,13 +1,15 @@
 export default class Api {
   constructor (options) {
     this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+    this._token = options.authorization;
   }
 
   fetchUserInfo () {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        authorization: this._token
+      }
     })
       .then(res => res.json());
   }
@@ -15,7 +17,9 @@ export default class Api {
   fetchInitialCards () {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        authorization: this._token
+      }
     })
       .then(res => res.json());
   }
