@@ -66,6 +66,8 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
     cardsSection.addItem(cardElement);
 
+    api.postCard(data);
+
     popupCard.close();
   }
 );
