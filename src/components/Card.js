@@ -9,7 +9,7 @@ export default class Card {
     this._cardClickHandler = cardClickHandler;
     this._deleteHandler = deleteHandler;
 
-    this._removeCard = this._removeCard.bind(this);
+    this.removeCard = this.removeCard.bind(this);
     this._setLike = this._setLike.bind(this);
     this._deleteHandler = this._deleteHandler.bind(this);
   }
@@ -24,11 +24,6 @@ export default class Card {
     return cardElement;
   }
 
-  _removeCard () { // Удаление карточки
-    this._element.remove();
-    this._element = null;
-  }
-
   _setLike () { // Установка и снятие лайка
     const like = this._element.querySelector('.card__like');
     like.classList.toggle('card__like_active');
@@ -36,7 +31,9 @@ export default class Card {
 
   _setEventListeners () {
     const removeCardButton = this._element.querySelector('.card__delete');
-    removeCardButton.addEventListener('click', this._deleteHandler);
+    removeCardButton.addEventListener('click', () => {
+      this._deleteHandler(this);
+    });
 
     const likeButton = this._element.querySelector('.card__like');
     likeButton.addEventListener('click', this._setLike);
@@ -66,5 +63,10 @@ export default class Card {
     this._setEventListeners();
 
     return this._element;
+  }
+
+  removeCard () { // Удаление карточки
+    this._element.remove();
+    this._element = null;
   }
 }
