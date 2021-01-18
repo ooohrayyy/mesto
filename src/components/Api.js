@@ -93,4 +93,16 @@ export default class Api {
       });
     }
   }
+
+  updateAvatar (link) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._token
+      },
+      body: JSON.stringify({
+        avatar: link
+      })
+    })
+  }
 }
