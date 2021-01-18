@@ -65,7 +65,7 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     data.name = values.place;
     data.link = values.link;
 
-    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
+    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, true).generateCard();
     cardsSection.addItem(cardElement);
 
     api.postCard(data);
@@ -116,11 +116,15 @@ api.fetchInitialCards() // Загружаем готовые карточки с
   .then(res => {
     res.forEach(cardObject => {
       const data = {};
+      let isOwn;
+
       data.name = cardObject.name;
       data.link = cardObject.link;
       data.author = cardObject.owner.name;
 
-      const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
+      if (cardObject.owner._id === 'ad3d0273785c6d7294d1549a') { isOwn = true }
+
+      const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, isOwn).generateCard();
       cardsSection.appendItem(card);
     });
   });

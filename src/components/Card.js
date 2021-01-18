@@ -1,5 +1,5 @@
 export default class Card {
-  constructor (data, template, cardClickHandler, deleteHandler) {
+  constructor (data, template, cardClickHandler, deleteHandler, isOwn) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
@@ -8,6 +8,7 @@ export default class Card {
     this._template = template;
     this._cardClickHandler = cardClickHandler;
     this._deleteHandler = deleteHandler;
+    this._isOwn = isOwn;
 
     this.removeCard = this.removeCard.bind(this);
     this._setLike = this._setLike.bind(this);
@@ -30,16 +31,24 @@ export default class Card {
   }
 
   _setEventListeners () {
-    const removeCardButton = this._element.querySelector('.card__delete');
-    removeCardButton.addEventListener('click', () => {
-      this._deleteHandler(this);
-    });
-
     const likeButton = this._element.querySelector('.card__like');
     likeButton.addEventListener('click', this._setLike);
 
     const openFullPicButton = this._element.querySelector('.card__open-fullpic');
     openFullPicButton.addEventListener('mousedown', () => {this._cardClickHandler(this._data)});
+  }
+
+  insertRemoveButton () {
+    const label = this._element.querySelector('.card__label');
+
+    label.insertAdjacentHTML('beforebegin',
+    '<button class="card__delete" type="button"></button>'
+    );
+
+    const removeCardButton = this._element.querySelector('.card__delete');
+    removeCardButton.addEventListener('click', () => {
+      this._deleteHandler(this);
+    });
   }
 
   generateCard () { // Создание новой карточки
@@ -61,6 +70,8 @@ export default class Card {
     }
 
     this._setEventListeners();
+
+    if (this._isOwn) { this.insertRemoveButton() }
 
     return this._element;
   }
