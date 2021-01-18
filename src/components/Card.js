@@ -1,5 +1,5 @@
 export default class Card {
-  constructor (data, template, cardClickHandler) {
+  constructor (data, template, cardClickHandler, deleteHandler) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
@@ -7,9 +7,11 @@ export default class Card {
     this._author = data.author;
     this._template = template;
     this._cardClickHandler = cardClickHandler;
+    this._deleteHandler = deleteHandler;
 
     this._removeCard = this._removeCard.bind(this);
     this._setLike = this._setLike.bind(this);
+    this._deleteHandler = this._deleteHandler.bind(this);
   }
 
   _getTemplate () { // Получение элемента карточки из шаблона
@@ -34,7 +36,7 @@ export default class Card {
 
   _setEventListeners () {
     const removeCardButton = this._element.querySelector('.card__delete');
-    removeCardButton.addEventListener('click', this._removeCard);
+    removeCardButton.addEventListener('click', this._deleteHandler);
 
     const likeButton = this._element.querySelector('.card__like');
     likeButton.addEventListener('click', this._setLike);

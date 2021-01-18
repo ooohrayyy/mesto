@@ -17,6 +17,7 @@ const popupCardSelector = '.popup-card';
 const popupCardElement = document.querySelector(popupCardSelector);
 const popupCardForm = popupCardElement.querySelector('.popup__container'); // Форма в попапе «Добавить карточку»
 
+const popupConfirmDeleteSelector = '.popup-delete';
 const popupFullPicSelector = '.popup-fullpic';
 
 export {
@@ -29,5 +30,6 @@ export {
   profileDescriptionInput,
   popupCardSelector,
   popupCardForm,
+  popupConfirmDeleteSelector,
   popupFullPicSelector
 };

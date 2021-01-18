@@ -15,11 +15,13 @@ import {
   profileDescriptionInput,
   popupCardSelector,
   popupCardForm,
+  popupConfirmDeleteSelector,
   popupFullPicSelector
 } from '../components/constants.js';
 
 import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
+import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Card from '../components/Card.js';
@@ -63,7 +65,7 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     data.name = values.place;
     data.link = values.link;
 
-    const cardElement = new Card(data, '#template-card', popupFullPic.open).generateCard();
+    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
     cardsSection.addItem(cardElement);
 
     api.postCard(data);
@@ -72,6 +74,8 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
   }
 );
 const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидатор формы «Добавить карточку»
+
+const confirmDeletePopup = new Popup(popupConfirmDeleteSelector); // Попап с подтверждением удаления
 
 const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с полноразмерной картинкой
 
@@ -116,7 +120,7 @@ api.fetchInitialCards() // Загружаем готовые карточки с
       data.link = cardObject.link;
       data.author = cardObject.owner.name;
 
-      const card = new Card(data, '#template-card', popupFullPic.open).generateCard();
+      const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
       cardsSection.appendItem(card);
     });
   });
