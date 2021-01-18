@@ -120,16 +120,16 @@ api.fetchInitialCards() // Загружаем готовые карточки с
   .then(res => {
     res.forEach(cardObject => {
       const data = {};
-      let isOwn;
+      // let isOwn;
 
       data.name = cardObject.name;
       data.link = cardObject.link;
       data.author = cardObject.owner.name;
       data.cardId = cardObject._id;
 
-      if (cardObject.owner._id === userID) { isOwn = true }
+      if (cardObject.owner._id === userID) { data.isOwn = true }
 
-      const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, isOwn).generateCard();
+      const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
       cardsSection.appendItem(card);
     });
   });

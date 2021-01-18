@@ -1,15 +1,15 @@
 export default class Card {
-  constructor (data, template, cardClickHandler, deleteButtonHandler, isOwn) {
+  constructor (data, template, cardClickHandler, deleteButtonHandler) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
     this._author = data.author;
     this._id = data.cardId;
+    this._isOwn = data.isOwn;
     this._template = template;
     this._cardClickHandler = cardClickHandler;
     this._deleteButtonHandler = deleteButtonHandler;
-    this._isOwn = isOwn;
 
     this.removeCard = this.removeCard.bind(this);
     this._setLike = this._setLike.bind(this);
