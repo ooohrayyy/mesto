@@ -128,7 +128,6 @@ api.fetchInitialCards() // Загружаем готовые карточки с
       data.isLiked = false;
       cardObject.likes.forEach(like => {
         if (like._id === userID) {
-          console.log(cardObject);
           data.isLiked = true;
         }
       });
