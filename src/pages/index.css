@@ -53,6 +53,7 @@
 
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__main/profile__main.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__text-info/profile__text-info.css);
 @import url(../blocks/profile/__name/profile__name.css);
