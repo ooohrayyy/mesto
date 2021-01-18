@@ -51,4 +51,13 @@ export default class Api {
       })
     })
   }
+
+  deleteCard (cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token
+      }
+    })
+  }
 }
