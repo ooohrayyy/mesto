@@ -4,6 +4,7 @@ export default class Api {
     this._token = options.authorization;
 
     this.deleteCard = this.deleteCard.bind(this);
+    this.toggleLike = this.toggleLike.bind(this);
   }
 
   fetchUserInfo () {
@@ -61,5 +62,35 @@ export default class Api {
         authorization: this._token
       }
     })
+  }
+
+  toggleLike (card) {
+    if (card.isLiked) {
+      return fetch(`${this._baseUrl}/cards/likes/${card.id}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: this._token
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        card.isLiked = false;
+        card.likes = res.likes.length;
+        card.cardLikesCounter.textContent = card.likes;
+      });
+    } else {
+      return fetch(`${this._baseUrl}/cards/likes/${card.id}`, {
+        method: 'PUT',
+        headers: {
+          authorization: this._token
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        card.isLiked = true;
+        card.likes = res.likes.length;
+        card.cardLikesCounter.textContent = card.likes;
+      });
+    }
   }
 }

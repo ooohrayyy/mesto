@@ -66,7 +66,7 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     data.link = values.link;
     data.isOwn = true;
 
-    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
+    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike).generateCard();
     cardsSection.addItem(cardElement);
 
     api.postCard(data);
@@ -125,12 +125,19 @@ api.fetchInitialCards() // Загружаем готовые карточки с
       data.cardId = cardObject._id;
       if (cardObject.owner._id === userID) { data.isOwn = true }
       data.likes = cardObject.likes.length;
+      data.isLiked = false;
+      cardObject.likes.forEach(like => {
+        if (like._id === userID) {
+          console.log(cardObject);
+          data.isLiked = true;
+        }
+      });
 
       data.author = cardObject.owner.name;
       data.name = cardObject.name;
       data.link = cardObject.link;
 
-      const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
+      const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike).generateCard();
       cardsSection.appendItem(card);
     });
   });

@@ -1,14 +1,16 @@
 export default class Card {
-  constructor (data, template, cardClickHandler, deleteButtonHandler) {
+  constructor (data, template, cardClickHandler, deleteButtonHandler, likeHandler) {
     this._data = data;
 
     this._template = template;
     this._cardClickHandler = cardClickHandler;
     this._deleteButtonHandler = deleteButtonHandler;
+    this._likeHandler = likeHandler;
 
-    this._id = data.cardId;
+    this.id = data.cardId;
     this._isOwn = data.isOwn;
-    this._likes = data.likes;
+    this.likes = data.likes;
+    this.isLiked = data.isLiked;
 
     this._author = data.author;
     this._name = data.name;
@@ -31,8 +33,8 @@ export default class Card {
   }
 
   _setLike () { // Установка и снятие лайка
-    const like = this._element.querySelector('.card__like');
-    like.classList.toggle('card__like_active');
+    this.like.classList.toggle('card__like_active');
+    this._likeHandler(this);
   }
 
   _setEventListeners () {
@@ -52,7 +54,7 @@ export default class Card {
 
     const removeCardButton = this._element.querySelector('.card__delete');
     removeCardButton.addEventListener('click', () => {
-      this._deleteButtonHandler(this, this._id);
+      this._deleteButtonHandler(this, this.id);
     });
   }
 
@@ -60,11 +62,12 @@ export default class Card {
     this._element = this._getTemplate();
 
     const cardElementImage = this._element.querySelector('.card__image');
-    const cardLikesCounter = this._element.querySelector('.card__counter');
+    this.like = this._element.querySelector('.card__like');
+    this.cardLikesCounter = this._element.querySelector('.card__counter');
 
     this._element.querySelector('.card__name').textContent = this._name;
     cardElementImage.setAttribute('src', this._link);
-    cardLikesCounter.textContent = this._likes;
+    this.cardLikesCounter.textContent = this.likes ? this.likes : 0;
 
     if (this._alt) {
       cardElementImage.setAttribute('alt', this._alt);
@@ -79,6 +82,8 @@ export default class Card {
     this._setEventListeners();
 
     if (this._isOwn) { this.insertRemoveButton() }
+
+    if (this.isLiked) { this.like.classList.add('card__like_active') }
 
     return this._element;
   }
