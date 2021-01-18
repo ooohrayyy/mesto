@@ -64,8 +64,9 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     const data = {};
     data.name = values.place;
     data.link = values.link;
+    data.isOwn = true;
 
-    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, true).generateCard();
+    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open).generateCard();
     cardsSection.addItem(cardElement);
 
     api.postCard(data);
@@ -120,7 +121,7 @@ api.fetchInitialCards() // Загружаем готовые карточки с
   .then(res => {
     res.forEach(cardObject => {
       const data = {};
-      
+
       data.name = cardObject.name;
       data.link = cardObject.link;
       data.author = cardObject.owner.name;
