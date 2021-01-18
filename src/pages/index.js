@@ -120,8 +120,7 @@ api.fetchInitialCards() // Загружаем готовые карточки с
   .then(res => {
     res.forEach(cardObject => {
       const data = {};
-      // let isOwn;
-
+      
       data.name = cardObject.name;
       data.link = cardObject.link;
       data.author = cardObject.owner.name;
