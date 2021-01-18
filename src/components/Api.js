@@ -2,6 +2,8 @@ export default class Api {
   constructor (options) {
     this._baseUrl = options.baseUrl;
     this._token = options.authorization;
+
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   fetchUserInfo () {
@@ -52,8 +54,8 @@ export default class Api {
     })
   }
 
-  deleteCard (cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}`, {
+  deleteCard (cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {
         authorization: this._token

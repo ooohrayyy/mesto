@@ -75,7 +75,10 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
 );
 const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидатор формы «Добавить карточку»
 
-const confirmDeletePopup = new PopupConfirm(popupConfirmDeleteSelector); // Попап с подтверждением удаления
+const confirmDeletePopup = new PopupConfirm(
+  popupConfirmDeleteSelector,
+  api.deleteCard
+);
 
 const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с полноразмерной картинкой
 
@@ -122,6 +125,7 @@ api.fetchInitialCards() // Загружаем готовые карточки с
       data.name = cardObject.name;
       data.link = cardObject.link;
       data.author = cardObject.owner.name;
+      data.cardId = cardObject._id;
 
       if (cardObject.owner._id === userID) { isOwn = true }
 

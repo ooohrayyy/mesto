@@ -1,18 +1,19 @@
 export default class Card {
-  constructor (data, template, cardClickHandler, deleteHandler, isOwn) {
+  constructor (data, template, cardClickHandler, deleteButtonHandler, isOwn) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
     this._author = data.author;
+    this._id = data.cardId;
     this._template = template;
     this._cardClickHandler = cardClickHandler;
-    this._deleteHandler = deleteHandler;
+    this._deleteButtonHandler = deleteButtonHandler;
     this._isOwn = isOwn;
 
     this.removeCard = this.removeCard.bind(this);
     this._setLike = this._setLike.bind(this);
-    this._deleteHandler = this._deleteHandler.bind(this);
+    this._deleteButtonHandler = this._deleteButtonHandler.bind(this);
   }
 
   _getTemplate () { // Получение элемента карточки из шаблона
@@ -47,7 +48,7 @@ export default class Card {
 
     const removeCardButton = this._element.querySelector('.card__delete');
     removeCardButton.addEventListener('click', () => {
-      this._deleteHandler(this);
+      this._deleteButtonHandler(this, this._id);
     });
   }
 
