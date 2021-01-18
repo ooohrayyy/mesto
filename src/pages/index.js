@@ -109,6 +109,7 @@ api.fetchUserInfo() // Загружаем имя и описание польз�
     externalUserInfo.name = res.name;
     externalUserInfo.description = res.about;
     externalUserInfo.avatar = res.avatar;
+    global.userID = res._id;
     userInfo.setUserInfo(externalUserInfo);
   });
 
@@ -122,7 +123,7 @@ api.fetchInitialCards() // Загружаем готовые карточки с
       data.link = cardObject.link;
       data.author = cardObject.owner.name;
 
-      if (cardObject.owner._id === 'ad3d0273785c6d7294d1549a') { isOwn = true }
+      if (cardObject.owner._id === userID) { isOwn = true }
 
       const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, isOwn).generateCard();
       cardsSection.appendItem(card);
