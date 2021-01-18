@@ -1,15 +1,19 @@
 export default class Card {
   constructor (data, template, cardClickHandler, deleteButtonHandler) {
     this._data = data;
-    this._name = data.name;
-    this._link = data.link;
-    this._alt = data.alt;
-    this._author = data.author;
-    this._id = data.cardId;
-    this._isOwn = data.isOwn;
+
     this._template = template;
     this._cardClickHandler = cardClickHandler;
     this._deleteButtonHandler = deleteButtonHandler;
+
+    this._id = data.cardId;
+    this._isOwn = data.isOwn;
+    this._likes = data.likes;
+
+    this._author = data.author;
+    this._name = data.name;
+    this._link = data.link;
+    this._alt = data.alt;
 
     this.removeCard = this.removeCard.bind(this);
     this._setLike = this._setLike.bind(this);
@@ -56,9 +60,11 @@ export default class Card {
     this._element = this._getTemplate();
 
     const cardElementImage = this._element.querySelector('.card__image');
+    const cardLikesCounter = this._element.querySelector('.card__counter');
 
     this._element.querySelector('.card__name').textContent = this._name;
     cardElementImage.setAttribute('src', this._link);
+    cardLikesCounter.textContent = this._likes;
 
     if (this._alt) {
       cardElementImage.setAttribute('alt', this._alt);
