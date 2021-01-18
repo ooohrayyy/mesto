@@ -17,7 +17,6 @@ const profileDescriptionInput = popupProfileElement.querySelector('.popup__input
 const popupAvatarSelector = '.popup-avatar';
 const popupAvatarElement = document.querySelector(popupAvatarSelector);
 const popupAvatarForm = popupAvatarElement.querySelector('.popup__container');
-const avatarLinkInput = popupAvatarElement.querySelector('.popup__input_avatar');
 
 const popupCardSelector = '.popup-card';
 const popupCardElement = document.querySelector(popupCardSelector);

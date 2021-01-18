@@ -59,7 +59,17 @@ const popupProfile = new PopupWithForm( // Попап «Редактироват
 );
 const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидатор формы «Редактировать профиль»
 
-const popupAvatar = new PopupWithForm(popupAvatarSelector, function () { console.log('hey')});
+const popupAvatar = new PopupWithForm(
+  popupAvatarSelector,
+  (evt, values) => {
+    evt.preventDefault();
+
+    userInfo.setAvatar(values.avatar);
+    api.updateAvatar(values.avatar);
+
+    popupAvatar.close();
+  }
+);
 const avatarValidator = new FormValidator(validationConfig, popupAvatarForm);
 
 const popupCard = new PopupWithForm( // Попап «Добавить карточку»
