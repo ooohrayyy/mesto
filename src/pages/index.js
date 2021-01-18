@@ -6,6 +6,7 @@ import './index.css';
 
 import { validationConfig } from '../components/data.js';
 import {
+  updateAvatarButton,
   profileEditButton,
   cardCreateButton,
   cardGridSelector,
@@ -13,6 +14,8 @@ import {
   popupProfileForm,
   profileNameInput,
   profileDescriptionInput,
+  popupAvatarSelector,
+  popupAvatarForm,
   popupCardSelector,
   popupCardForm,
   popupConfirmDeleteSelector,
@@ -56,6 +59,9 @@ const popupProfile = new PopupWithForm( // Попап «Редактироват
 );
 const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидатор формы «Редактировать профиль»
 
+const popupAvatar = new PopupWithForm(popupAvatarSelector, function () { console.log('hey')});
+const avatarValidator = new FormValidator(validationConfig, popupAvatarForm);
+
 const popupCard = new PopupWithForm( // Попап «Добавить карточку»
   popupCardSelector,
   (evt, values) => {
@@ -85,6 +91,11 @@ const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с 
 
 // * Вешаем слушатели событий
 
+updateAvatarButton.addEventListener('click', function () {
+  avatarValidator.checkForm();
+  popupAvatar.open();
+});
+
 profileEditButton.addEventListener('click', function () { // Клик по кнопке «Редактировать профиль»
   const currentUserInfo = userInfo.getUserInfo();
   profileNameInput.value = currentUserInfo.name;
@@ -104,6 +115,7 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 
 profileValidator.enableValidation(); // Запуск валидации формы «Редактировать профиль»
 cardValidator.enableValidation(); // Запуск валидации формы «Добавить карточку»
+avatarValidator.enableValidation();
 
 // * Выполняем промисы
 
