@@ -169,6 +169,9 @@ api.fetchUserInfo() // Загрузка данных о пользователе
     externalUserInfo.avatar = res.avatar;
     global.userID = res._id;
     userInfo.setUserInfo(externalUserInfo);
+  })
+  .catch(err => {
+    console.log(`Что-то пошло не так: ${err}`);
   });
 
 api.fetchInitialCards() // Загрузка готовых карточек с сервера
@@ -193,4 +196,7 @@ api.fetchInitialCards() // Загрузка готовых карточек с �
       const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike).generateCard();
       cardsSection.appendItem(card);
     });
+  })
+  .catch(err => {
+    console.log(`Что-то пошло не так: ${err}`);
   });
