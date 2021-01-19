@@ -7,7 +7,7 @@ export default class Api {
     this.toggleLike = this.toggleLike.bind(this);
   }
 
-  fetchUserInfo () {
+  fetchUserInfo () { // Загрузка информации о пользователе
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: {
@@ -17,7 +17,7 @@ export default class Api {
       .then(res => res.json());
   }
 
-  fetchInitialCards () {
+  fetchInitialCards () { // Загрузка готовых карточек
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       headers: {
@@ -27,7 +27,7 @@ export default class Api {
       .then(res => res.json());
   }
 
-  patchUserInfo (values) {
+  patchUserInfo (values) { // Обновление информации о пользователе
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
@@ -41,7 +41,7 @@ export default class Api {
     });
   }
 
-  postCard (data) {
+  postCard (data) { // Отправка карточки
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
@@ -55,7 +55,7 @@ export default class Api {
     })
   }
 
-  deleteCard (cardId) {
+  deleteCard (cardId) { // Удаление карточки
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {
@@ -64,7 +64,7 @@ export default class Api {
     })
   }
 
-  toggleLike (card) {
+  toggleLike (card) { // Установка и снятие лайка
     if (card.isLiked) {
       return fetch(`${this._baseUrl}/cards/likes/${card.id}`, {
         method: 'DELETE',
@@ -94,7 +94,7 @@ export default class Api {
     }
   }
 
-  updateAvatar (link) {
+  updateAvatar (link) { // Обновление аватарки
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {

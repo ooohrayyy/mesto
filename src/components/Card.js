@@ -45,7 +45,7 @@ export default class Card {
     openFullPicButton.addEventListener('mousedown', () => {this._cardClickHandler(this._data)});
   }
 
-  insertRemoveButton () {
+  insertRemoveButton () { // Добавление кнопки удаления
     const label = this._element.querySelector('.card__label');
 
     label.insertAdjacentHTML('beforebegin',
@@ -58,7 +58,7 @@ export default class Card {
     });
   }
 
-  generateCard () { // Создание новой карточки
+  generateCard () { // Создание элемента новой карточки
     this._element = this._getTemplate();
 
     const cardElementImage = this._element.querySelector('.card__image');
@@ -88,7 +88,7 @@ export default class Card {
     return this._element;
   }
 
-  removeCard () { // Удаление карточки
+  removeCard () { // Удаление элемента карточки
     this._element.remove();
     this._element = null;
   }

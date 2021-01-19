@@ -22,14 +22,14 @@ import {
   popupFullPicSelector
 } from '../components/constants.js';
 
+import Api from '../components/Api.js';
+import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupConfirm from '../components/PopupConfirm.js';
 import Card from '../components/Card.js';
-import Section from '../components/Section.js';
-import Api from '../components/Api.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupConfirm from '../components/PopupConfirm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 
 // * Создаём экземпляры классов
 
@@ -62,7 +62,7 @@ const popupProfile = new PopupWithForm( // Попап «Редактироват
 );
 const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидатор формы «Редактировать профиль»
 
-const popupAvatar = new PopupWithForm(
+const popupAvatar = new PopupWithForm( // Попап «Обновить аватар»
   popupAvatarSelector,
   (evt, values) => {
     evt.preventDefault();
@@ -76,7 +76,7 @@ const popupAvatar = new PopupWithForm(
     popupAvatar.close();
   }
 );
-const avatarValidator = new FormValidator(validationConfig, popupAvatarForm);
+const avatarValidator = new FormValidator(validationConfig, popupAvatarForm); // Валидатор формы «Обновить аватар»
 
 const popupCard = new PopupWithForm( // Попап «Добавить карточку»
   popupCardSelector,
@@ -106,7 +106,7 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
 );
 const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидатор формы «Добавить карточку»
 
-const confirmDeletePopup = new PopupConfirm(
+const confirmDeletePopup = new PopupConfirm( // Попап подтверждения удаления
   popupConfirmDeleteSelector,
   api.deleteCard
 );
@@ -115,7 +115,7 @@ const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с 
 
 // * Вешаем слушатели событий
 
-updateAvatarButton.addEventListener('click', function () {
+updateAvatarButton.addEventListener('click', function () { // Клик по аватарке
   avatarValidator.checkForm();
   popupAvatar.open();
 });
@@ -139,11 +139,11 @@ cardCreateButton.addEventListener('click', function () { // Клик по кно
 
 profileValidator.enableValidation(); // Запуск валидации формы «Редактировать профиль»
 cardValidator.enableValidation(); // Запуск валидации формы «Добавить карточку»
-avatarValidator.enableValidation();
+avatarValidator.enableValidation(); // Запуск валидации формы «Обновить аватар»
 
 // * Выполняем промисы
 
-api.fetchUserInfo() // Загружаем имя и описание пользователя с сервера
+api.fetchUserInfo() // Загрузка данных о пользователе с сервера
   .then(res => {
     const externalUserInfo = {};
     externalUserInfo.name = res.name;
@@ -153,7 +153,7 @@ api.fetchUserInfo() // Загружаем имя и описание польз�
     userInfo.setUserInfo(externalUserInfo);
   });
 
-api.fetchInitialCards() // Загружаем готовые карточки с сервера
+api.fetchInitialCards() // Загрузка готовых карточек с сервера
   .then(res => {
     res.forEach(cardObject => {
       const data = {};

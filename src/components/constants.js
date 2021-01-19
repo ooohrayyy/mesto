@@ -16,13 +16,14 @@ const profileDescriptionInput = popupProfileElement.querySelector('.popup__input
 
 const popupAvatarSelector = '.popup-avatar';
 const popupAvatarElement = document.querySelector(popupAvatarSelector);
-const popupAvatarForm = popupAvatarElement.querySelector('.popup__container');
+const popupAvatarForm = popupAvatarElement.querySelector('.popup__container'); // Форма в попапе «Обновить аватар»
 
 const popupCardSelector = '.popup-card';
 const popupCardElement = document.querySelector(popupCardSelector);
 const popupCardForm = popupCardElement.querySelector('.popup__container'); // Форма в попапе «Добавить карточку»
 
 const popupConfirmDeleteSelector = '.popup-delete';
+
 const popupFullPicSelector = '.popup-fullpic';
 
 export {
