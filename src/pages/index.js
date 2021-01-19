@@ -124,7 +124,17 @@ const cardValidator = new FormValidator(validationConfig, popupCardForm); // В�
 
 const confirmDeletePopup = new PopupConfirm( // Попап подтверждения удаления
   popupConfirmDeleteSelector,
-  api.deleteCard
+  (cardId) => {
+    api.deleteCard(cardId)
+      .then(() => {
+        confirmDeletePopup.card.removeCard();
+        confirmDeletePopup.close();
+      })
+      .catch(err => {
+        console.log(`Что-то пошло не так: ${err}`);
+        confirmDeletePopup.showResponseError(err);
+      });
+  }
   );
 
 const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с полноразмерной картинкой

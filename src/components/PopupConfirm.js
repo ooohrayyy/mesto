@@ -16,19 +16,11 @@ export default class PopupConfirm extends PopupWithForm {
   open (card, cardId) {
     super.open();
 
-    this._card = card;
-    this._cardId = cardId;
+    this.card = card;
+    this.cardId = cardId;
   }
 
   confirmDelete () {
-    this._submitHandler(this._cardId)
-      .then(() => {
-        this._card.removeCard();
-        this.close();
-      })
-      .catch(err => {
-        console.log(`Что-то пошло не так: ${err}`);
-        this.showResponseError(err);
-      });
+    this._submitHandler(this.cardId);
   }
 }
