@@ -1,6 +1,6 @@
 export default class Card {
   constructor (data, template, cardClickHandler, deleteButtonHandler, likeHandler) {
-    this._data = data;
+    this.data = data;
 
     this._template = template;
     this._cardClickHandler = cardClickHandler;
@@ -48,7 +48,7 @@ export default class Card {
     likeButton.addEventListener('click', this._setLike);
 
     const openFullPicButton = this._element.querySelector('.card__open-fullpic');
-    openFullPicButton.addEventListener('mousedown', () => {this._cardClickHandler(this._data)});
+    openFullPicButton.addEventListener('mousedown', () => {this._cardClickHandler(this.data)});
   }
 
   insertRemoveButton () { // Добавление кнопки удаления

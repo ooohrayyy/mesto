@@ -108,6 +108,7 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
       .then(res => {
         const newCard = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike);
         newCard.id = res._id;
+        newCard.data.author = res.owner.name;
 
         const cardElement = newCard.generateCard();
         cardsSection.addItem(cardElement);
