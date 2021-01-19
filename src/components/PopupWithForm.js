@@ -44,4 +44,14 @@ export default class PopupWithForm extends Popup {
       this._submitButton.textContent = this._buttonText;
     }
   }
+
+  showResponseError (err) {
+    this._submitButton.textContent = err;
+    this._submitButton.classList.add('popup__button_error');
+  }
+
+  hideResponseError () {
+    this._submitButton.textContent = this._buttonText;
+    this._submitButton.classList.remove('popup__button_error');
+  }
 }

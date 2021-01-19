@@ -1,11 +1,8 @@
-import Popup from './Popup.js';
+import PopupWithForm from './PopupWithForm.js';
 
-export default class PopupConfirm extends Popup {
-  constructor (popupSelector, deleteCardHandler) {
-    super(popupSelector);
-
-    this._deleteCardHandler = deleteCardHandler;
-    this._confirmButton = this._popup.querySelector('.popup__button');
+export default class PopupConfirm extends PopupWithForm {
+  constructor (popupSelector, submitHandler) {
+    super(popupSelector, submitHandler);
 
     this.confirmDelete = this.confirmDelete.bind(this);
   }
@@ -13,7 +10,7 @@ export default class PopupConfirm extends Popup {
   _setEventListeners () {
     super._setEventListeners();
 
-    this._confirmButton.addEventListener('click', this.confirmDelete);
+    this._submitButton.addEventListener('click', this.confirmDelete);
   }
 
   open (card, cardId) {
@@ -24,7 +21,7 @@ export default class PopupConfirm extends Popup {
   }
 
   confirmDelete () {
-    this._deleteCardHandler(this._cardId)
+    this._submitHandler(this._cardId)
       .then(() => {
         this._card.removeCard();
         this.close();
