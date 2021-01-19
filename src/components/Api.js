@@ -74,9 +74,9 @@ export default class Api {
     .then(res => this._checkResponseData(res));
   }
 
-  toggleLike (card) { // Установка и снятие лайка
-    return fetch(`${this._baseUrl}/cards/likes/${card.id}`, {
-      method: card.isLiked ? 'DELETE' : 'PUT',
+  toggleLike (cardId, isLiked) { // Установка и снятие лайка
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: isLiked ? 'DELETE' : 'PUT',
       headers: {
         authorization: this._token
       }
