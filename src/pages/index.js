@@ -170,20 +170,20 @@ avatarValidator.enableValidation(); // Запуск валидации форм�
 // * Выполняем промисы
 
 Promise.all([api.fetchUserInfo(), api.fetchInitialCards()])
-  .then(res => {
+  .then(([userData, initialCards]) => {
 
     // Обрабатываем информацию о пользователе
 
     const externalUserInfo = {};
-    externalUserInfo.name = res[0].name;
-    externalUserInfo.description = res[0].about;
-    externalUserInfo.avatar = res[0].avatar;
-    global.userID = res[0]._id;
+    externalUserInfo.name = userData.name;
+    externalUserInfo.description = userData.about;
+    externalUserInfo.avatar = userData.avatar;
+    global.userID = userData._id;
     userInfo.setUserInfo(externalUserInfo);
 
     // Обрабатываем информацию о карточках
 
-    res[1].forEach(cardObject => {
+    initialCards.forEach(cardObject => {
       const data = {};
 
       data.cardId = cardObject._id;
