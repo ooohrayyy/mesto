@@ -7,6 +7,13 @@ export default class Api {
     this.toggleLike = this.toggleLike.bind(this);
   }
 
+  _checkResponseData (res) {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+  }
+
   fetchUserInfo () { // Загрузка информации о пользователе
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
@@ -14,13 +21,7 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+    .then(res => this._checkResponseData(res));
   }
 
   fetchInitialCards () { // Загрузка готовых карточек
@@ -30,13 +31,7 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+    .then(res => this._checkResponseData(res));
   }
 
   patchUserInfo (values) { // Обновление информации о пользователе
@@ -50,7 +45,8 @@ export default class Api {
         name: values.name,
         about: values.description
       })
-    });
+    })
+    .then(res => this._checkResponseData(res));
   }
 
   postCard (data) { // Отправка карточки
@@ -65,7 +61,7 @@ export default class Api {
         link: data.link
       })
     })
-    .then(res => res.json());
+    .then(res => this._checkResponseData(res));
   }
 
   deleteCard (cardId) { // Удаление карточки
@@ -75,6 +71,7 @@ export default class Api {
         authorization: this._token
       }
     })
+    .then(res => this._checkResponseData(res));
   }
 
   toggleLike (card) { // Установка и снятие лайка
@@ -85,13 +82,7 @@ export default class Api {
           authorization: this._token
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(res => this._checkResponseData(res))
       .then(res => {
         card.isLiked = false;
         card.likes = res.likes.length;
@@ -104,13 +95,7 @@ export default class Api {
           authorization: this._token
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(res => this._checkResponseData(res))
       .then(res => {
         card.isLiked = true;
         card.likes = res.likes.length;
@@ -130,5 +115,6 @@ export default class Api {
         avatar: link
       })
     })
+    .then(res => this._checkResponseData(res));
   }
 }
