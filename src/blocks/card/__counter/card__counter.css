@@ -1,7 +1,7 @@
 .card__counter {
   position: absolute;
-  bottom: -16px;
-  left: 6px;
+  bottom: 12px;
+  right: 30px;
   margin: 0;
   font-size: 13px;
   user-select: none;
