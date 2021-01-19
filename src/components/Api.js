@@ -75,33 +75,18 @@ export default class Api {
   }
 
   toggleLike (card) { // Установка и снятие лайка
-    if (card.isLiked) {
-      return fetch(`${this._baseUrl}/cards/likes/${card.id}`, {
-        method: 'DELETE',
-        headers: {
-          authorization: this._token
-        }
-      })
-      .then(res => this._checkResponseData(res))
-      .then(res => {
-        card.isLiked = false;
-        card.likes = res.likes.length;
-        card.cardLikesCounter.textContent = card.likes;
-      });
-    } else {
-      return fetch(`${this._baseUrl}/cards/likes/${card.id}`, {
-        method: 'PUT',
-        headers: {
-          authorization: this._token
-        }
-      })
-      .then(res => this._checkResponseData(res))
-      .then(res => {
-        card.isLiked = true;
-        card.likes = res.likes.length;
-        card.cardLikesCounter.textContent = card.likes;
-      });
-    }
+    return fetch(`${this._baseUrl}/cards/likes/${card.id}`, {
+      method: card.isLiked ? 'DELETE' : 'PUT',
+      headers: {
+        authorization: this._token
+      }
+    })
+    .then(res => this._checkResponseData(res))
+    .then(res => {
+      card.isLiked = !card.isLiked;
+      card.likes = res.likes.length;
+      card.cardLikesCounter.textContent = card.likes;
+    });
   }
 
   updateAvatar (link) { // Обновление аватарки
