@@ -184,21 +184,21 @@ Promise.all([api.fetchUserInfo(), api.fetchInitialCards()])
     // Обрабатываем информацию о карточках
 
     initialCards.forEach(cardObject => {
-      const data = {};
+      const data = {
+        cardId: cardObject._id,
+        isOwn: (cardObject.owner._id === userID) ? true : false,
+        likes: cardObject.likes.length,
+        isLiked: false,
+        author: cardObject.owner.name,
+        name: cardObject.name,
+        link: cardObject.link
+      };
 
-      data.cardId = cardObject._id;
-      if (cardObject.owner._id === userID) { data.isOwn = true }
-      data.likes = cardObject.likes.length;
-      data.isLiked = false;
       cardObject.likes.forEach(like => {
         if (like._id === userID) {
           data.isLiked = true;
         }
       });
-
-      data.author = cardObject.owner.name;
-      data.name = cardObject.name;
-      data.link = cardObject.link;
 
       const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike).generateCard();
       cardsSection.appendItem(card);
