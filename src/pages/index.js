@@ -51,8 +51,11 @@ const popupProfile = new PopupWithForm( // Попап «Редактироват
   (evt, values) => {
     evt.preventDefault();
 
+    popupProfile.renderLoading(true);
+
     userInfo.setUserInfo(values);
-    api.patchUserInfo(values);
+    api.patchUserInfo(values)
+      .finally(popupProfile.renderLoading(false));
 
     popupProfile.close();
   }
@@ -64,8 +67,11 @@ const popupAvatar = new PopupWithForm(
   (evt, values) => {
     evt.preventDefault();
 
+    popupAvatar.renderLoading(true);
+
     userInfo.setAvatar(values.avatar);
-    api.updateAvatar(values.avatar);
+    api.updateAvatar(values.avatar)
+      .finally(popupAvatar.renderLoading(false));
 
     popupAvatar.close();
   }
@@ -76,6 +82,8 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
   popupCardSelector,
   (evt, values) => {
     evt.preventDefault();
+
+    popupCard.renderLoading(true);
 
     const data = {};
     data.name = values.place;
@@ -90,7 +98,8 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
       .then(res => res.json())
       .then(res => {
         newCard.id = res._id;
-      });
+      })
+      .finally(popupCard.renderLoading(false));
 
     popupCard.close();
   }
