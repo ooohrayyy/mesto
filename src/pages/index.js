@@ -48,39 +48,52 @@ const userInfo = new UserInfo({ // Информация о пользовате�
 
 const cardsSection = new Section(cardGridSelector); // Секция с карточками
 
-const popupProfile = new PopupWithForm( // Попап «Редактировать профиль»
+const popupProfile = new PopupWithForm( // Попап «Редактировать профиль» // !
   popupProfileSelector,
   (evt, values) => {
     evt.preventDefault();
 
     popupProfile.renderLoading(true);
 
-    userInfo.setUserInfo(values);
+    
     api.patchUserInfo(values)
-      .finally(popupProfile.renderLoading(false));
-
-    popupProfile.close();
+      .then(() => {
+        userInfo.setUserInfo(values);
+        popupProfile.close();
+      })
+      .catch(err => {
+        console.log(`Что-то пошло не так: ${err}`);
+      })
+      .finally(() => {
+        popupProfile.renderLoading(false);
+      });
   }
 );
 const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидатор формы «Редактировать профиль»
 
-const popupAvatar = new PopupWithForm( // Попап «Обновить аватар»
+const popupAvatar = new PopupWithForm( // Попап «Обновить аватар» // !
   popupAvatarSelector,
   (evt, values) => {
     evt.preventDefault();
 
     popupAvatar.renderLoading(true);
 
-    userInfo.setAvatar(values.avatar);
     api.updateAvatar(values.avatar)
-      .finally(popupAvatar.renderLoading(false));
-
-    popupAvatar.close();
+      .then(() => {
+        userInfo.setAvatar(values.avatar);
+        popupAvatar.close();
+      })
+      .catch(err => {
+        console.log(`Что-то пошло не так: ${err}`);
+      })
+      .finally(() => {
+        popupAvatar.renderLoading(false);
+      });
   }
 );
 const avatarValidator = new FormValidator(validationConfig, popupAvatarForm); // Валидатор формы «Обновить аватар»
 
-const popupCard = new PopupWithForm( // Попап «Добавить карточку»
+const popupCard = new PopupWithForm( // Попап «Добавить карточку» // !
   popupCardSelector,
   (evt, values) => {
     evt.preventDefault();
@@ -92,18 +105,23 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     data.link = values.link;
     data.isOwn = true;
 
-    const newCard = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike);
-    const cardElement = newCard.generateCard();
-    cardsSection.addItem(cardElement);
-
     api.postCard(data)
-      .then(res => res.json())
       .then(res => {
+        const newCard = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike);
         newCard.id = res._id;
-      })
-      .finally(popupCard.renderLoading(false));
 
-    popupCard.close();
+        const cardElement = newCard.generateCard();
+
+        cardsSection.addItem(cardElement);
+
+        popupCard.close();
+      })
+      .catch(err => {
+        console.log(`Что-то пошло не так: ${err}`);
+      })
+      .finally(() => {
+        popupCard.renderLoading(false);
+      });
   }
 );
 const cardValidator = new FormValidator(validationConfig, popupCardForm); // Валидатор формы «Добавить карточку»

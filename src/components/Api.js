@@ -65,6 +65,7 @@ export default class Api {
         link: data.link
       })
     })
+    .then(res => res.json());
   }
 
   deleteCard (cardId) { // Удаление карточки
