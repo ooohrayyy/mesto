@@ -81,12 +81,7 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(res => this._checkResponseData(res))
-    .then(res => {
-      card.isLiked = !card.isLiked;
-      card.likes = res.likes.length;
-      card.cardLikesCounter.textContent = card.likes;
-    });
+    .then(res => this._checkResponseData(res));
   }
 
   updateAvatar (link) { // Обновление аватарки

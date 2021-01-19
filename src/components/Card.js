@@ -33,8 +33,14 @@ export default class Card {
   }
 
   _setLike () { // Установка и снятие лайка
-    this.like.classList.toggle('card__like_active');
-    this._likeHandler(this);
+    this._likeHandler(this)
+      .then(res => {
+        this.like.classList.toggle('card__like_active');
+
+        this.isLiked = !this.isLiked;
+        this.likes = res.likes.length;
+        this.cardLikesCounter.textContent = this.likes;
+      });
   }
 
   _setEventListeners () {
