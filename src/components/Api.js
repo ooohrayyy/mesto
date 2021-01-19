@@ -7,7 +7,7 @@ export default class Api {
     this.toggleLike = this.toggleLike.bind(this);
   }
 
-  _checkResponseData (res) {
+  _checkResponseData (res) { // Проверка ответа от сервера
     if (!res.ok) {
       return Promise.reject(`Ошибка: ${res.status}`);
     }
