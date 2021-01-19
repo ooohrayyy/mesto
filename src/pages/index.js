@@ -48,14 +48,13 @@ const userInfo = new UserInfo({ // Информация о пользовате�
 
 const cardsSection = new Section(cardGridSelector); // Секция с карточками
 
-const popupProfile = new PopupWithForm( // Попап «Редактировать профиль» // !
+const popupProfile = new PopupWithForm( // Попап «Редактировать профиль»
   popupProfileSelector,
   (evt, values) => {
     evt.preventDefault();
 
     popupProfile.renderLoading(true);
 
-    
     api.patchUserInfo(values)
       .then(() => {
         userInfo.setUserInfo(values);
@@ -71,7 +70,7 @@ const popupProfile = new PopupWithForm( // Попап «Редактироват
 );
 const profileValidator = new FormValidator(validationConfig, popupProfileForm); // Валидатор формы «Редактировать профиль»
 
-const popupAvatar = new PopupWithForm( // Попап «Обновить аватар» // !
+const popupAvatar = new PopupWithForm( // Попап «Обновить аватар»
   popupAvatarSelector,
   (evt, values) => {
     evt.preventDefault();
@@ -93,7 +92,7 @@ const popupAvatar = new PopupWithForm( // Попап «Обновить ават
 );
 const avatarValidator = new FormValidator(validationConfig, popupAvatarForm); // Валидатор формы «Обновить аватар»
 
-const popupCard = new PopupWithForm( // Попап «Добавить карточку» // !
+const popupCard = new PopupWithForm( // Попап «Добавить карточку»
   popupCardSelector,
   (evt, values) => {
     evt.preventDefault();
@@ -111,7 +110,6 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
         newCard.id = res._id;
 
         const cardElement = newCard.generateCard();
-
         cardsSection.addItem(cardElement);
 
         popupCard.close();
