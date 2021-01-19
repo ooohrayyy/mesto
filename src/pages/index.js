@@ -161,22 +161,21 @@ avatarValidator.enableValidation(); // Запуск валидации форм�
 
 // * Выполняем промисы
 
-api.fetchUserInfo() // Загрузка данных о пользователе с сервера
+Promise.all([api.fetchUserInfo(), api.fetchInitialCards()])
   .then(res => {
-    const externalUserInfo = {};
-    externalUserInfo.name = res.name;
-    externalUserInfo.description = res.about;
-    externalUserInfo.avatar = res.avatar;
-    global.userID = res._id;
-    userInfo.setUserInfo(externalUserInfo);
-  })
-  .catch(err => {
-    console.log(`Что-то пошло не так: ${err}`);
-  });
 
-api.fetchInitialCards() // Загрузка готовых карточек с сервера
-  .then(res => {
-    res.forEach(cardObject => {
+    // Обрабатываем информацию о пользователе
+
+    const externalUserInfo = {};
+    externalUserInfo.name = res[0].name;
+    externalUserInfo.description = res[0].about;
+    externalUserInfo.avatar = res[0].avatar;
+    global.userID = res[0]._id;
+    userInfo.setUserInfo(externalUserInfo);
+
+    // Обрабатываем информацию о карточках
+
+    res[1].forEach(cardObject => {
       const data = {};
 
       data.cardId = cardObject._id;
@@ -199,4 +198,4 @@ api.fetchInitialCards() // Загрузка готовых карточек с �
   })
   .catch(err => {
     console.log(`Что-то пошло не так: ${err}`);
-  });
+  })
