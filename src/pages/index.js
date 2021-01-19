@@ -82,10 +82,15 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
     data.link = values.link;
     data.isOwn = true;
 
-    const cardElement = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike).generateCard();
+    const newCard = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike);
+    const cardElement = newCard.generateCard();
     cardsSection.addItem(cardElement);
 
-    api.postCard(data);
+    api.postCard(data)
+      .then(res => res.json())
+      .then(res => {
+        newCard.id = res._id;
+      });
 
     popupCard.close();
   }
