@@ -24,8 +24,10 @@ export default class PopupConfirm extends Popup {
   }
 
   confirmDelete () {
-    this._card.removeCard();
-    this._deleteCardHandler(this._cardId);
-    this.close();
+    this._deleteCardHandler(this._cardId)
+      .then(() => {
+        this._card.removeCard();
+        this.close();
+      });
   }
 }
