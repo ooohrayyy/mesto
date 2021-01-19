@@ -37,6 +37,11 @@ export default class PopupWithForm extends Popup {
     this._form.removeEventListener('submit', this._handleSubmit);
   }
 
+  close () {
+    this.hideResponseError();
+    super.close();
+  }
+
   renderLoading (isLoading) {
     if (isLoading) {
       this._submitButton.textContent = this._buttonLoadingText;

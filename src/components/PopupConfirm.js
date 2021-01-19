@@ -25,6 +25,10 @@ export default class PopupConfirm extends PopupWithForm {
       .then(() => {
         this._card.removeCard();
         this.close();
+      })
+      .catch(err => {
+        console.log(`Что-то пошло не так: ${err}`);
+        this.showResponseError(err);
       });
   }
 }

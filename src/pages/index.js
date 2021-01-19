@@ -58,13 +58,12 @@ const popupProfile = new PopupWithForm( // Попап «Редактироват
     api.patchUserInfo(values)
       .then(() => {
         userInfo.setUserInfo(values);
+        popupProfile.renderLoading(false);
         popupProfile.close();
       })
       .catch(err => {
         console.log(`Что-то пошло не так: ${err}`);
-      })
-      .finally(() => {
-        popupProfile.renderLoading(false);
+        popupProfile.showResponseError(err);
       });
   }
 );
@@ -80,13 +79,12 @@ const popupAvatar = new PopupWithForm( // Попап «Обновить ават
     api.updateAvatar(values.avatar)
       .then(() => {
         userInfo.setAvatar(values.avatar);
+        popupAvatar.renderLoading(false);
         popupAvatar.close();
       })
       .catch(err => {
         console.log(`Что-то пошло не так: ${err}`);
-      })
-      .finally(() => {
-        popupAvatar.renderLoading(false);
+        popupAvatar.showResponseError(err);
       });
   }
 );
@@ -113,13 +111,12 @@ const popupCard = new PopupWithForm( // Попап «Добавить карто
         const cardElement = newCard.generateCard();
         cardsSection.addItem(cardElement);
 
+        popupCard.renderLoading(false);
         popupCard.close();
       })
       .catch(err => {
         console.log(`Что-то пошло не так: ${err}`);
-      })
-      .finally(() => {
-        popupCard.renderLoading(false);
+        popupCard.showResponseError(err);
       });
   }
 );
@@ -128,7 +125,7 @@ const cardValidator = new FormValidator(validationConfig, popupCardForm); // В�
 const confirmDeletePopup = new PopupConfirm( // Попап подтверждения удаления
   popupConfirmDeleteSelector,
   api.deleteCard
-);
+  );
 
 const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с полноразмерной картинкой
 
