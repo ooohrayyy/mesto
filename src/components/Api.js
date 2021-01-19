@@ -14,7 +14,13 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(res => res.json());
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
   }
 
   fetchInitialCards () { // Загрузка готовых карточек
@@ -24,7 +30,13 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(res => res.json());
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
   }
 
   patchUserInfo (values) { // Обновление информации о пользователе
@@ -72,7 +84,13 @@ export default class Api {
           authorization: this._token
         }
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
       .then(res => {
         card.isLiked = false;
         card.likes = res.likes.length;
@@ -85,7 +103,13 @@ export default class Api {
           authorization: this._token
         }
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
       .then(res => {
         card.isLiked = true;
         card.likes = res.likes.length;
