@@ -176,7 +176,7 @@ Promise.all([api.fetchUserInfo(), api.fetchInitialCards()])
     externalUserInfo.name = userData.name;
     externalUserInfo.description = userData.about;
     externalUserInfo.avatar = userData.avatar;
-    global.userID = userData._id;
+    const userID = userData._id;
     userInfo.setUserInfo(externalUserInfo);
 
     // Обрабатываем информацию о карточках
