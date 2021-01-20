@@ -133,7 +133,7 @@ const confirmDeletePopup = new PopupConfirm( // Попап подтвержде�
         confirmDeletePopup.showResponseError(err);
       });
   }
-  );
+);
 
 const popupFullPic = new PopupWithImage(popupFullPicSelector); // Попап с полноразмерной картинкой
 
@@ -204,4 +204,4 @@ Promise.all([api.fetchUserInfo(), api.fetchInitialCards()])
   })
   .catch(err => {
     console.log(`Что-то пошло не так: ${err}`);
-  })
+  });
