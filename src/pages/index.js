@@ -123,9 +123,12 @@ const cardValidator = new FormValidator(validationConfig, popupCardForm); // В�
 const confirmDeletePopup = new PopupConfirm( // Попап подтверждения удаления
   popupConfirmDeleteSelector,
   (cardId) => {
+    confirmDeletePopup.renderLoading(true);
+
     api.deleteCard(cardId)
       .then(() => {
         confirmDeletePopup.card.removeCard();
+        confirmDeletePopup.renderLoading(false);
         confirmDeletePopup.close();
       })
       .catch(err => {

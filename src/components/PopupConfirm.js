@@ -4,6 +4,8 @@ export default class PopupConfirm extends PopupWithForm {
   constructor (popupSelector, submitHandler) {
     super(popupSelector, submitHandler);
 
+    this._buttonLoadingText = 'Удаление...';
+
     this.confirmDelete = this.confirmDelete.bind(this);
   }
 
