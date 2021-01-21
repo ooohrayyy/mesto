@@ -192,11 +192,9 @@ Promise.all([api.fetchUserInfo(), api.fetchInitialCards()])
         link: cardObject.link
       };
 
-      cardObject.likes.forEach(like => {
-        if (like._id === userID) {
-          data.isLiked = true;
-        }
-      });
+      if (cardObject.likes.some(like => like._id === userID)) {
+        data.isLiked = true;
+      }
 
       const card = new Card(data, '#template-card', popupFullPic.open, confirmDeletePopup.open, api.toggleLike).generateCard();
       cardsSection.appendItem(card);
