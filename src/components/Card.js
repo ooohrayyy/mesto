@@ -33,6 +33,8 @@ export default class Card {
   }
 
   _setLike () { // Установка и снятие лайка
+    this.like.classList.add('card__like_loading');
+
     this._likeHandler(this.id, this.isLiked)
       .then(res => {
         this.like.classList.toggle('card__like_active');
@@ -43,7 +45,8 @@ export default class Card {
       })
       .catch(err => {
         console.log(`Что-то пошло не так: ${err}`);
-      });
+      })
+      .finally(() => this.like.classList.remove('card__like_loading'));
   }
 
   _setEventListeners () {

@@ -76,6 +76,7 @@
 @import url(../blocks/card/__like/card__like.css);
 @import url(../blocks/card/__counter/card__counter.css);
 @import url(../blocks/card/__like/_active/card__like_active.css);
+@import url(../blocks/card/__like/_loading/card__like_loading.css);
 
 /* Подключаем блок footer и его компоненты */
 
