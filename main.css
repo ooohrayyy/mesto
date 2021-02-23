@@ -47,6 +47,7 @@
 .card__like{position:relative;flex-shrink:0;width:21px;height:19px;padding:0;margin:31px 23px 30px;border:none;background-color:#fff;background-image:url(220ebbc4e3470010b015.svg);background-position:50%;background-repeat:no-repeat;transition:.1s linear;cursor:pointer}.card__like:hover{opacity:.6}
 .card__counter{position:absolute;bottom:-16px;left:6px;margin:0;font-size:13px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none}
 .card__like_active{background-image:url(51301d6bd04301e6ac0b.svg)}
+.card__like_loading{background-image:url(b1c729b4940fba9ca30e.svg);pointer-events:none;cursor:progress}
 .footer{width:318px;min-height:18px}@media screen and (max-width:399px){.footer{width:200px}}
 .footer__text{font-size:18px;line-height:22px;margin:0;color:#545454}@media screen and (max-width:499px){.footer__text{font-size:14px;line-height:17px}}
 
